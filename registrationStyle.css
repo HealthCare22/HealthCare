@@ -18,7 +18,7 @@ body{
 }
 
 
-#labelaccount{
+.labelaccount{
     text-align: center;
 }
 
@@ -46,6 +46,14 @@ body{
 #skip1{
     background-color:#35908B;
 
+}
+
+#skip1Post,#skip2Post{
+    height: 13px;
+    width: 13px;
+    border-radius: 100%;
+    border: none;
+    background-color:#35908B;
 }
 
 
@@ -148,11 +156,30 @@ body{
     font-family: 'Arial';
     font-style: normal;
     font-weight: 300;
-   
-
-
-
-
 }
 
+#secondForm{
+    display: none;
+}
 
+#secondFormButton{
+    display: none;
+}
+
+.domicilio input{
+    height: 35px;
+    width: 450px;
+    background: #FFFFFF;
+    border: 1px solid #35908B;
+    border-radius: 5px;
+    margin: 15px;
+}
+
+.telefono input{
+    height: 35px;
+    width: 450px;
+    background: #FFFFFF;
+    border: 1px solid #35908B;
+    border-radius: 5px;
+    margin: 15px;
+}
