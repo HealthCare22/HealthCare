@@ -1,0 +1,185 @@
+
+body{
+
+    position: relative;
+    width: 1280px;
+    height: 832px;
+    background: #E7FDFE;
+}
+
+
+.logo{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 540px;
+    top: 16px;
+    border-radius: 100%;
+}
+
+
+.labelaccount{
+    text-align: center;
+}
+
+.go-next{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:0 auto;
+
+}
+
+.go-next, hr{
+    width: 200px;
+}
+
+
+
+#skip1,#skip2{
+    height: 13px;
+    width: 13px;
+    border-radius: 100%;
+    border: none;
+}
+
+#skip1{
+    background-color:#35908B;
+
+}
+
+#skip1Post,#skip2Post{
+    height: 13px;
+    width: 13px;
+    border-radius: 100%;
+    border: none;
+    background-color:#35908B;
+}
+
+
+.registration{
+    position: absolute;
+    width: 553px;
+    height: 620px;
+    left: 365px;
+    top: 216px;
+    background: #B7DDDB;
+    border-radius: 45px;
+ 
+
+}
+.registrationInformation{
+ /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
+    width:400px;
+    height: 450px;
+    margin:0 auto;
+  
+
+
+}
+.registration, div{
+  
+   padding: 0.6rem;
+   align-items: center;
+   line-height: 30px;
+
+}
+
+.NomeCognome{
+    display: flex;
+    justify-content: space-between;
+}
+
+.NomeCognome input{
+    height: 35px;
+    width: 170px;
+    background: #FFFFFF;
+    border: 1px solid #35908B;
+    border-radius: 5px;
+ 
+}
+
+.sesso{
+   line-height: 10px;
+}
+
+
+.eta{
+    display: flex;
+    margin:0 auto;
+
+}
+
+.password{
+    display: flex;
+    justify-content: space-between;
+}
+
+.password input{
+    height: 35px;
+    width: 170px;
+    background: #FFFFFF;
+    border: 1px solid #35908B;
+    border-radius: 5px;
+}
+
+.email{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.email input{
+    height: 35px;
+    width: 450px;
+    background: #FFFFFF;
+    border: 1px solid #35908B;
+    border-radius: 5px;
+}
+.registration .pulsantiConfermaAnnulla{
+    
+	display: flex;  
+    justify-content: space-around;
+    
+ 
+}
+
+.pulsantiConfermaAnnulla button{
+    background: #35908B;
+    border: 1px solid #35908B;
+    border-radius: 45px;
+    color:white;
+    box-sizing: border-box;
+    width: 126px;
+    height: 28px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 300;
+}
+
+#secondForm{
+    display: none;
+}
+
+#secondFormButton{
+    display: none;
+}
+
+.domicilio input{
+    height: 35px;
+    width: 450px;
+    background: #FFFFFF;
+    border: 1px solid #35908B;
+    border-radius: 5px;
+    margin: 15px;
+}
+
+.telefono input{
+    height: 35px;
+    width: 450px;
+    background: #FFFFFF;
+    border: 1px solid #35908B;
+    border-radius: 5px;
+    margin: 15px;
+}
