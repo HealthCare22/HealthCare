@@ -1,0 +1,73 @@
+*{
+    font-family: 'Inter';
+
+}
+
+body{
+
+    position: relative;
+    width: 1280px;
+    height: 832px;
+    background: #E7FDFE;
+}
+
+
+.logo{
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    left: 560px;
+    top: 10px;
+    border-radius: 100%;
+}
+
+
+#labelaccount{
+    text-align: center;
+    color: white;
+
+}
+
+
+
+.logout{
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    left: 400px;
+    top: 216px;
+    background: #B7DDDB;
+    border-radius: 45px;
+
+ 
+
+}
+.logout, div{
+  
+    padding: 0.6rem;
+    align-items: center;
+ 
+ }
+
+
+ .pulsantiSiNo{
+    
+	display: flex;  
+    justify-content: space-around;
+
+}
+ .pulsantiSiNo button{
+    background: #35908B;
+    border: 1px solid #35908B;
+    border-radius: 45px;
+    color:white;
+    box-sizing: border-box;
+    width: 126px;
+    height: 28px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 300;
+    margin-top: 10%;
+    
+ }
