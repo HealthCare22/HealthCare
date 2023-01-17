@@ -11,6 +11,18 @@ public class MMGBean {
 	private String telefono;
 	private String password;
 	
+	public MMGBean(int id, String nome, String cognome, String email, String indirizzo, String sesso, String telefono,
+			String password) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.email = email;
+		this.indirizzo = indirizzo;
+		this.sesso = sesso;
+		this.telefono = telefono;
+		this.password = password;
+	}
 	
 	
 	public int getId() {

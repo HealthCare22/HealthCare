@@ -9,6 +9,14 @@ public class GestioneMalattieBean {
 	private String descrizione;
 	private List<String> listaSintomi;
 	
+	public GestioneMalattieBean(int idMalattia, String nome, String descrizione, List<String> listaSintomi) {
+		super();
+		this.idMalattia = idMalattia;
+		this.nome = nome;
+		this.descrizione = descrizione;
+		this.listaSintomi = listaSintomi;
+	}
+	
 	
 	public int getIdMalattia() {
 		return idMalattia;

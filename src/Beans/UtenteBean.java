@@ -5,6 +5,12 @@ public class UtenteBean {
 	private int idUtente;
 	private int idMMG;
 	
+	public UtenteBean(int idUtente, int idMMG) {
+		super();
+		this.idUtente = idUtente;
+		this.idMMG = idMMG;
+	}
+	
 	
 	public int getIdUtente() {
 		return idUtente;

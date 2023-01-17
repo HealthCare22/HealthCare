@@ -13,6 +13,20 @@ public class GestioneFormBean {
 	private String Topic;
 	private String idIntervento;
 	
+	public GestioneFormBean(int idform, int idmmg, String titolo, String descrizione, Date dataApertura,
+			Date dataChiusura, Boolean status, String topic, String idIntervento) {
+		super();
+		this.idform = idform;
+		this.idmmg = idmmg;
+		this.titolo = titolo;
+		this.descrizione = descrizione;
+		this.dataApertura = dataApertura;
+		this.dataChiusura = dataChiusura;
+		Status = status;
+		Topic = topic;
+		this.idIntervento = idIntervento;
+	}
+	
 	
 	public int getIdform() {
 		return idform;
