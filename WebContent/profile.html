@@ -13,11 +13,12 @@
     <img id="profilo"src="./images/sample.jpg" alt="Foto Profilo">
     </div>
     <div class="center">
+        <div class="sectiondiv">
         <button id="section1"  onclick=goToAnagrafica()>Anagrafica e credenziali</button>
         <button id="section2"  onclick=goToContatti()>Contatti e domicilio</button>
-    
+    </div>
     <div class="editdiv">
-            <button id="edit">Modifica</button>
+            <button id="edit" onclick="edit()">Modifica</button>
     </div>
     </div>
     
@@ -25,16 +26,16 @@
         
             <h1>Dati Anagrafici</h1>
                 <h2>Nome</h2>
-                <input type="text" id="Nome" value="Nome" readonly>
+                <input type="text" id="nome" value="Nome" readonly>
 
                 <h2>Cognome</h2>
-                <input type="text" id="Cognome" value="Cognome" readonly>
+                <input type="text" id="cognome" value="Cognome" readonly>
             
                 <h2>Sesso</h2>
-                <input type="text" id="Sesso" value="Maschio" readonly>
+                <input type="text" id="sesso" value="Maschio" readonly>
             
                 <h2>Data di Nascita</h2>
-                <input type="date" id="Data" value="date" readonly>
+                <input type="date" id="data" value="date" readonly>
         
             <h1>Credenziali</h1>
             
@@ -64,8 +65,8 @@
     </div>
     
     <div class="buttondiv">
-        <button id="annulla">Annulla modifiche</button>
-        <button id="save">Salva</button>
+        <button id="annulla" onclick=reload()>Annulla modifiche</button>
+        <button id="save" onclick=save()>Salva</button>
         
 
     </div>
