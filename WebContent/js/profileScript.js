@@ -41,4 +41,40 @@ function goToAnagrafica(){
  
 
 }
+function reload(){
+    window.location.reload();
+}
 
+function save(){
+
+}
+
+function edit(){
+    savebutton=document.getElementById("save");
+    annullabutton=document.getElementById("annulla");
+    savebutton.style.display="inline";
+    annullabutton.style.display="inline";
+
+    nome=document.getElementById("nome");
+    cognome=document.getElementById("cognome");
+    sesso=document.getElementById("sesso");
+    data=document.getElementById("data");
+    email=document.getElementById("email");
+    password=document.getElementById("password");
+    telefono=document.getElementById("telefono");
+    provincia=document.getElementById("provincia");
+    comune=document.getElementById("comune");
+    indirizzo=document.getElementById("indirizzo");
+
+    nome.readOnly= false;
+    cognome.readOnly= false;
+    sesso.readOnly= false;
+    data.readOnly= false;
+    email.readOnly= false;
+    password.readOnly= false;
+    telefono.readOnly= false;
+    provincia.readOnly= false;
+    comune.readOnly= false;
+    indirizzo.readOnly= false;
+
+}

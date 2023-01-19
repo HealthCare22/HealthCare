@@ -17,17 +17,23 @@ body{
 .center{
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content:center;
 	width: 100%;
 	margin-top: 50px;
 	
 }
 
-.center .editdiv{
+.center .sectiondiv{
+	box-sizing: border-box;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
+}
+
+.center .editdiv{
 	position: absolute;
-	right: 350px;
+	right: 15%;
+	margin-left: 10%;
+
 }
 
 #edit{
@@ -139,9 +145,8 @@ body{
 	border: none;
 }
 .buttondiv{
-	
-	margin-top: 60px;
 	display: flex;
+	margin-top: 60px;
 	justify-content: space-around;
 	width: 50%;
 	position: absolute;
@@ -150,6 +155,7 @@ body{
 }
 
 #annulla{
+	display: none;
 	box-sizing: border-box;
 	color: white;
 	font-family: 'Inter';
@@ -167,6 +173,7 @@ body{
 }
 
 #save{
+	display: none;
 	box-sizing: border-box;
 	color: white;
 	font-family: 'Inter';
