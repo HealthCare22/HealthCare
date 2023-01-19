@@ -24,7 +24,6 @@ public class MMGBean {
 		this.password = password;
 	}
 	
-	
 	public int getId() {
 		return id;
 	}
