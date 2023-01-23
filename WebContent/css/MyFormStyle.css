@@ -1,0 +1,75 @@
+body{
+	font-family: inter;
+}
+
+#FormNavbar{
+	margin-top: 20px;
+}
+
+#OpenedClosedForms{
+	font-size:0px;
+	position: relative;
+  	width: 300px;
+  	height: 200px;
+  	z-index: 15;
+  	left: 50%;
+  	top: 30%;
+  	margin: 20px 0 0 -150px;
+}
+
+#OpenedFormButton{
+	font-size: 20px;
+	padding: 10px;
+	border-radius: 45px 0px 0px 45px;
+	background-color: #35908B;
+	border-width: 0px;
+	width: 150px;
+}
+
+#ClosedFormButton{
+	font-size: 20px;
+	padding: 10px;
+	border-radius: 0px 45px 45px 0px;
+	background-color: #B7DDDB;
+	border-width: 0px;
+	color: white;
+	width: 150px;
+}
+
+#Forms{
+	background-color:#B7DDDB;
+	margin-top: -100px;
+}
+
+#Forms table{
+	margin-left: 50px;
+	margin-right: 50px;
+	border-spacing: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#Forms td{
+	border: 0.5px solid #35908B;
+	width: 400px;
+	height: 50px;
+	text-align: center;
+	background-color: white;
+	font-weight: bold;
+	font-size: 20px;
+	
+}
+
+.DettagliButton{
+	background: #35908B;
+    border: 1px solid #35908B;
+    border-radius: 45px;
+    color:white;
+    box-sizing: border-box;
+    width: 126px;
+    height: 28px;
+   
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 300;
+}
