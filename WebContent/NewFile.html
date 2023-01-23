@@ -1,0 +1,47 @@
+package servlet;
+
+import java.io.IOException;
+import DAO.Util;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.bson.Document;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
+public class RegistrationServlet {
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	String nome = request.getParameter("name");
+	String cognome = request.getParameter("surname");
+	String sesso = request.getParameter("gender");
+	String data = request.getParameter("data");
+	String password = request.getParameter("password");
+	String email = request.getParameter("email");
+	String provincia = request.getParameter("provincia");
+	String comune = request.getParameter("comune");
+	String indirizzo = request.getParameter("indirizzo");
+	String numero_telefono = request.getParameter("numero_telefono");
+	
+// Checking for null and empty values
+		if(nome == null || cognome == null || sesso == null || data == null || password == null ||
+				email == null || provincia == null || comune == null || indirizzo == null ||
+				numero_telefono == null || "".equals(nome) || "".equals(cognome)
+				|| "".equals(sesso) || "".equals(data) || "".equals(password) || "".equals(email)
+				|| "".equals(provincia) || "".equals(comune) || "".equals(indirizzo) || "".equals(numero_telefono)){
+				System.out.println("Siamo nell'IF");
+			
+				request.setAttribute("error_message", "Please fill the registration form");
+				request.getRequestDispatcher("/registration.jsp").forward(request, response);
+	}else {
+	boolean isUserFound = Util.putUserInDb(nome, cognome,sesso, data, password, email,
+			provincia,comune, indirizzo, numero_telefono);
+
+			if(isUserFound) {request.getRequestDispatcher("/login.jsp").forward(request, response);}
+			else {
+				request.setAttribute("error_message", "You are not an authorised user. Please check with administrator.");
+				request.getRequestDispatcher("/logout.jsp").forward(request, response);}
+			}
+		}
+	}

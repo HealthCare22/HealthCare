@@ -12,6 +12,7 @@
     <img class="logo" src="images/logo.png" alt="logoHealthCare">
     <div class="registration">
         <h1 class="labelaccount">Crea un nuovo account</h1>
+        <form method="post" action="RegistrationServlet">
         <div id = "firstForm">
             <div class="registrationInformation">
 
@@ -22,8 +23,8 @@
                 </div>
 
                 <div class="NomeCognome">
-                    <input type="text" placeholder="Nome">
-                    <input type="text" placeholder="Cognome">
+                    <input type="text" name="name" placeholder="Nome">
+                    <input type="text" name="surname" placeholder="Cognome">
                 </div>
 
                 <div class="sesso">
@@ -41,21 +42,21 @@
 
             <div class="eta">
                 <p>Età:</p>
-                <input type="date">
+                <input type="number" name="eta">
             </div>
 
             <div class="password">
-                <input type="password" placeholder="Password">
-                <input type="password" placeholder="Conferma password">
+                <input type="password" name="password" placeholder="Password">
+                <input type="password" name="password" placeholder="Conferma password">
             </div>  
 
     
             <div class="email">
-                <input type="email" placeholder="Email">
+                <input type="email" name="email" placeholder="Email">
             </div>
 
             <div class="email">
-                <input type="email" placeholder="Conferma email">
+                <input type="email" name="email" placeholder="Conferma email">
             </div>
 
         </div>
@@ -68,20 +69,22 @@
         </div>
         <h1 class = "labelaccount">Domicilio:</h1>
         <div class="domicilio">
-            <input type="text" placeholder="Provincia">
-            <input type="text" placeholder="Comune">
-            <input type="text" placeholder="Indirizzo">
+            <input type="text" name="provincia" placeholder="Provincia">
+            <input type="text" name="comune" placeholder="Comune">
+            <input type="text" name= "indirizzo" placeholder="Indirizzo">
         </div>
         <div class="telefono">
-            <input type="text" placeholder="Numero di telefono">
+            <input type="text" name="numero_telefono" placeholder="Numero di telefono">
         </div>
-    </div>    
+    </div>   
+    	
+    	<button type = "submit" id = "secondFormButton">Conferma</button>
+    	</form>
+    	 
         <div class="pulsantiConfermaAnnulla">
-            <button onclick=changeForm()>Annulla</button>
+            <button onclick = changeForm()>Annulla</button>
             <button onclick = changeForm() id = "firstFormButton">Avanti</button>
-            <button type = "submit" onclick id = "secondFormButton">Conferma</button>
         </div>
     </div>
-</div>
 </body>
 </html>

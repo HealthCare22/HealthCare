@@ -16,8 +16,7 @@ public class Util {
             MongoDatabase database = mongoClient.getDatabase("HealthCare");
             MongoCollection<Document> collection = database.getCollection("MMG");
 			return mongoClient;
-        
-    }
+}
  
     // Method to search a user in the mongodb
     public static boolean searchUserInDb(String loginId, String loginPwd) {
@@ -36,7 +35,6 @@ public class Util {
         obj.add(new BasicDBObject("email", loginId));
         obj.add(new BasicDBObject("Password", loginPwd));
         
- 
         // Form a where query
         BasicDBObject whereQuery = new BasicDBObject();
         whereQuery.put("$and", obj);
@@ -49,4 +47,35 @@ public class Util {
         }
         return user_found;
     }
+
+
+public static boolean appendUserInDb(String nome, String cognome, String sesso, String data, String password, String email,
+		String provincia, String comune, String indirizzo, String numero_telefono) {
+		
+		boolean user_found = false;
+			String db_name = "HealthCare",
+			db_collection_name = "MMG";
+		
+			// Get the mongodb connection
+			MongoDatabase db = getConnection().getDatabase(db_name);
+
+			// Get the mongodb collection.
+			MongoCollection<Document> col = db.getCollection(db_collection_name);
+	
+			Document document = new Document("nome_medico", nome)
+			.append("cognome", cognome)
+			.append("email", email)
+			.append("indirizzo", indirizzo)
+			.append("sesso", sesso)
+			.append("data", data)
+			.append("provincia", provincia)
+			.append("comune", comune)
+			.append("telefono", numero_telefono)
+			.append("password", password);
+
+			col.insertOne(document);
+
+			System.out.println(col);
+			return true;
+			}
 }

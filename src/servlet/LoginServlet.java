@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
  
         // Checking for null and empty values
         if(param1 == null || param2 == null || "".equals(param1) || "".equals(param2)) {
-            req.setAttribute("error_message", "Please enter login id and password");
+            req.setAttribute("error_message", "Please enter login	 id and password");
             req.getRequestDispatcher("/logout.jsp").forward(req, resp);
         } else {
             boolean isUserFound = Util.searchUserInDb(param1, param2);
