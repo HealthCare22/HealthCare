@@ -1,0 +1,196 @@
+body{
+    position: relative;
+    width: 1280px;
+    height: 832px;
+    background: #E7FDFE;
+}
+
+.heading{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin:0 auto;
+}
+
+.heading h1{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 55px;
+    line-height: 28px;
+    color: #35908B;
+}
+
+.selector{
+    padding-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0 auto;
+}
+
+#perNome{
+    background: #35908B;
+    color: #FFFFFF;
+    width: 155px;
+	height: 50px;
+	border-radius: 45px 0px 0px 45px;
+    border: none;
+}
+
+    
+#perSintomi{
+    width: 155px;
+	height: 50px;
+    border-radius: 0px 45px 45px 0px;
+    background: #B7DDDB;
+    color: #000000;
+    border: none;
+}
+
+.containers{
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 3%;
+    
+    
+}
+.containers h1{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+    color: #35908B;
+
+}
+
+.containers hr{
+    color: #35908B;
+}
+
+.containerNome{
+    padding-top: 5px;
+    background: #B7DDDB;
+    border-radius: 35px;
+    vertical-align: middle;
+    margin:0 auto;
+    display: block;
+}
+
+.ricercaNome{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+#nomeMalattia{
+    text-indent: 8px;
+    border: none;
+    border-radius: 30px;
+    padding: 5px;
+    width: 50%;
+    height: 18px;
+}
+
+.cercaPerNomeButtonDiv{
+    padding-bottom: 2%;
+
+}
+
+#cercaPerNomeButton{
+    position: relative;
+    left: 75%;
+    background: #35908B;
+    border-radius: 45px;
+    color:white;
+    width: 126px;
+    height: 28px;
+    border: none;
+}
+
+.containerSintomi{
+    border:1px solid #B7DDDB;
+    background: #B7DDDB;
+    border-radius: 20px;
+    align-items: center;
+    vertical-align: middle;
+    margin:0 auto;
+    display: none;
+    
+}
+
+.ricercaPerSintomi{
+    margin-bottom: 5%;
+    margin-top: 5%;
+    vertical-align: middle;
+    
+}
+
+#nomeSintomoContainer{
+    box-sizing: border-box;
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.nomeSintomo{
+    text-indent: 8px;
+    border: none;
+    border-radius: 30px;
+    margin-top: 8px;
+    position: relative;
+    left: 20%;
+    padding: 5px;
+    width: 50%;
+    height: 18px;
+}
+
+.cercaPerSintomiButtonDiv{
+    padding-bottom: 2%;
+
+}
+
+
+.buttons{
+    margin-bottom: 20px;
+    margin-top: 30px;
+   display: flex;
+   justify-content:center;
+}
+
+#aggiungiSintomoButton{
+    margin: 10px;
+    background: #35908B;
+    border-radius: 45px;
+    color:white;
+    width: 126px;
+    height: 28px;
+    border: none;
+}
+
+#cercaPerSintomiButton{
+    margin: 10px;
+    background: #35908B;
+    border-radius: 45px;
+    color:white;
+    width: 126px;
+    height: 28px;
+    border: none;
+}
+
+ #rimuoviSintomoButton{
+    margin: 10px;
+    background: #35908B;
+    border-radius: 45px;
+    color:white;
+    width: 126px;
+    height: 28px;
+    border: none;
+    display: none;
+
+
+}
+
+

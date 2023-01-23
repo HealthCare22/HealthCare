@@ -33,7 +33,7 @@ public class Util {
         // Get the particular record from the mongodb collection        
         List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
         obj.add(new BasicDBObject("email", loginId));
-        obj.add(new BasicDBObject("Password", loginPwd));
+        obj.add(new BasicDBObject("password", loginPwd));
         
         // Form a where query
         BasicDBObject whereQuery = new BasicDBObject();
