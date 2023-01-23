@@ -1,0 +1,34 @@
+.operazioni{
+    width: 100%;
+
+}
+
+.operazioni ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.operazioni ul li{
+    list-style: none;
+
+
+
+}
+
+.operazioni ul li button{
+    text-decoration: none;
+    color: black;
+    font-family: Intel;
+
+    height: 50px;
+    width: 150px;
+    background-color: white;
+    color: #35908B;
+    border: 1px solid #35908B;
+}
+
+#attivo{
+    background-color: #35908B;
+    color: white;
+}
