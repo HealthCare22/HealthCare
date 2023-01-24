@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="Beans.GestioneFormBean" %>
+<%@ page import="DAO.UtilForm" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,23 +18,26 @@
 			<jsp:include page="FormNavbar.jsp"/>
 		</div>
 		<div id="OpenedClosedForms">
-			<button id="OpenedFormButton">Aperti</button>
-			<button id="ClosedFormButton">Chiusi</button>
+		<form method="get" action="myFormServlet">
+			<button type="submit" id="OpenedFormButton" name="status" value="true">Aperti</button>
+			<button type="submit" id="ClosedFormButton" name="status" value="false">Chiusi</button>
+		</form>	
 		</div>
 		<div id="Forms">
 			<table>
-				<tr>
-					<td>TOPIC</td>
-					<td>TITOLO</td>
-					<td>dd/MM/yyyy</td>
-					<td><button class = "DettagliButton">Vedi dettagli</button></td>
-				</tr>
-				<tr>
-					<td>TOPIC</td>
-					<td>TITOLO</td>
-					<td>dd/MM/yyyy</td>
-					<td><button class = "DettagliButton">Vedi dettagli</button></td>
-				</tr>
+			<%!List<GestioneFormBean>listaForm = new ArrayList<>();%>
+			<%listaForm = (List<GestioneFormBean>) request.getAttribute("listaForm");
+			if(listaForm==null){
+				listaForm = UtilForm.getFormByStatus("true");
+			}%>
+			<%for(GestioneFormBean f : listaForm){
+					%><tr>
+						<td><%=f.getTopic() %></td>
+						<td><%=f.getTitolo() %></td>
+						<td><%=f.getDataApertura() %></td>
+						<td>YAY</td>
+					</tr>					
+				<%} %>
 			</table>
 		</div>
 	</body>
