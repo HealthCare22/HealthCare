@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
  
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -29,13 +30,21 @@ public class LoginServlet extends HttpServlet {
             req.setAttribute("error_message", "Please enter login	 id and password");
             req.getRequestDispatcher("/logout.jsp").forward(req, resp);
         } else {
-            boolean isUserFound = Util.searchUserInDb(param1, param2);
+        	HttpSession oldSession = req.getSession(false);
+        	
+        	if(oldSession != null) {oldSession.invalidate();}
+        	HttpSession currentSession= req.getSession();
+        	currentSession.setAttribute("email",param1);
+        	currentSession.setMaxInactiveInterval(5*60);
+        	resp.sendRedirect("profile.jsp");
+        	
+           /* boolean isUserFound = Util.searchUserInDb(param1, param2);
             if(isUserFound) {               
-                req.getRequestDispatcher("/profile.html").forward(req, resp);
+                req.getRequestDispatcher("/profile.jsp").forward(req, resp);
             } else {
                 req.setAttribute("error_message", "You are not an authorised user. Please check with administrator.");
-                req.getRequestDispatcher("/logout.jsp").forward(req, resp);
-            }   
+                req.getRequestDispatcher("/login.jsp").forward(req, resp);
+           }   */
         }       
     }
 }

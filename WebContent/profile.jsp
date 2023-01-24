@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+    
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +15,16 @@
 <title>Profilo</title>
 </head>
 <body>
+
+	<%
+		String email = null;
+		if(session.getAttribute("email") == null)
+			{
+				response.sendRedirect("login.jsp");
+			} else {email = (String)session.getAttribute("email");}
+	%>
+
+
     <div class="img">
     <img id="profilo"src="./images/sample.jpg" alt="Foto Profilo">
     </div>
@@ -23,45 +39,45 @@
     </div>
     
     <div class="info">
-        
+        <h3><%= email %></h3>
             <h1>Dati Anagrafici</h1>
                 <h2>Nome</h2>
-                <input type="text" id="nome" value="Nome" readonly>
+                <input type="text" id="nome" name="nome" value= "Nome" readonly>
 
                 <h2>Cognome</h2>
-                <input type="text" id="cognome" value="Cognome" readonly>
+                <input type="text" id="cognome" name="surname" value="Cognome" readonly>
             
                 <h2>Sesso</h2>
-                <input type="text" id="sesso" value="Maschio" readonly>
+                <input type="text" id="sesso" name="sesso" value="Maschio" readonly>
             
-                <h2>Data di Nascita</h2>
-                <input type="date" id="data" value="date" readonly>
+                <h2>Data di nascita</h2>
+                <input type="text" id="data"  name="eta" value="date" readonly>
         
             <h1>Credenziali</h1>
             
                 <h2>E-mail</h2>
-                <input type="email" id="email" value="angelo@gmail.com" readonly>
+                <input type="email" id="email" name="email" value="angelo@gmail.com" readonly>
             
                 <h2>Password</h2>
-                <input type="password" id="password" value="password" readonly>
+                <input type="password" id="password" name="password" value="password" readonly>
     </div>   
     <div class="info2">
             <h1>Contatti</h1>
             
             <h2>Numero di Telefono</h2>
-            <input type="text" id="telefono" value="1234567890" readonly>
+            <input type="text" id="telefono" name="numero_telefono" value="1234567890" readonly>
 
         
             <h1>Domicilio</h1>
         
             <h2>Provincia</h2>
-            <input type="text" id="provincia" value="Salerno" readonly>
+            <input type="text" id="provincia" name="provincia" value="Salerno" readonly>
             
             <h2>Comune</h2>
-            <input type="text" id="comune" value="Mercato San Severino" readonly>
+            <input type="text" id="comune" name="comune" value="Mercato San Severino" readonly>
         
             <h2>Indirizzo</h2>
-            <input type="text" id="indirizzo" value="Via Castello,26" readonly>
+            <input type="text" id="indirizzo" name="indirizzo" value="Via Castello,26" readonly>
     </div>
     
     <div class="buttondiv">
@@ -71,7 +87,6 @@
 
     </div>
 
-        
-</div>
+       
 </body>
 </html>

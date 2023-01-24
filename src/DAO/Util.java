@@ -7,6 +7,9 @@ import com.mongodb.MongoClient;
 
 import com.mongodb.client.*;
 
+import Beans.GestioneFormBean;
+import Beans.MMGBean;
+
 public class Util {
 	// Method to make a connection to the mongodb server listening on a default port
     private static com.mongodb.client.MongoClient getConnection() {
@@ -78,4 +81,33 @@ public static boolean appendUserInDb(String nome, String cognome, String sesso, 
 			System.out.println(col);
 			return true;
 			}
+
+public static List<MMGBean> recuperaUser(){
+	 
+	 String db_name = "HealthCare",
+               db_collection_name = "MMG";
+
+	
+       MongoDatabase db = getConnection().getDatabase(db_name);
+       MongoCollection<Document> col = db.getCollection(db_collection_name);
+       
+    FindIterable<Document> cursor = col.find();
+    List<MMGBean> listaUser = new ArrayList<>();
+
+    //Creazione lista di utenti
+    for(Document doc : cursor) {
+         
+           
+           String nome = doc.getString("nome");
+           String cognome = doc.getString("surname");
+           String email = doc.getString("email");
+           
+           listaUser.add(new MMGBean());
+    }
+    
+    
+    return listaUser;
+}
+
+
 }

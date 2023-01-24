@@ -41,8 +41,8 @@
                 </div>
 
             <div class="eta">
-                <p>Età:</p>
-                <input type="number" name="eta">
+                <p>Data di nascita</p>
+                <input type="text" name="eta" placeholder="16/01/90">
             </div>
 
             <div class="password">
@@ -77,8 +77,9 @@
             <input type="text" name="numero_telefono" placeholder="Numero di telefono">
         </div>
     </div>   
-    	
+    	<div class="pulsantiConfermaAnnulla">
     	<button type = "submit" id = "secondFormButton">Conferma</button>
+    	</div>
     	</form>
     	 
         <div class="pulsantiConfermaAnnulla">
