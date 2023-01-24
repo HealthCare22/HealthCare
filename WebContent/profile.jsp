@@ -37,6 +37,9 @@
     </div>
     <div class="editdiv">
             <button id="edit" onclick="edit()">Modifica</button>
+            <form action="LogoutServlet" method="get">
+            <button id="edit">LogOut</button>
+            </form>
     </div>
     </div>
     
