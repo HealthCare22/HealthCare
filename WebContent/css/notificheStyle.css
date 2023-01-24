@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+.ButtonVediForm{
+	background: #35908B;
+    border: 1px solid #35908B;
+    border-radius: 45px;
+    color:white;
+    box-sizing: border-box;
+    width: 126px;
+    height: 28px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 300;
+    margin-top: 5px;
+    
+}
+
+#Notifiche{
+	background-color:#B7DDDB;
+	display: flex;
+	flex-direction: column;
+}
+
+#NotificheContainer{
+	background-color:white;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;	
+	margin-bottom: 10px;
+	margin-top: 6px;
+	margin-left: 15px;
+	margin-right: 15px;
+	padding: 8px;
+}
+
+#Titolo h1{
+	padding-top: 15px;
+	color: #35908B;
+}
+
+#Titolo{
+	font-size:15px;
+	text-align: center;
+	
+  	width: 100%;
+  	height: 100px;
+  	margin-top: 10px;
+  	
+}
+
+.img{
+	width: 40px;
+	height: 40px;
+}
+
+.img img{
+	width: 40px;
+	height: 40px;
+}
+
+.Notifica h3{
+	color: black;
+	margin: 4px;
+	font-family: 'Arial';
+    font-style: normal;
+    font-weight: 300;
+}
+
+.Notifica {
+	margin: auto;
+}
