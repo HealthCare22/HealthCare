@@ -11,8 +11,8 @@
 		<div class="operazioni">
         <ul>
             <li><a href="#"><button>I miei form</button></li></a>
-            <li><a href="#"><button id="attivo">Nuovo Form</button></li></a>
-            <li><a href="#"><button>Cerca un form</button></li></a>
+            <li><a href="AperturaForm.jsp"><button id="attivo">Nuovo Form</button></li></a>
+            <li><a href="CercaForm.jsp"><button>Cerca un form</button></li></a>
             <li><a href="#"><button>Interventi</button></li></a>
         </ul>   
     </div>

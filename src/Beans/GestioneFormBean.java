@@ -28,6 +28,14 @@ public class GestioneFormBean {
 	}
 	
 	
+	public GestioneFormBean(String titolo, Date dataApertura, String topic) {
+		super();
+		this.titolo = titolo;
+		this.dataApertura = dataApertura;
+		Topic = topic;
+	}
+
+
 	public int getIdform() {
 		return idform;
 	}
