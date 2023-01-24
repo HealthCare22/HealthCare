@@ -46,7 +46,6 @@ public class myFormServlet extends HttpServlet {
 		}
 		List<GestioneFormBean>listaForm = UtilForm.getFormByStatus(status); 
 		request.setAttribute("listaForm", listaForm);
-		System.out.println(listaForm.get(0).getTitolo());
 		request.getRequestDispatcher("/MyForm.jsp").forward(request, response);
 	}
 

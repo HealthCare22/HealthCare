@@ -6,6 +6,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 
 import com.mongodb.client.*;
+import com.mongodb.client.model.Filters;
 
 import Beans.GestioneFormBean;
 import Beans.MMGBean;
@@ -82,7 +83,7 @@ public static boolean appendUserInDb(String nome, String cognome, String sesso, 
 			return true;
 			}
 
-public static List<MMGBean> recuperaUser(){
+public static MMGBean recuperaUser(String email){
 	 
 	 String db_name = "HealthCare",
                db_collection_name = "MMG";
@@ -91,23 +92,21 @@ public static List<MMGBean> recuperaUser(){
        MongoDatabase db = getConnection().getDatabase(db_name);
        MongoCollection<Document> col = db.getCollection(db_collection_name);
        
-    FindIterable<Document> cursor = col.find();
-    List<MMGBean> listaUser = new ArrayList<>();
+    FindIterable<Document> cursor = col.find(Filters.eq("email", email));
 
-    //Creazione lista di utenti
-    for(Document doc : cursor) {
-         
-           
-           String nome = doc.getString("nome");
-           String cognome = doc.getString("surname");
-           String email = doc.getString("email");
-           
-           listaUser.add(new MMGBean());
+    String nome= " ", cognome= " ", indirizzo= " ", gender= " ", telefono= " ", password= " ", comune= " ", provincia= " ";
+    int id=0;
+    for(Document doc : cursor) {       
+            nome = doc.getString("nome_medico");
+            cognome = doc.getString("cognome");
+            indirizzo = doc.getString("indirizzo");
+            gender = doc.getString("Sesso");
+            telefono = doc.getString("telefono");
+            password = doc.getString("password");
+            comune = doc.getString("comune");
+            provincia = doc.getString("provincia");
     }
-    
-    
-    return listaUser;
+    MMGBean mmg = new MMGBean(id,nome,cognome,email,indirizzo,gender,telefono,password,provincia,comune);
+    return mmg;
 }
-
-
 }
