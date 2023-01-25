@@ -18,6 +18,14 @@ public class GestioneMalattieBean {
 	}
 	
 	
+	public GestioneMalattieBean(int idMalattia, String nome, String descrizione) {
+		super();
+		this.idMalattia = idMalattia;
+		this.nome = nome;
+		this.descrizione = descrizione;
+	}
+
+
 	public int getIdMalattia() {
 		return idMalattia;
 	}

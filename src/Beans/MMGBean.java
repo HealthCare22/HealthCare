@@ -2,17 +2,20 @@ package Beans;
 
 public class MMGBean {
 	
-	private int id;
-	private String nome;
-	private String cognome;
-	private String email;
-	private String indirizzo;
-	private String sesso;
-	private String telefono;
-	private String password;
+	public int id;
+	public String nome;
+	public String cognome;
+	public String email;
+	public String indirizzo;
+	public String sesso;
+	public String telefono;
+	public String password;
+	public String provincia;
+	public String comune;
+	
 	
 	public MMGBean(int id, String nome, String cognome, String email, String indirizzo, String sesso, String telefono,
-			String password) {
+			String password, String provincia, String comune) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -22,8 +25,13 @@ public class MMGBean {
 		this.sesso = sesso;
 		this.telefono = telefono;
 		this.password = password;
+		this.provincia = provincia;
+		this.comune = comune;
 	}
 	
+
+	public MMGBean()
+	{}	
 	public int getId() {
 		return id;
 	}
@@ -72,6 +80,22 @@ public class MMGBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+
+	public String getComune() {
+		return comune;
+	}
+
+	public void setComune(String comune) {
+		this.comune = comune;
+	}
+
 	
 	  
 	

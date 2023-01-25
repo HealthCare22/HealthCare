@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.bson.Document;
-
+import com.mongodb.client.model.Filters;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClients;
@@ -29,7 +29,7 @@ public class UtilForm {
 	    }
 	 
 	  
-	 public static boolean CreateNewForm(String topic, String titolo, String descrizione) {
+	 public static boolean CreateNewForm(String topic, String titolo, String descrizione, String email) {
 		 
 		 String db_name = "HealthCare",
 	                db_collection_name = "Form";
@@ -43,7 +43,8 @@ public class UtilForm {
 	        					.append("titolo", titolo)
 	        					.append("descrizione", descrizione)
 	        					.append("status",true)
-	        					.append("DataApertura",todaysDate);
+	        					.append("DataApertura",todaysDate)
+	        					.append("autore:",email);
 	       
 	        col.insertOne(document);
 	        
@@ -79,7 +80,24 @@ public class UtilForm {
          
          return listaForm;
      }
-		 
+	 
+	 public static List<GestioneFormBean> getFormByStatus(String status){
+		 String db_name = "HealthCare";
+		 String db_collection_name = "Form";
+		 Boolean booleanStatus = Boolean.parseBoolean(status);
+		 MongoDatabase db = getConnection().getDatabase(db_name);
+		 MongoCollection<Document> col = db.getCollection(db_collection_name);
+		 FindIterable<Document> cursor = col.find(Filters.eq("status", booleanStatus));
+		 List<GestioneFormBean> listaForm = new ArrayList<>();
+		 for(Document d : cursor) {
+			 String topic = d.getString("topic");
+			 String titolo = d.getString("titolo");
+			 Date dataApertura = d.getDate("DataApertura");
+			 listaForm.add(new GestioneFormBean(0,0,titolo," ",dataApertura,dataApertura,false,topic," "));
+		 }
+		 return listaForm;
 	 }
+		 
+}
 
 
