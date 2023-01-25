@@ -10,6 +10,7 @@ function attivaMyForm(){
 				newForm.classList.remove("attivo");
 				searchForm.classList.remove("attivo");
 				Interventi.classList.remove("attivo");
+			
 }
 
 function toClosedForms(){

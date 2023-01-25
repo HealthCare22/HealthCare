@@ -37,17 +37,7 @@ public class LoginServlet extends HttpServlet {
         	HttpSession currentSession= req.getSession();
         	currentSession.setAttribute("email",param1);
         	currentSession.setMaxInactiveInterval(5*60);
-        	//MMGBean mmg = Util.recuperaUser(param1);
         	resp.sendRedirect("profile.jsp");
-        	//req.setAttribute("datiMedico", mmg);
-        	
-           /* boolean isUserFound = Util.searchUserInDb(param1, param2);
-            if(isUserFound) {               
-                req.getRequestDispatcher("/profile.jsp").forward(req, resp);
-            } else {
-                req.setAttribute("error_message", "You are not an authorised user. Please check with administrator.");
-                req.getRequestDispatcher("/login.jsp").forward(req, resp);
-           }   */
         }       
     }
 }

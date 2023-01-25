@@ -1,10 +1,9 @@
 package Beans;
-
 import java.util.Date;
 
 public class GestioneFormBean {
-	private int idform;
-	private int idmmg;
+	private String idform;
+	private String autore;
 	private String titolo;
 	private String descrizione;
 	private Date dataApertura;
@@ -13,11 +12,11 @@ public class GestioneFormBean {
 	private String Topic;
 	private String idIntervento;
 	
-	public GestioneFormBean(int idform, int idmmg, String titolo, String descrizione, Date dataApertura,
+	public GestioneFormBean(String idform, String autore, String titolo, String descrizione, Date dataApertura,
 			Date dataChiusura, Boolean status, String topic, String idIntervento) {
 		super();
 		this.idform = idform;
-		this.idmmg = idmmg;
+		this.autore = autore;
 		this.titolo = titolo;
 		this.descrizione = descrizione;
 		this.dataApertura = dataApertura;
@@ -36,17 +35,17 @@ public class GestioneFormBean {
 	}
 
 
-	public int getIdform() {
+	public String getIdform() {
 		return idform;
 	}
-	public void setIdform(int idform) {
+	public void setIdform(String idform) {
 		this.idform = idform;
 	}
-	public int getIdmmg() {
-		return idmmg;
+	public String getAutore() {
+		return autore;
 	}
-	public void setIdmmg(int idmmg) {
-		this.idmmg = idmmg;
+	public void setIdmmg(String autore) {
+		this.autore = autore;
 	}
 	public String getTitolo() {
 		return titolo;
