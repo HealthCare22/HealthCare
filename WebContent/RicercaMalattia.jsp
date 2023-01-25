@@ -34,6 +34,7 @@
             <div class="ricercaNome">
                 <input type="text" name="nomeMalattia"id="nomeMalattia" placeholder="Nome Malattia">
             </div>
+            
             <div class="cercaPerNomeButtonDiv">
                 <button type="submit" id="cercaPerNomeButton">Cerca</button>
             </div>

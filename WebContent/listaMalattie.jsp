@@ -1,13 +1,68 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/listaMalattieStyle.css">
-    <title>Lista malattie</title>
+<meta charset="UTF-8">
+<title>Elenco malattie rare</title>
+<link rel="stylesheet" href="./css/listaMalattieStyle.css">
 </head>
+
 <body>
- <div class="heading">
-        <h1>Lista malattie: </h1>
-    </div>
+	<jsp:include page="navbar.html"/>
+	
+	<div id="Titolo">
+			<h1>Elenco delle malattie rare</h1>
+		</div>
+	
+	
+	<div id = "ricercaContainer">
+	   <button class = "buttonCerca">Cerca</button>
+	
+	   <div class="search">
+        <input type="text" id="nomeMalattia" placeholder="Nome Malattia">
+     </div>
+</div>
+
+		
+
+		<div id = "elencoMalattie">
+		<div id="malattiaContainer">
+            <div class="elenco">
+             <h3> Nome Malattia</h3>
+            </div>
+            <div>
+				<button class = "ButtonVediForm">Vedi Dettagli</button>
+			</div>
+		</div>
+		
+		<div id="malattiaContainer">
+            <div class="elenco">
+             <h3> Nome Malattia</h3>
+           
+            </div>
+            <div>
+				<button class = "ButtonVediForm">Vedi Dettagli</button>
+			</div>
+		</div>
+		
+		<div id="malattiaContainer">
+            <div class="elenco">
+             <h3> Nome Malattia</h3>
+            </div>
+            <div>
+				<button class = "ButtonVediForm">Vedi Dettagli</button>
+			</div>
+		</div>
+		
+		<div id="malattiaContainer">
+            <div class="elenco">
+             <h3> Nome Malattia</h3>
+            </div>
+            <div>
+				<button class = "ButtonVediForm">Vedi Dettagli</button>
+			</div>
+		</div>
+		
+		</div>
