@@ -2,13 +2,16 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>Notifiche</title>
 <link rel="stylesheet" href="./css/notificheStyle.css">
 </head>
+
 <body>
 	<jsp:include page="navbar.html"/>
+	
 	<div id="Titolo">
 			<h1>Notifiche</h1>
 		</div>
