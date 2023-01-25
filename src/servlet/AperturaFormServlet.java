@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.Util;
 import DAO.UtilForm;
@@ -48,13 +49,15 @@ public class AperturaFormServlet extends HttpServlet {
 			request.setAttribute("error_message", "Creazione del form non avvenuta con successo");
             
 		}else {
-			boolean isUserFound = UtilForm.CreateNewForm(topic, titolo, descrizione);
+			HttpSession session = request.getSession();
+			String email = (String)session.getAttribute("email");
+			boolean isUserFound = UtilForm.CreateNewForm(topic, titolo, descrizione, email);
 			
 			if(isUserFound) {               
-	             request.getRequestDispatcher("/login.jsp").forward(request, response);
+	             request.getRequestDispatcher("/MyForm.jsp").forward(request, response);
 	         } else {
 	             request.setAttribute("error_message", "Creazione del form non avvenuta con successo");
-	             request.getRequestDispatcher("/logout.jsp").forward(request, response);
+	             request.getRequestDispatcher("/AperturaForm.jsp").forward(request, response);
 	         }   
 		}
 		

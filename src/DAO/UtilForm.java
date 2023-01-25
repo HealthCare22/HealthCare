@@ -29,7 +29,7 @@ public class UtilForm {
 	    }
 	 
 	  
-	 public static boolean CreateNewForm(String topic, String titolo, String descrizione) {
+	 public static boolean CreateNewForm(String topic, String titolo, String descrizione, String email) {
 		 
 		 String db_name = "HealthCare",
 	                db_collection_name = "Form";
@@ -43,7 +43,8 @@ public class UtilForm {
 	        					.append("titolo", titolo)
 	        					.append("descrizione", descrizione)
 	        					.append("status",true)
-	        					.append("DataApertura",todaysDate);
+	        					.append("DataApertura",todaysDate)
+	        					.append("autore:",email);
 	       
 	        col.insertOne(document);
 	        

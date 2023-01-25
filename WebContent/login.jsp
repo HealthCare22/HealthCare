@@ -27,8 +27,6 @@
 			<div>
 				<input name="password" class="password" type="password" placeholder="Password">
 			</div>
-
-
 			<div class="passwordDimenticata">
 				<a href="">Password dimenticata?</a>
 			</div>
