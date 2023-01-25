@@ -18,8 +18,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/CercaFormStyle.css">
     <title>Cerca un form</title>
+    <script src="./js/cercaFormScript.js"></script>
 </head>
-<body>
+<body onload="attivaCercaForm()">
 
     <jsp:include page="navbar.html"/>
    <div id ="FormNavbar">
@@ -33,18 +34,19 @@
 			GestioneFormBean bean = (GestioneFormBean) it.next();
 
 %>
-    <div class="vista-form">
-        <table>
-            <tr>
-                <td><%=bean.getTitolo()%></td>
-                <td><%=bean.getTopic()%></td>
-                <td><%=bean.getDataApertura()%></td>
-            </tr>
-        </table>
 
-
-    </div>
-    
+	<div class="form-container">
+	    <div class="vista-form">
+	        <table>
+	            <tr>
+	                <td><%=bean.getTitolo()%></td>
+	                <td><%=bean.getTopic()%></td>
+	                <td><%=bean.getDataApertura()%></td>
+	                <td><button class = "DettagliButton">Vedi dettagli</button></td>
+	            </tr>
+	        </table>
+	    </div>
+	</div> 
 <%
 		}
   }

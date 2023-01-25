@@ -183,3 +183,8 @@ body{
     border-radius: 5px;
     margin: 15px;
 }
+
+#annulla{
+	display:none;
+	
+}

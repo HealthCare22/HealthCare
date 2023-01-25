@@ -17,6 +17,7 @@
 }
 
 .operazioni ul li button{
+	font-size:18px;
     text-decoration: none;
     color: black;
     font-family: Intel;
@@ -28,7 +29,7 @@
     border: 1px solid #35908B;
 }
 
-#attivo{
+.attivo{
     background-color: #35908B;
     color: white;
 }

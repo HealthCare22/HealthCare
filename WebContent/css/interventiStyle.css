@@ -7,6 +7,7 @@ body{
 }
 
 #Titolo h1{
+	font-size:50px;
 	padding: 10px;
 	color: #35908B;
 }
@@ -22,12 +23,14 @@ body{
 }
 
 #Interventi{
+	margin:auto 5%;
 	background-color:#B7DDDB;
 	display: flex;
 	flex-direction: column;
 }
 
 #InterventiInterno1aRiga{
+	margin:10% 5%;
 	background-color:#B7DDDB;
 	display: flex;
 	flex-direction: row;
@@ -37,6 +40,7 @@ body{
 }
 
 #InterventiInterno2aRiga{
+	margin:auto 5%;
 	background-color:#B7DDDB;
 	display: flex;
 	flex-direction: row;

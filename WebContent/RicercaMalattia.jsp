@@ -9,6 +9,7 @@
     <script src = "./js/ricercaMalattiaScript.js"></script>
 </head>
 <body>
+	<jsp:include page="navbar.html"/>
     <div class="heading">
         <h1>Tipo di ricerca: </h1>
     </div>

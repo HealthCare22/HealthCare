@@ -7,10 +7,11 @@ body{
 }
 
 #OpenedClosedForms{
-	font-size:0px;
+	padding-top:20px;
+	font-size :0px;
 	position: relative;
   	width: 300px;
-  	height: 200px;
+  	height: 120px;
   	z-index: 15;
   	left: 50%;
   	top: 30%;
@@ -18,7 +19,8 @@ body{
 }
 
 #OpenedFormButton{
-	font-size: 20px;
+	color: white;
+	font-size: 18px;
 	padding: 10px;
 	border-radius: 45px 0px 0px 45px;
 	background-color: #35908B;
@@ -27,38 +29,78 @@ body{
 }
 
 #ClosedFormButton{
-	font-size: 20px;
+	font-size: 18px;
 	padding: 10px;
 	border-radius: 0px 45px 45px 0px;
 	background-color: #B7DDDB;
 	border-width: 0px;
-	color: white;
+	color: black;
 	width: 150px;
 }
 
 #Forms{
+	display:flex;
+	justify-content:center;
+	padding-bottom: 5px;
+	margin-left: 15%;
+	margin-right:15%;
 	background-color:#B7DDDB;
-	margin-top: -100px;
 }
 
-#Forms table{
-	margin-left: 50px;
-	margin-right: 50px;
-	border-spacing: 0px;
-	padding-top: 10px;
-	padding-bottom: 10px;
+
+#OpenedForms{
+	display:flex;
+	justify-content:center;
+	padding-bottom: 5px;
+	margin-left: 15%;
+	margin-right:15%;
+	background-color:#B7DDDB;
 }
 
-#Forms td{
+#ClosedForms{
+	display:flex;
+	justify-content:center;
+	padding-bottom: 5px;
+	margin-left: 15%;
+	margin-right:15%;
+	background-color:#B7DDDB;
+	display:none;
+}
+
+#OpenedForms table{
+	margin:10px;
+	border-collapse: separate;
+    border-spacing: 0 8px;
+
+}
+
+#ClosedForms table{
+	border-collapse: separate;
+    border-spacing: 0px;
+	margin:10px;
+
+}
+
+#OpenedForms td{
 	border: 0.5px solid #35908B;
 	width: 400px;
 	height: 50px;
 	text-align: center;
 	background-color: white;
 	font-weight: bold;
-	font-size: 20px;
-	
+	font-size: 18px;
 }
+
+#ClosedForms td{
+	border: 0.5px solid #35908B;
+	width: 400px;
+	height: 50px;
+	text-align: center;
+	background-color: white;
+	font-weight: bold;
+	font-size: 18px;
+}
+
 
 .DettagliButton{
 	background: #35908B;

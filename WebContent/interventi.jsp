@@ -7,14 +7,29 @@
 		<title>Interventi</title>
 		<link rel="stylesheet" href="./css/interventiStyle.css">
 	</head>
-	<body>
+			<script>
+		function attivaInterventi(){
+			myForm=document.getElementById("MyForms");
+			newForm=document.getElementById("NewForm");
+			searchForm=document.getElementById("SearchForm");
+			Interventi=document.getElementById("Comments");
+
+				Interventi.classList.add("attivo");
+				Interventi.style.backgroundColor='#35908B';
+				Interventi.style.color='#FFFFFF';
+				newForm.classList.remove("attivo");
+				searchForm.classList.remove("attivo");
+				myForm.classList.remove("attivo");
+		}
+		</script>
+	<body onload="attivaInterventi()">
 		<jsp:include page="navbar.html"/>
 		<div id ="FormNavbar">
 			<jsp:include page="FormNavbar.jsp"/>
 		</div>
 				
 		<div id="Titolo">
-			<h1>I miei Titoli</h1>
+			<h1>I miei Interventi</h1>
 		</div>
 		
 	<div id="Interventi">

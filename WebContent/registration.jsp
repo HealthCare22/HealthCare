@@ -82,7 +82,7 @@
     	</form>
     	 
         <div class="pulsantiConfermaAnnulla">
-            <button onclick = changeForm()>Annulla</button>
+            <button id="annulla" onclick = changeForm()>Annulla</button>
             <button onclick = changeForm() id = "firstFormButton">Avanti</button>
         </div>
     </div>

@@ -35,3 +35,52 @@
     color: white;
 }
 
+#FormNavbar{
+	margin-top: 20px;
+	margin-bottom:50px;
+}
+
+.form-container{
+	display:flex;
+	justify-content:center;
+	padding-bottom: 5px;
+	margin-left: 15%;
+	margin-right:15%;
+	background-color:#B7DDDB;
+}
+
+.vista-form{
+	width:100%;
+	margin-left: 5%;
+	margin-right:5%;
+	
+}
+
+.vista-form table{
+	border-radius:5px;
+	border-collapse: separate;
+    border-spacing: 0px 8px;
+}
+.vista-form td{
+	border: 0.5px solid #35908B;
+	width: 400px;
+	height: 55px;
+	text-align: center;
+	background-color: white;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.DettagliButton{
+	background: #35908B;
+    border: 1px solid #35908B;
+    border-radius: 45px;
+    color:white;
+    box-sizing: border-box;
+    width: 126px;
+    height: 28px;
+   
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 300;
+}

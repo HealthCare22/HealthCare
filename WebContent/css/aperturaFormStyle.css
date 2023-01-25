@@ -5,6 +5,8 @@
 }
 
 #Apertura-text{
+	margin-top: 40px;
+	margin-bottom: 40px;
     text-align: center;
     color:#35908B;
     font-size: 40px;
@@ -12,9 +14,14 @@
 }
 
 .information{
-
-    border: 1px solid #35908B;
+	border-radius:10px;
+	margin:0 auto;
+	width:65%;
+	padding-top:30px;
+	padding-bottom:30px;;
+    border: none;
     display: flex;
+    justify-content:center;
     flex-direction: column;
     align-items: center;
     background-color: #B7DDDB;
@@ -24,18 +31,24 @@
 }
 
 .information input{
-    width: 50%;
+	font-size:18px;
+	padding:5px;
+	text-intent:20px;
+    width: 80%;
     height: 30px;
     margin-bottom: 30px;
 }
 
 .information textarea{
-    width: 50%;
+	padding:7px;
+    width: 80%;
     
 }
 
 .button-apertura{
-    height: 40px;  
+    height: 40px; 
+    display:flex;
+    justify-content:center;
 }
 
 .button-apertura input{
@@ -47,6 +60,9 @@
 	font-style: normal;
     width: 150px;
     height: 30px;
-    float: right;
-    margin-top: 20px;
+   	margin-top: 20px;
+}
+
+#FormNavbar{
+	margin-top:20px;
 }

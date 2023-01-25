@@ -54,12 +54,11 @@ body{
     width:440px;
     height: 150px;
     margin:0 auto;
-
-
-    
 }
 
+
 .LoginInformation .email{
+	text-indent: 10px;
     width: 400px;
     height: 28px;
     border-radius: 30px;
@@ -69,6 +68,7 @@ body{
 }
 
 .LoginInformation .password{
+	text-indent: 10px;
     width: 400px;
     height: 28px;
     border-radius: 30px;
