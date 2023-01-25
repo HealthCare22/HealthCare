@@ -13,10 +13,13 @@
         <h1 id="labelaccount">Sei sicuro di voler uscire?</h1>
 
         <div class="pulsantiSiNo">
-            <button onclick = changeForm() id = "firstFormButton">Si</button>
-            <button type = "submit" onclick id = "secondFormButton">No</button>
+        <form method="get" action="LogoutServlet">
+            <button id = "firstFormButton">Si</button>
+         </form>
+         <form action="profile.jsp">   
+            <button id = "secondFormButton">No</button>
+         </form>
         </div>
-    
     </div>
 </body>
 </html>
