@@ -11,21 +11,14 @@
 	</head>
 		<script>
 		function attivaNuovoForm(){
-			myForm=document.getElementById("MyForms");
 			newForm=document.getElementById("NewForm");
-			searchForm=document.getElementById("SearchForm");
-			Interventi=document.getElementById("Comments");
-
 				newForm.classList.add("attivo");
 				newForm.style.backgroundColor='#35908B';
 				newForm.style.color='#FFFFFF';
-				Interventi.classList.remove("attivo");
-				searchForm.classList.remove("attivo");
-				myForm.classList.remove("attivo");
 		}
 		</script>
 	<body onload="attivaNuovoForm()">
-	<jsp:include page="navbar.html"/>
+	<jsp:include page="navbar.jsp"/>
 	<div id ="FormNavbar">
 		<jsp:include page="FormNavbar.jsp"></jsp:include>
 	</div>

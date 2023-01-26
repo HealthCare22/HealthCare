@@ -41,9 +41,10 @@
 }
 
 .form-container{
+	padding:2%;
 	display:flex;
 	justify-content:center;
-	padding-bottom: 5px;
+	padding-bottom: 1px;
 	margin-left: 15%;
 	margin-right:15%;
 	background-color:#B7DDDB;
@@ -59,7 +60,7 @@
 .vista-form table{
 	border-radius:5px;
 	border-collapse: separate;
-    border-spacing: 0px 8px;
+    border-spacing: 0px 1px;
 }
 .vista-form td{
 	border: 0.5px solid #35908B;
@@ -84,3 +85,6 @@
     font-style: normal;
     font-weight: 300;
 }
+
+
+

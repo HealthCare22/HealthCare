@@ -1,15 +1,9 @@
 function attivaMyForm(){
 			myForm=document.getElementById("MyForms");
-			newForm=document.getElementById("NewForm");
-			searchForm=document.getElementById("SearchForm");
-			Interventi=document.getElementById("Comments");
 
 				myForm.classList.add("attivo");
 				myForm.style.backgroundColor='#35908B';
 				myForm.style.color='#FFFFFF';
-				newForm.classList.remove("attivo");
-				searchForm.classList.remove("attivo");
-				Interventi.classList.remove("attivo");
 }
 
 function toClosedForms(){

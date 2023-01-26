@@ -16,7 +16,7 @@
 <title>Profilo</title>
 </head>
 <body>
-	<jsp:include page="navbar.html"/>
+	<jsp:include page="navbar.jsp"/>
 
 	<%
 		String email = null;
@@ -38,9 +38,7 @@
     </div>
     <div class="editdiv">
             <button id="edit" onclick="edit()">Modifica</button>
-            <form action="LogoutServlet" method="get">
-            <button id="edit">LogOut</button>
-            </form>
+            
     </div>
     </div>
     

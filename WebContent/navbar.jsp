@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+<%@ page import = "Beans.MMGBean" %>
+<%@ page import = "DAO.Util" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +27,11 @@
           </ul>
 
           <ul class="list-item-dx">
-            <li><a href="#">Notifiche</a></li>
-            <li><a href="./logout.html">Logout</a></li>
+            <li><a href="./notifiche.jsp">Notifiche</a></li>
+            <li><form action="LogoutServlet" method="get">
+            <button id="Logout">Logout</button>
+            </form>
+            </li>
           </ul>
         </nav>
       </header>

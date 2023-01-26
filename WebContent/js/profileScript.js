@@ -45,10 +45,6 @@ function reload(){
     window.location.reload();
 }
 
-function save(){
-
-}
-
 function edit(){
     savebutton=document.getElementById("save");
     annullabutton=document.getElementById("annulla");

@@ -13,9 +13,9 @@
 </head>
 <body>
 
-
+	<div id="logo-container">
 	<img class="logo" src="images/logo.png" alt="logoHealthCare">
-
+	</div>
 	<div class="login">
 		<h1 id="labelaccount">Accedi ad Health Care</h1>
 	<form method="post" action="LoginServlet">
@@ -39,7 +39,9 @@
 
 		<div class="iscriviti">
 			<p id="noaccount">Non hai un account?</p>
-			<button id="iscriviti">Iscriviti</button>
+			<form action="registration.jsp">
+			<input type="submit" id="iscriviti"value="Iscriviti"/>
+			</form>
 		</div>
 
 	</div>

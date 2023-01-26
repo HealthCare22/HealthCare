@@ -14,7 +14,9 @@
 }
 
 .information{
-	border-radius:10px;
+	border-radius:35px;
+	border:none;
+	
 	margin:0 auto;
 	width:65%;
 	padding-top:30px;

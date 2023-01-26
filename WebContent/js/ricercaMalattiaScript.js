@@ -1,5 +1,18 @@
 var s=1;
 var maxS= 5;
+
+addButton=document.getElementById("aggiungiSintomoButton").addEventListener("click", function(event){
+  event.preventDefault()
+});
+removeButton=document.getElementById("rimuoviSintomoButton").addEventListener("click", function(event){
+  event.preventDefault()
+});
+
+
+
+
+
+
 function addSintomo(){
 
     if(s<maxS){
@@ -82,7 +95,9 @@ function goToSintomi(){
         nomeContainer[i].style.display="none";
     }
     for(var i=0;i<sintomiContainer.length;i++){
-        sintomiContainer[i].style.display="block";
+        sintomiContainer[i].style.display="flex";
+        sintomiContainer[i].style.flexDirection="column";
+        sintomiContainer[i].style.justifyContent="center";
     }
 
 }

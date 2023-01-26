@@ -14,7 +14,7 @@
 		<script src="./js/myFormScript.js"></script>
 	</head>
 	<body onload="attivaMyForm()">
-		<jsp:include page="navbar.html"/>
+		<jsp:include page="navbar.jsp"/>
 		
 			<div id ="FormNavbar">
 				<jsp:include page="FormNavbar.jsp"/>
@@ -24,6 +24,7 @@
 				<button id="OpenedFormButton" onclick="toOpenedForms()">Aperti</button>
 				<button id="ClosedFormButton" onclick="toClosedForms()">Chiusi</button>
 			</div>
+		<div id="Forms">
 			<div id="OpenedForms">
 				<table>
 					<tr>
@@ -57,5 +58,6 @@
 					</tr>
 				</table>
 			</div>
+		</div>
 	</body>
 </html>

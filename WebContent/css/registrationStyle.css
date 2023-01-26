@@ -1,19 +1,22 @@
 
 body{
 
-    position: relative;
-    width: 1280px;
-    height: 832px;
+   	width:0 auto;
     background: #E7FDFE;
 }
 
 
+.logo-container{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
 .logo{
-    position: absolute;
     width: 200px;
     height: 200px;
-    left: 540px;
-    top: 16px;
     border-radius: 100%;
 }
 
@@ -58,11 +61,9 @@ body{
 
 
 .registration{
-    position: absolute;
+    margin: 0 auto;
     width: 553px;
     height: 620px;
-    left: 365px;
-    top: 216px;
     background: #B7DDDB;
     border-radius: 45px;
  

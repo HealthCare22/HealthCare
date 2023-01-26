@@ -1,7 +1,10 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*,Beans.MMGBean"%>
 
-
+<%@ page import = "Beans.MMGBean" %>
+<%@ page import = "DAO.Util" %>
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +16,7 @@
     <script src = "./js/ricercaMalattiaScript.js"></script>
 </head>
 <body>
-	<jsp:include page="navbar.html"/>
+	<jsp:include page="navbar.jsp"/>
     <div class="heading">
         <h1>Tipo di ricerca: </h1>
     </div>
@@ -23,14 +26,14 @@
     </div>
     
 
-<form method="GET" action="RicercaPerNomeServlet">
     <div class="containers">
     
-
+		
         <div class="containerNome">
          
             <h1>Ricerca Malattia Rara</h1>
             <hr>
+            <form method="GET" action="RicercaPerNomeServlet">
             <div class="ricercaNome">
                 <input type="text" name="nomeMalattia"id="nomeMalattia" placeholder="Nome Malattia">
             </div>
@@ -38,6 +41,7 @@
             <div class="cercaPerNomeButtonDiv">
                 <button type="submit" id="cercaPerNomeButton">Cerca</button>
             </div>
+            </form>
             
         </div>
   
@@ -55,6 +59,7 @@
         </div>
         
     </div>
-    </form> 
+ 
+    
 </body>
 </html>

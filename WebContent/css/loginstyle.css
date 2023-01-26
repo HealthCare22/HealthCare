@@ -6,24 +6,29 @@
 
 body{
 
-    position: relative;
-    width: 1280px;
-    height: 832px;
+  	margin:0 auto;
     background: #E7FDFE;
 }
 
 
 .logo{
-    position: absolute;
     width: 180px;
     height: 180px;
-    left: 560px;
-    top: 10px;
     border-radius: 100%;
 }
 
+#logo-container{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	margin-top: 5%;
+	margin-bottom: 2%;
+}
 
 #labelaccount{
+	position:relative;
+	top:10%;
+	border-bottom:5px;
     text-align: center;
     color: white;
 
@@ -32,35 +37,32 @@ body{
 
 
 .login{
-    position: absolute;
-    width: 500px;
-    height: 300px;
-    left: 400px;
-    top: 216px;
-    background: #B7DDDB;
+	background: #B7DDDB;
     border-radius: 45px;
-
+    width:550px;
+    height:300px;
+    margin: auto auto;
+	
  
 
 }
-.login, div{
-  
-    padding: 0.6rem;
+.login div{
+	margin-bottom:10px;
     align-items: center;
  
  }
 .LoginInformation{
- /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
-    width:440px;
-    height: 150px;
-    margin:0 auto;
+	width:65%;
+	margin-right:auto;
+    margin-left: auto;
+    margin-top: 18%;
 }
 
 
 .LoginInformation .email{
 	text-indent: 10px;
-    width: 400px;
-    height: 28px;
+    width: 90%;
+    height: 30px;
     border-radius: 30px;
     border: 1px solid #35908B;
 
@@ -68,9 +70,10 @@ body{
 }
 
 .LoginInformation .password{
+	margin-top:3%;
 	text-indent: 10px;
-    width: 400px;
-    height: 28px;
+   	width: 90%;
+    height: 30px;
     border-radius: 30px;
     border: 1px solid #35908B;
 
@@ -86,6 +89,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .pulsanteAccedi{

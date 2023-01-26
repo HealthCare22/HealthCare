@@ -22,7 +22,7 @@
 </head>
 <body onload="attivaCercaForm()">
 
-    <jsp:include page="navbar.html"/>
+    <jsp:include page="navbar.jsp"/>
    <div id ="FormNavbar">
 			<jsp:include page="FormNavbar.jsp"/>
 		</div>
@@ -34,7 +34,6 @@
 			GestioneFormBean bean = (GestioneFormBean) it.next();
 
 %>
-
 	<div class="form-container">
 	    <div class="vista-form">
 	        <table>
@@ -47,6 +46,7 @@
 	        </table>
 	    </div>
 	</div> 
+
 <%
 		}
   }

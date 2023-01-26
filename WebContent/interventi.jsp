@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ ghkv bghn<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -9,21 +9,14 @@
 	</head>
 			<script>
 		function attivaInterventi(){
-			myForm=document.getElementById("MyForms");
-			newForm=document.getElementById("NewForm");
-			searchForm=document.getElementById("SearchForm");
 			Interventi=document.getElementById("Comments");
-
 				Interventi.classList.add("attivo");
 				Interventi.style.backgroundColor='#35908B';
 				Interventi.style.color='#FFFFFF';
-				newForm.classList.remove("attivo");
-				searchForm.classList.remove("attivo");
-				myForm.classList.remove("attivo");
 		}
 		</script>
 	<body onload="attivaInterventi()">
-		<jsp:include page="navbar.html"/>
+		<jsp:include page="navbar.jsp"/>
 		<div id ="FormNavbar">
 			<jsp:include page="FormNavbar.jsp"/>
 		</div>
@@ -44,7 +37,7 @@
 			<div id="FirstBox">
 				<button class = "Button">DD/MM/YYYY</button>
 			</div>
-			<div>
+			<div id="buttonForm">
 				<button class = "ButtonVediForm">Vedi Form</button>
 			</div>
 		</div>

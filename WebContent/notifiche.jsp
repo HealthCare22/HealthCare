@@ -10,7 +10,7 @@
 </head>
 
 <body>
-	<jsp:include page="navbar.html"/>
+	<jsp:include page="navbar.jsp"/>
 	
 	<div id="Titolo">
 			<h1>Notifiche</h1>

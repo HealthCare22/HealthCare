@@ -9,7 +9,9 @@
     <script src = "./js/registrationScript.js"></script>
 </head>
 <body>
+	<div class="logo-container">
     <img class="logo" src="images/logo.png" alt="logoHealthCare">
+    </div>
     <div class="registration">
         <h1 class="labelaccount">Crea un nuovo account</h1>
         <form method="post" action="RegistrationServlet">
