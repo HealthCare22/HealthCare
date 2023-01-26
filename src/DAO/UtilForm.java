@@ -2,13 +2,12 @@ package DAO;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import org.bson.Document;
+
 import com.mongodb.client.model.Filters;
-import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -44,7 +43,9 @@ public class UtilForm {
 	        					.append("descrizione", descrizione)
 	        					.append("status",true)
 	        					.append("DataApertura",todaysDate)
-	        					.append("autore:",email);
+	        					.append("DataChiusura", null)
+	        					.append("idIntervento", 0)
+	        					.append("autore",email);
 	       
 	        col.insertOne(document);
 	        
@@ -81,20 +82,51 @@ public class UtilForm {
          return listaForm;
      }
 	 
-	 public static List<GestioneFormBean> getFormByStatus(String status){
-		 String db_name = "HealthCare";
-		 String db_collection_name = "Form";
-		 Boolean booleanStatus = Boolean.parseBoolean(status);
+	 public static List<List<GestioneFormBean>> getFormByStatus(String email){
+		 
+		 //DataBase connection
+		 String db_name = "HealthCare",
+	                db_collection_name = "Form";
+		 
 		 MongoDatabase db = getConnection().getDatabase(db_name);
+		 
+		 //Get the "Form" Collection from the DB
 		 MongoCollection<Document> col = db.getCollection(db_collection_name);
-		 FindIterable<Document> cursor = col.find(Filters.eq("status", booleanStatus));
-		 List<GestioneFormBean> listaForm = new ArrayList<>();
+		 
+		 //Query to filter the results, the output is a Finterable<Document> containing
+		 //every user's form
+		 FindIterable<Document> cursor = col.find(Filters.all("autore", email));
+
+		 //Lists that contain: All the user's forms; Open forms; closed forms;
+		 List<List<GestioneFormBean>> listaForm = new ArrayList<List<GestioneFormBean>>(2);
+		 List<GestioneFormBean> listaFormAperti = new ArrayList<>();
+		 List<GestioneFormBean> listaFormChiusi = new ArrayList<>();
+		 
+		 //Iteration on the result
 		 for(Document d : cursor) {
+			 
+			 //Bean construction
+			 String id = d.getString("id");
 			 String topic = d.getString("topic");
+			 String autoreForm = d.getString("autore");
 			 String titolo = d.getString("titolo");
+			 String descrizione = d.getString("descrizione");
 			 Date dataApertura = d.getDate("DataApertura");
-			 listaForm.add(new GestioneFormBean(0,0,titolo," ",dataApertura,dataApertura,false,topic," "));
+			 Date dataChiusura = d.getDate("dataChiusura");
+			 Boolean status = d.getBoolean("status");
+			 
+			 
+			 GestioneFormBean bean = new GestioneFormBean(id,autoreForm,titolo,descrizione,dataApertura,dataChiusura,status,topic,"0");
+			 
+			 //add the bean to the appropriate list
+			 if(status == true) {
+				 listaFormAperti.add(bean);
+			 }else {
+				 listaFormChiusi.add(bean);
+			 }
 		 }
+		 listaForm.add(listaFormAperti);
+		 listaForm.add(listaFormChiusi);
 		 return listaForm;
 	 }
 		 
