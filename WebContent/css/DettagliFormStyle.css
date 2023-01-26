@@ -89,7 +89,7 @@
 }
 
 .Commento {
-  border: 1px solid green ;
+ 
   color: white;
   background-color: white;
   width: auto;
@@ -141,4 +141,97 @@
   height: 40px;
   float:left;
   
+}
+
+.interventi-container{
+	margin-top: 1%;
+	display:flex;
+	flex-direction:column;
+	background-color:#B7DDDB;
+	margin-left: 10px;
+	margin-right:10px;
+	width:100%;
+	margin-bottom:30px;
+}
+
+.text-intervento{
+	margin-left:2%;
+	width:75%;
+	justify-self:flex-end;
+}
+
+
+.intervento-button{
+	margin:auto;
+	margin-left:55%;
+}
+
+.Button{
+	color: white;
+    background-color: #35908B;
+    border-radius: 20px;
+    border: 1px solid #35908B; 
+	font-family: 'Inter';
+	font-style: normal;
+    width: 150px;
+    height: 30px;
+   	margin-top: 20px;
+   	margin-left: 15px;
+   	margin-bottom:15px;
+   	float:right;
+}
+
+.InfoProfilo1 h3{
+	width:10%;
+}
+.InfoProfilo1 {
+	width:25%;
+	margin: 10px;
+	margin-top: 20px;
+	text-align: center;
+  border: 1px solid green ;
+  color: white;
+  background-color: white;
+  height: 40px;
+  float:left;
+  
+}
+
+#descrizione{
+	padding:10px;
+	text-indent:5px;
+	width:90%;
+}
+
+#Buttons{
+	margin-right:4%;
+}
+
+#Buttons h1{
+	margin-left:3%;
+	margin-top:3%;
+	font-size:18px;
+	font-weight:bold;
+}
+
+
+#Dettaglio1ariga{
+	width:60%;
+}
+
+#Dettaglio3ariga{
+	width:80%;
+}
+
+#Dettaglio3aRiga{
+	 border: 1px solid green ;
+	vertical-align:middle;
+	background-color:white;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;		
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left: 15px;
+	margin-right: 15px;
 }
