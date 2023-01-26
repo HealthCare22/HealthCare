@@ -17,6 +17,8 @@
 </head>
 <body>
 	<jsp:include page="navbar.jsp"/>
+	
+	
     <div class="heading">
         <h1>Tipo di ricerca: </h1>
     </div>

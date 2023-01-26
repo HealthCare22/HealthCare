@@ -16,7 +16,6 @@
 }
 
 #Dettaglio{
-
 	background-color:#B7DDDB;
 	display: flex;
 	flex-direction: column;
@@ -25,10 +24,10 @@
 }
 
 #Dettaglio1aRiga{
-	vertical-align:middle;
+
 	background-color:white;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: flex-start;		
 	margin-bottom: 10px;
 	margin-top: 10px;
@@ -99,7 +98,6 @@
 }
 
 .Info h3{
-	
 	color: black;
 	margin: 4px;
 	font-family: 'Arial';
@@ -108,12 +106,12 @@
 }
 
 .Info {
-		
+  display: inline-block;
   margin: 10px;
   border: 1px solid green ;
   color: white;
   background-color: white;
-  width: 100%;
+  width: auto;
   height: auto;
   
 }
@@ -129,6 +127,26 @@
     padding-right: 10px;
 }
 
+.Info2 h3{
+	color: black;
+	margin: 4px;
+	font-family: 'Arial';
+    font-style: normal;
+    font-weight: 300;
+}
+  
+.Info2 {
+  display: inline-block;
+  margin: 10px;
+  border: 1px solid green ;
+  color: white;
+  background-color: white;
+  width: auto;
+  height: auto;
+  
+    
+    
+}
 .InfoProfilo {
 	
 	margin: 10px;
@@ -140,5 +158,62 @@
   width: auto;
   height: 40px;
   float:left;
-  
+}
+
+
+
+
+
+
+
+
+.heading{
+	
+	margin:10px;
+	padding:10 px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height:50px;
+}
+
+.heading h1{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 55px;
+    line-height: 28px;
+    color: #35908B;
+}
+
+.selector{
+   	margin:25px;
+	padding:25 px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#perNome{
+	font-size:18px;
+    background: #35908B;
+    color: #FFFFFF;
+    width: 155px;
+	height: 50px;
+	border-radius: 45px 0px 0px 45px;
+    border: none;
+    cursor:pointer;
+}
+
+    
+#perSintomi{
+	font-size:18px;
+    width: 155px;
+	height: 50px;
+    border-radius: 0px 45px 45px 0px;
+    background: #B7DDDB;
+    color: #000000;
+    border: none;
+	cursor:pointer;
 }
