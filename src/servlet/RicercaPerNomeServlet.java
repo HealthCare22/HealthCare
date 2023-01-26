@@ -43,7 +43,7 @@ public class RicercaPerNomeServlet extends HttpServlet {
 			List<GestioneMalattieBean> listaMalattia = UtilRicerca.RicercaPerNome(nomeMalattia);
 			
 			request.setAttribute("listaMalattia", listaMalattia);
-			request.getRequestDispatcher("/DettaglioMalattia.jsp").forward(request, response);
+			request.getRequestDispatcher("/VediDettagliMalattia.jsp").forward(request, response);
 		}
 	}
 

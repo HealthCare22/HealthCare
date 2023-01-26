@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="DAO.UtilForm" %>
-<%@ page import="Beans.GestioneFormBean" %>    
+<%@ page import="java.util.List" %>
+<%@ page import="Beans.GestioneMalattieBean"%>    
 
 <!DOCTYPE html>
 <html>
@@ -24,47 +24,28 @@
     </div>
 	
 	
-	    
+	    <%List<GestioneMalattieBean>listaMalattie = (List<GestioneMalattieBean>) request.getAttribute("listaMalattia"); 
+	    %>
 		
-		
-		<div id="Dettaglio">
-		
-		
-		
+		<%for(GestioneMalattieBean m : listaMalattie){ %>
+		<div id="Dettaglio">		
 		<div id="Dettaglio1ariga">
 			
 			<div class="Info">
-			<h3>Nome Malattia</h3>
+			<h3><strong>Nome Malattia:</strong> <%=m.getNome() %></h3>
 			</div>
-						
-		
 		</div>
 		<div id="Dettaglio1ariga">
-		
-		
-		
-				
 			<div class="Info2">
 			<h3>Sintomi</h3>
 			</div>
-		
-			
-		
 	    </div>
-		
-		
 		<div id="Dettaglio1ariga">
 		  <div class="Commento">
-  					<h3>Descrizione malattia: Sopra la panca la capra campa, sotto la panca la capra crepa.
-  					Sopra la panca la capra campa, sotto la panca la capra crepa. 
-  					Sopra la panca la capra campa, sotto la panca la capra crepa
-  					Sopra la panca la capra campa, sotto la panca la capra crepa.
-  					Sopra la panca la capra campa, sotto la panca la capra crepa. 
-  					Sopra la panca la capra campa, sotto la panca la capra crepa
-  					</h3>
+  					<h3><strong>Descrizione:</strong> <%=m.getDescrizione() %></h3>
 				</div>
 		</div>
-
 		</div>
+		<%} %>
 </body>
 </html>
