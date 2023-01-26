@@ -16,14 +16,8 @@
 	<jsp:include page="navbar.jsp"/>
 	
 	<div class="heading">
-        <h1>Tipo di ricerca: </h1>
+        <h1>Dettagli Malattia </h1>
     </div>
-    <div class="selector">
-        <button id="perNome" onclick="goToNome()">per nome</button>
-        <button id="perSintomi" onclick="goToSintomi()">per sintomi</button>
-    </div>
-	
-	
 	    <%List<GestioneMalattieBean>listaMalattie = (List<GestioneMalattieBean>) request.getAttribute("listaMalattia"); 
 	    %>
 		

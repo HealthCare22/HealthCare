@@ -68,14 +68,20 @@ public class UtilForm {
          List<GestioneFormBean> listaForm = new ArrayList<>();
 
          //Creazione lista di form
-         for(Document doc : cursor) {
-              
+         for(Document d : cursor) {
                 
-                String topic = doc.getString("topic");
-                String titolo = doc.getString("titolo");
-                Date data = doc.getDate("DataApertura");
-                
-                listaForm.add(new GestioneFormBean(topic, data, titolo));
+        	 String id = d.getObjectId("_id").toString();
+			 String topic = d.getString("topic");
+			 String autoreForm = d.getString("autore");
+			 String titolo = d.getString("titolo");
+			 String descrizione = d.getString("descrizione");
+			 Date dataApertura = d.getDate("DataApertura");
+			 Date dataChiusura = d.getDate("dataChiusura");
+			 Boolean status = d.getBoolean("status");
+			 
+			 
+			 GestioneFormBean bean = new GestioneFormBean(id,autoreForm,titolo,descrizione,dataApertura,dataChiusura,status,topic,"0");
+			 listaForm.add(bean);
          }
          
          
