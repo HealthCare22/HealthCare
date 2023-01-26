@@ -28,7 +28,7 @@
 
           <ul class="list-item-dx">
             <li><a href="./notifiche.jsp">Notifiche</a></li>
-            <li><form action="LogoutServlet" method="get">
+            <li><form action="logout.jsp" method="get">
             <button id="Logout">Logout</button>
             </form>
             </li>

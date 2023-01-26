@@ -73,4 +73,10 @@
     ;
   }
   
+  #Logout{
+  	background-color: #b7dddb;
+  	border: none;
+  	font-size: 18px;
+  }
+  
   /*   End navigation bar   */
