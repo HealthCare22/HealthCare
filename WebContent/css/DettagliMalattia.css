@@ -1,0 +1,219 @@
+@charset "UTF-8";
+
+.ButtonVediForm{
+	background: #35908B;
+    border: 1px solid #35908B;
+    border-radius: 45px;
+    color:white;
+    box-sizing: border-box;
+    width: 126px;
+    height: 28px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 300;
+    margin-top: 5px;
+    
+}
+
+#Dettaglio{
+	background-color:#B7DDDB;
+	display: flex;
+	flex-direction: column;
+	margin-left: 10px;
+	margin-right:10px;
+}
+
+#Dettaglio1aRiga{
+
+	background-color:white;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;		
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left: 15px;
+	margin-right: 15px;
+	border: 5px solid red;
+}
+
+#Dettaglio2aRiga{
+
+	background-color:white;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;	
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left: 15px;
+	margin-right: 15px;
+	border: 5px solid red;
+
+}
+
+#Titolo h1{
+	padding-top: 15px;
+	color: #35908B;
+}
+
+#Titolo{
+	font-size:15px;
+	text-align: center;
+	
+  	width: 100%;
+  	height: 100px;
+  	margin-top: 10px;
+  	
+}
+
+.img{
+	width: 40px;
+	height: 40px;
+	margin: 10px;
+	float:left;
+}
+
+.img img{
+	width: 40px;
+	height: 40px;
+	margin: 10px;
+	
+}
+
+.Commento h3{
+	color: black;
+	margin: 4px;
+	font-family: 'Arial';
+    font-style: normal;
+    font-weight: 300;
+}
+
+.Commento {
+  border: 1px solid green ;
+  color: white;
+  background-color: white;
+  width: auto;
+  height: auto;
+  margin: 10px;
+  
+}
+
+.Info h3{
+	color: black;
+	margin: 4px;
+	font-family: 'Arial';
+    font-style: normal;
+    font-weight: 300;
+}
+
+.Info {
+  display: inline-block;
+  margin: 10px;
+  border: 1px solid green ;
+  color: white;
+  background-color: white;
+  width: auto;
+  height: auto;
+  
+}
+
+.InfoProfilo h3{
+	color: black;
+	text-align: center;
+	font-family: 'Arial';
+    font-style: normal;
+    font-weight: 320;
+    margin-top: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.Info2 h3{
+	color: black;
+	margin: 4px;
+	font-family: 'Arial';
+    font-style: normal;
+    font-weight: 300;
+}
+  
+.Info2 {
+  display: inline-block;
+  margin: 10px;
+  border: 1px solid green ;
+  color: white;
+  background-color: white;
+  width: auto;
+  height: auto;
+  
+    
+    
+}
+.InfoProfilo {
+	
+	margin: 10px;
+	margin-top: 20px;
+	text-align: center;
+  border: 1px solid green ;
+  color: white;
+  background-color: white;
+  width: auto;
+  height: 40px;
+  float:left;
+}
+
+
+
+
+
+
+
+
+.heading{
+	
+	margin:10px;
+	padding:10 px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height:50px;
+}
+
+.heading h1{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 55px;
+    line-height: 28px;
+    color: #35908B;
+}
+
+.selector{
+   	margin:25px;
+	padding:25 px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#perNome{
+	font-size:18px;
+    background: #35908B;
+    color: #FFFFFF;
+    width: 155px;
+	height: 50px;
+	border-radius: 45px 0px 0px 45px;
+    border: none;
+    cursor:pointer;
+}
+
+    
+#perSintomi{
+	font-size:18px;
+    width: 155px;
+	height: 50px;
+    border-radius: 0px 45px 45px 0px;
+    background: #B7DDDB;
+    color: #000000;
+    border: none;
+	cursor:pointer;
+}

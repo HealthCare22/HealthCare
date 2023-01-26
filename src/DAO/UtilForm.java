@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.FindIterable;
@@ -54,7 +55,6 @@ public class UtilForm {
 		 return true;
 	 }
 	 
-	 
 	 public static List<GestioneFormBean> recuperaForm(){
 		 
 		 String db_name = "HealthCare",
@@ -68,14 +68,20 @@ public class UtilForm {
          List<GestioneFormBean> listaForm = new ArrayList<>();
 
          //Creazione lista di form
-         for(Document doc : cursor) {
-              
+         for(Document d : cursor) {
                 
-                String topic = doc.getString("topic");
-                String titolo = doc.getString("titolo");
-                Date data = doc.getDate("DataApertura");
-                
-                listaForm.add(new GestioneFormBean(topic, data, titolo));
+        	 String id = d.getObjectId("_id").toString();
+			 String topic = d.getString("topic");
+			 String autoreForm = d.getString("autore");
+			 String titolo = d.getString("titolo");
+			 String descrizione = d.getString("descrizione");
+			 Date dataApertura = d.getDate("DataApertura");
+			 Date dataChiusura = d.getDate("dataChiusura");
+			 Boolean status = d.getBoolean("status");
+			 
+			 
+			 GestioneFormBean bean = new GestioneFormBean(id,autoreForm,titolo,descrizione,dataApertura,dataChiusura,status,topic,"0");
+			 listaForm.add(bean);
          }
          
          
@@ -106,7 +112,7 @@ public class UtilForm {
 		 for(Document d : cursor) {
 			 
 			 //Bean construction
-			 String id = d.getString("id");
+			 String id = d.getObjectId("_id").toString();
 			 String topic = d.getString("topic");
 			 String autoreForm = d.getString("autore");
 			 String titolo = d.getString("titolo");
@@ -129,7 +135,37 @@ public class UtilForm {
 		 listaForm.add(listaFormChiusi);
 		 return listaForm;
 	 }
+	 
+	 public static GestioneFormBean getFormById(String id) {
+		//DataBase connection
+		 String db_name = "HealthCare",
+	                db_collection_name = "Form";
 		 
+		 MongoDatabase db = getConnection().getDatabase(db_name);
+		 
+		 //Get the "Form" Collection from the DB
+		 MongoCollection<Document> col = db.getCollection(db_collection_name);
+		 
+		 //Query to filter the results, the output is a Finterable<Document> containing
+		 //the form
+		 FindIterable<Document> cursor = col.find(Filters.eq("_id", new ObjectId(id)));
+		 GestioneFormBean bean = null;
+		 for(Document d : cursor) {
+			 
+			 //Bean construction
+			 String topic = d.getString("topic");
+			 String autoreForm = d.getString("autore");
+			 String titolo = d.getString("titolo");
+			 String descrizione = d.getString("descrizione");
+			 Date dataApertura = d.getDate("DataApertura");
+			 Date dataChiusura = d.getDate("dataChiusura");
+			 Boolean status = d.getBoolean("status");
+			 
+			 
+			 bean = new GestioneFormBean(id,autoreForm,titolo,descrizione,dataApertura,dataChiusura,status,topic,"0");
+		 }
+		 return bean;
+	 }
 }
 
 

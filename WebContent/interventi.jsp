@@ -44,7 +44,7 @@
 		
 			<div id="InterventiInterno2aRiga">
 		        <div class="Commento">
-  					<h3>Intervento di un medico</h1>
+  					<h3>Intervento di un medico</h3>
 				</div>
 			</div>
 			
