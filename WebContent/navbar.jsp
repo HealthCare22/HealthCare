@@ -22,12 +22,12 @@
           <ul class="list-item">
             <li><a href="RicercaMalattia.jsp">Ricerca</a></li>
             <li><a href="MyForm.jsp">Form</a></li>
-            <li><a href="#">Malattia</a></li>
+            <li><a href="listaMalattie.jsp">Malattia</a></li>
             <li><a href="profile.jsp">Profilo</a></li>
           </ul>
 
           <ul class="list-item-dx">
-            <li><a href="./notifiche.jsp">Notifiche</a></li>
+            <li id="Notifiche"><a href="./notifiche.jsp">Notifiche</a></li>
             <li><form action="LogoutServlet" method="get">
             <button id="Logout">Logout</button>
             </form>
