@@ -1,4 +1,4 @@
- ghkv bghn<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -44,7 +44,7 @@
 		
 			<div id="InterventiInterno2aRiga">
 		        <div class="Commento">
-  					<h3>Intervento di un medico</h1>
+  					<h3>Intervento di un medico</h3>
 				</div>
 			</div>
 			
