@@ -53,7 +53,30 @@ public class UtilRicerca {
 	                listaMalattia.add(new GestioneMalattieBean(codice, nome, descrizione));
 		         }
 	        }
-	       
+	         return listaMalattia;
+	  }
+	  
+	  public static List<GestioneMalattieBean> getMalattie(){
+		  String db_name = "HealthCare",
+	                db_collection_name = "Malattia";
+	 
+	        // Get the mongodb connection
+	        MongoDatabase db = getConnection().getDatabase(db_name);
+	 
+	        // Get the mongodb collection.
+	        MongoCollection<Document> col = db.getCollection(db_collection_name);
+	 
+	        FindIterable<Document> cursor = col.find();
+	         List<GestioneMalattieBean> listaMalattia = new ArrayList<>();
+
+	         //Creazione lista di form
+	         for(Document doc : cursor) {
+	              
+	                String nome = doc.getString("nome_malattia");
+	                Integer codice = doc.getInteger("codice");
+	                String descrizione = doc.getString("descrizione");
+	                listaMalattia.add(new GestioneMalattieBean(codice, nome, descrizione));
+		         }
 	         return listaMalattia;
 	  }
 }

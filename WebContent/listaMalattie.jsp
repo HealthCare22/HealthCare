@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="Beans.GestioneMalattieBean" %>
+<%@ page import="DAO.UtilRicerca" %>
 <!DOCTYPE html>
 <html>
 
@@ -14,55 +17,20 @@
 	
 	<div id="Titolo">
 			<h1>Elenco delle malattie rare</h1>
-		</div>
-	
-	
-	<div id = "ricercaContainer">
-	   <button class = "buttonCerca">Cerca</button>
-	
-	   <div class="search">
-        <input type="text" id="nomeMalattia" placeholder="Nome Malattia">
-     </div>
-</div>
+	</div>
 
-		
+		<%List<GestioneMalattieBean>listaMalattie = UtilRicerca.getMalattie(); %>
 
 		<div id = "elencoMalattie">
+		<%for(GestioneMalattieBean m : listaMalattie){ %>
 		<div id="malattiaContainer">
             <div class="elenco">
-             <h3> Nome Malattia</h3>
+             <h3> <%= m.getNome().toUpperCase() %></h3>
             </div>
             <div>
-				<button class = "ButtonVediForm">Vedi Dettagli</button>
+            	<form action="RicercaPerNomeServlet" method="get">
+					<button class = "ButtonVediForm" name="nomeMalattia" value=<%=m.getNome() %>>Vedi Dettagli</button>
+				</form>
 			</div>
-		</div>
-		
-		<div id="malattiaContainer">
-            <div class="elenco">
-             <h3> Nome Malattia</h3>
-           
-            </div>
-            <div>
-				<button class = "ButtonVediForm">Vedi Dettagli</button>
-			</div>
-		</div>
-		
-		<div id="malattiaContainer">
-            <div class="elenco">
-             <h3> Nome Malattia</h3>
-            </div>
-            <div>
-				<button class = "ButtonVediForm">Vedi Dettagli</button>
-			</div>
-		</div>
-		
-		<div id="malattiaContainer">
-            <div class="elenco">
-             <h3> Nome Malattia</h3>
-            </div>
-            <div>
-				<button class = "ButtonVediForm">Vedi Dettagli</button>
-			</div>
-		</div>
-		
+		</div> <%}%>
 		</div>
