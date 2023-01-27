@@ -25,36 +25,39 @@
                 </div>
 
                 <div class="NomeCognome">
-                    <input type="text" name="name" placeholder="Nome">
-                    <input type="text" name="surname" placeholder="Cognome">
+                    <input type="text" name="name" placeholder="Nome" required pattern="^[a-z A-Z איטלעש]{2,255}$"  >
+                    <input type="text" name="surname" placeholder="Cognome" required pattern="^[a-z A-Z איטלעש]{2,255}$">
                 </div>
+
 
                 <div class="sesso">
+                
                     <p>Sesso</p>
-                    
-                        <input type="radio" id="maschio" name="gender" value="Maschio" checked>
-                        <label for="Maschio">Maschio</label>
-
-                        <input type="radio" id="femmina" name="gender" value="Femmina">
-                        <label for="Femmina">Femmina</label>
-
-                        <input type="radio" id="altro" name="gender" value="Altro">
-                        <label for="Altro">Altro</label>
+                   		
+	                        <input type="radio" id="maschio" name="gender" value="Maschio" checked>
+	                        <label for="Maschio">Maschio</label>
+	
+	                        <input type="radio" id="femmina" name="gender" value="Femmina">
+	                        <label for="Femmina">Femmina</label>
+	
+	                        <input type="radio" id="altro" name="gender" value="Altro">
+	                        <label for="Altro">Altro</label>
+                        
                 </div>
-
+                
             <div class="eta">
                 <p>Data di nascita</p>
-                <input type="text" name="eta" placeholder="16/01/90">
+                <input type="text" name="eta" placeholder="16/01/90" required pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$">
             </div>
 
             <div class="password">
-                <input type="password" name="password" placeholder="Password">
+                <input type="password" name="password" placeholder="Password" required pattern="^(?=([^\s])*[0-9])(?=([^\s])*[a-zA-Z])([^\s]){8,24}$ ">
                 <input type="password" name="password" placeholder="Conferma password">
             </div>  
 
     
             <div class="email">
-                <input type="email" name="email" placeholder="Email">
+                <input type="email" name="email" placeholder="Email" required pattern=" ^\w+([.]?\w+)*@\w+([.]{1}\w+)*([.]{1}\w{2,3}){1}$">
             </div>
 
             <div class="email">
@@ -70,23 +73,23 @@
             <button id="skip2Post"> </button>
         </div>
         <h1 class = "labelaccount">Domicilio:</h1>
-        <div class="domicilio">
-            <input type="text" name="provincia" placeholder="Provincia">
-            <input type="text" name="comune" placeholder="Comune">
-            <input type="text" name= "indirizzo" placeholder="Indirizzo">
+        <div class="domicilio" >
+            <input type="text" name="provincia" placeholder="Provincia" required pattern=" ^[a-z A-Z איטלעש]{2,255}$">
+            <input type="text" name="comune" placeholder="Comune" required pattern="^[a-z A-Z איטלעש]{2,255}$">
+            <input type="text" name= "indirizzo" placeholder="Indirizzo" required pattern=" ^[a-z A-Z 0-9 איטלעש',.-]{2,255}$">
         </div>
         <div class="telefono">
-            <input type="text" name="numero_telefono" placeholder="Numero di telefono">
+            <input type="text" name="numero_telefono" placeholder="Numero di telefono" required pattern=" ^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$">
         </div>
     </div>   
     	<div class="pulsantiConfermaAnnulla">
-    	<button type = "submit" id = "secondFormButton">Conferma</button>
+    	<button type = "submit" id = "secondFormButton" onclick="validate()">Conferma</button>
     	</div>
     	</form>
     	 
         <div class="pulsantiConfermaAnnulla">
             <button id="annulla" onclick = changeForm()>Annulla</button>
-            <button onclick = changeForm() id = "firstFormButton">Avanti</button>
+            <button onclick=changeForm()   id = "firstFormButton">Avanti</button>
         </div>
     </div>
 </body>

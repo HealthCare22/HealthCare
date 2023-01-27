@@ -27,15 +27,11 @@
           </ul>
 
           <ul class="list-item-dx">
-            <li><a href="./notifiche.jsp">Notifiche</a></li>
-            <li><form action="logout.jsp" method="get">
-            <button id="Logout">Logout</button>
-            </form>
+            <li id="Notifiche"><a href="./notifiche.jsp">Notifiche</a></li>
+            <li><a href="logout.jsp" id="Logout">Logout</a>
             </li>
           </ul>
         </nav>
       </header>
     </body>
   </html>
-</body>
-</html>
