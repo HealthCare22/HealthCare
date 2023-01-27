@@ -38,10 +38,9 @@
     </div>
     <div class="editdiv">
             <button id="edit" onclick="edit()">Modifica</button>
-            
     </div>
     </div>
-    
+  <form method="post" action="EditProfile"> 
     <div class="info">
             <h1>Dati Anagrafici</h1>
                 <h2>Nome</h2>
@@ -54,7 +53,7 @@
                 <input type="text" id="sesso" name="sesso" value=<%=mmg.getSesso() %> readonly>
             
                 <h2>Data di nascita</h2>
-                <input type="text" id="data"  name="eta" value="date" readonly>
+                <input type="Date" id="data"  name="eta" value=<%=mmg.getData() %> readonly>
         
             <h1>Credenziali</h1>
             
@@ -80,14 +79,16 @@
             <input type="text" id="comune" name="comune" value=<%=mmg.getComune() %> readonly>
         
             <h2>Indirizzo</h2>
-            <input type="text" id="indirizzo" name="indirizzo" value=<%=mmg.getIndirizzo() %>readonly>
+            <input type="text" id="indirizzo" name="indirizzo" value=<%=mmg.getIndirizzo()%> readonly>
+            
+            <button type="submit" id="save">Salva</button> 
     </div>
+    </form>
     
+    	
+
     <div class="buttondiv">
         <button id="annulla" onclick=reload()>Annulla modifiche</button>
-        <button id="save" onclick=save()>Salva</button>
-        
-
     </div>
 
        
