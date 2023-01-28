@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
  
         // Checking for null and empty values
         if(param1 == null || param2 == null || "".equals(param1) || "".equals(param2)) {
-            req.setAttribute("error_message", "Please enter login	 id and password");
+            req.setAttribute("error_message", "Please enter login id and password");
             req.getRequestDispatcher("/logout.jsp").forward(req, resp);
         } else {
         	HttpSession oldSession = req.getSession(false);
@@ -37,7 +37,18 @@ public class LoginServlet extends HttpServlet {
         	HttpSession currentSession= req.getSession();
         	currentSession.setAttribute("email",param1);
         	currentSession.setMaxInactiveInterval(5*60);
-        	resp.sendRedirect("profile.jsp");
-        }       
+        	MMGBean mmg = Util.recuperaUser(param1);
+        
+        	
+        	req.setAttribute("datiMedico", mmg);
+
+            boolean isUserFound = Util.searchUserInDb(param1, param2);
+             if(isUserFound) {               
+                 req.getRequestDispatcher("/MyForm.jsp").forward(req, resp);
+             } else {
+                 req.setAttribute("error_message", "You are not an authorised user. Please check with administrator.");
+                 req.getRequestDispatcher("/login.jsp").forward(req, resp);
+        } 
+        }
     }
 }

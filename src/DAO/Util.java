@@ -2,11 +2,14 @@ package DAO;
 
 import java.util.*;
 import org.bson.Document;
+import org.bson.conversions.Bson;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 
 import com.mongodb.client.*;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
 
 import Beans.GestioneFormBean;
 import Beans.MMGBean;
@@ -53,7 +56,7 @@ public class Util {
     }
 
 
-public static boolean appendUserInDb(String nome, String cognome, String sesso, String data, String password, String email,
+public static boolean appendUserInDb(String nome, String cognome, String sesso, String eta, String password, String email,
 		String provincia, String comune, String indirizzo, String numero_telefono) {
 		
 		boolean user_found = false;
@@ -71,7 +74,7 @@ public static boolean appendUserInDb(String nome, String cognome, String sesso, 
 			.append("email", email)
 			.append("indirizzo", indirizzo)
 			.append("sesso", sesso)
-			.append("data", data)
+			.append("eta", eta)
 			.append("provincia", provincia)
 			.append("comune", comune)
 			.append("telefono", numero_telefono)
@@ -94,19 +97,58 @@ public static MMGBean recuperaUser(String email){
        
     FindIterable<Document> cursor = col.find(Filters.eq("email", email));
 
-    String nome= " ", cognome= " ", indirizzo= " ", gender= " ", telefono= " ", password= " ", comune= " ", provincia= " ";
+    String nome= " ", cognome= " ", indirizzo= " ", data=" ", gender= " ", telefono= " ", password= " ", comune= " ", provincia= " ";
     int id=0;
     for(Document doc : cursor) {       
             nome = doc.getString("nome_medico");
             cognome = doc.getString("cognome");
             indirizzo = doc.getString("indirizzo");
-            gender = doc.getString("Sesso");
+            data = doc.getString("eta");
+            gender = doc.getString("sesso");
             telefono = doc.getString("telefono");
             password = doc.getString("password");
             comune = doc.getString("comune");
             provincia = doc.getString("provincia");
     }
-    MMGBean mmg = new MMGBean(id,nome,cognome,email,indirizzo,gender,telefono,password,provincia,comune);
+    System.out.println(data);
+    MMGBean mmg = new MMGBean(id,nome,cognome,email,indirizzo,data,gender,telefono,password,provincia,comune);
     return mmg;
-}
+	}
+
+public static boolean editUserInDb(String nome, String cognome, String sesso, String eta, String password, String email,
+		String provincia, String comune, String indirizzo, String numero_telefono) {
+		
+		boolean user_found = false;
+			
+			String db_name = "HealthCare",
+			db_collection_name = "MMG";
+		
+			// Get the mongodb connection
+			MongoDatabase db = getConnection().getDatabase(db_name);
+
+			// Get the mongodb collection.
+			MongoCollection<Document> col = db.getCollection(db_collection_name);
+
+			// Create a query to find the document you want to update
+			/*BasicDBObject query = new BasicDBObject("email", email);
+
+			// Create the update object with the new values
+			BasicDBObject updateDocument = new BasicDBObject();
+			updateDocument.append("$set", new BasicDBObject().append("fieldName", "newFieldValue"));*/
+	        Document query = new Document("email", email);
+			Document update = new Document("$set", new Document("email", email)
+	    			.append("cognome", cognome)
+	    			.append("nome_medico", nome)
+	    			.append("indirizzo", indirizzo)
+	    			.append("sesso", sesso)
+	    			.append("eta", eta)
+	    			.append("provincia", provincia)
+	    			.append("comune", comune)
+	    			.append("telefono", numero_telefono)
+	    			.append("password", password));
+	        col.updateOne(query, update);
+	        System.out.println( indirizzo  + eta + provincia + comune + numero_telefono + password);
+			return user_found;
+
+	}
 }

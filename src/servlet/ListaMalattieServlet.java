@@ -9,21 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.UtilForm;
-import DAO.UtilRicerca;
 import Beans.GestioneMalattieBean;
+import DAO.UtilRicerca;
 
 /**
- * Servlet implementation class RicercaPerNomeServlet
+ * Servlet implementation class ListaMalattieServlet
  */
-@WebServlet("/RicercaPerNomeServlet")
-public class RicercaPerNomeServlet extends HttpServlet {
+@WebServlet("/ListaMalattieServlet")
+public class ListaMalattieServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RicercaPerNomeServlet() {
+    public ListaMalattieServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,19 +31,10 @@ public class RicercaPerNomeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String nomeMalattia = request.getParameter("nomeMalattia");
-		
-		if(nomeMalattia == null || "".equals(nomeMalattia) ) {
-			
-			request.setAttribute("error_message", "Ricerca della malattia per nome fallita! Riprova...");
-            
-		}else {
-			List<GestioneMalattieBean> listaMalattia = UtilRicerca.RicercaPerNome(nomeMalattia);
-			
-			request.setAttribute("listaMalattia", listaMalattia);
-			request.getRequestDispatcher("/VediDettagliMalattia.jsp").forward(request, response);
-		}
+		List<GestioneMalattieBean>listaMalattie = UtilRicerca.getMalattie();
+		request.setAttribute("listaMalattie", listaMalattie);
+		request.setAttribute("pagina", 1);
+		request.getRequestDispatcher("/listaMalattie.jsp").forward(request, response);
 	}
 
 	/**

@@ -62,9 +62,7 @@ function edit(){
     comune=document.getElementById("comune");
     indirizzo=document.getElementById("indirizzo");
 
-    nome.readOnly= false;
-    cognome.readOnly= false;
-    sesso.readOnly= false;
+
     data.readOnly= false;
     email.readOnly= false;
     password.readOnly= false;

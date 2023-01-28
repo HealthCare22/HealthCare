@@ -38,14 +38,16 @@
 				List<GestioneFormBean>listaFormAperti = listaForm.get(0);
 				
 				//list of closed forms
-				List<GestioneFormBean>listaFormChiusi = listaForm.get(1);%>
-				<%if(listaForm != null){
+				List<GestioneFormBean>listaFormChiusi = listaForm.get(1);
+				if(listaForm != null){
 				for(GestioneFormBean f : listaFormAperti){%>
 					<tr>
 						<td><%= f.getTopic() %></td>
 						<td><%= f.getTitolo() %></td>
 						<td><%= f.getDataApertura() %></td>
-						<td><button class = "DettagliButton">Vedi dettagli</button></td>
+						<td><form method = "get" action="DettaglioFormServlet"> 
+						<button type="submit" name="id" value =<%=f.getIdform() %> class = "DettagliButton">
+						Vedi dettagli</button></form></td>
 					</tr>
 				<%} %>
 				</table>
@@ -57,7 +59,9 @@
 						<td><%= f.getTopic() %></td>
 						<td><%= f.getTitolo() %></td>
 						<td><%= f.getDataApertura() %></td>
-						<td><button class = "DettagliButton">Vedi dettagli</button></td>
+						<td><form method = "get" action="DettaglioFormServlet">  
+						<button type="submit" name="id" value =<%=f.getIdform() %> class = "DettagliButton">
+						Vedi dettagli</button></form></td>
 					</tr>
 				<%}} %>
 				</table>

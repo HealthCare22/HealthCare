@@ -34,6 +34,7 @@
 	background-color:#B7DDDB;
 	display: flex;
 	flex-direction: column;
+	overflow: auto;
 }
 
 
@@ -56,29 +57,37 @@
 }
 
 #Titolo{
-	font-size:15px;
+	font-size:25px;
 	text-align: center;
-	
-  	width: 100%;
+  	width: 90%;
   	height: 100px;
   	margin-top: 10px;
   	
 }
 
-
-
-.elenco h3{
+.elenco table th{
+	font-size: 35px;
+	border-bottom: solid;
+	border-collapse: collapse;
 	font-weight: bold;
-	color: #35908B;
+}
 
+.elenco table{
+	font-weight:bold;
+	font-size: 30px;
+	color: #35908B;
 	font-family: 'Arial';
     font-style: normal;
     text-align:left;
 }
 
+tr:nth-child(even){
+	background:#35908B;
+	color:white;
+}
+
 .elenco {
 	margin: auto;
-
 	text-align:left;
 }
 
@@ -109,7 +118,7 @@
 	background-color:white;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;	
+	justify-content: center;	
 	margin-bottom: 10px;
 	margin-top: 6px;
 	margin-left: 15px;

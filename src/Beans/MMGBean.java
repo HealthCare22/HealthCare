@@ -7,6 +7,7 @@ public class MMGBean {
 	public String cognome;
 	public String email;
 	public String indirizzo;
+	public String data;
 	public String sesso;
 	public String telefono;
 	public String password;
@@ -14,7 +15,7 @@ public class MMGBean {
 	public String comune;
 	
 	
-	public MMGBean(int id, String nome, String cognome, String email, String indirizzo, String sesso, String telefono,
+	public MMGBean(int id, String nome, String cognome, String email, String indirizzo, String data, String sesso, String telefono,
 			String password, String provincia, String comune) {
 		super();
 		this.id = id;
@@ -22,6 +23,7 @@ public class MMGBean {
 		this.cognome = cognome;
 		this.email = email;
 		this.indirizzo = indirizzo;
+		this.data = data;
 		this.sesso = sesso;
 		this.telefono = telefono;
 		this.password = password;
@@ -29,6 +31,8 @@ public class MMGBean {
 		this.comune = comune;
 	}
 	
+
+
 
 	public MMGBean()
 	{}	
@@ -56,6 +60,15 @@ public class MMGBean {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getData() {
+		return data;
+	}
+	
+	public void setData(String data) {
+		this.data = data;
+	}
+	
 	public String getIndirizzo() {
 		return indirizzo;
 	}

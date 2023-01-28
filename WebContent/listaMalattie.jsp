@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="Beans.GestioneMalattieBean" %>
+<%@ page import="DAO.UtilRicerca" %>
 <!DOCTYPE html>
 <html>
 
@@ -14,55 +17,24 @@
 	
 	<div id="Titolo">
 			<h1>Elenco delle malattie rare</h1>
-		</div>
-	
-	
-	<div id = "ricercaContainer">
-	   <button class = "buttonCerca">Cerca</button>
-	
-	   <div class="search">
-        <input type="text" id="nomeMalattia" placeholder="Nome Malattia">
-     </div>
-</div>
-
-		
+	</div>
+		<%List<GestioneMalattieBean>listaMalattie = (List<GestioneMalattieBean>)request.getAttribute("listaMalattie"); %>
 
 		<div id = "elencoMalattie">
 		<div id="malattiaContainer">
             <div class="elenco">
-             <h3> Nome Malattia</h3>
+             <table>
+             	<tr>
+             		<th>Nome Malattia</th>
+             	</tr>
+             		<%for(GestioneMalattieBean m : listaMalattie){ 
+             		String nomeMalattia = m.getNome();%>
+             		<tr>
+             			<td><a id="linkMalattia" href="RicercaPerNomeServlet?nomeMalattia=<%=nomeMalattia%>"><%=nomeMalattia %></a></td>
+             		</tr>
+             		<%} %>
+             </table>
             </div>
-            <div>
-				<button class = "ButtonVediForm">Vedi Dettagli</button>
-			</div>
+		</div> 
 		</div>
-		
-		<div id="malattiaContainer">
-            <div class="elenco">
-             <h3> Nome Malattia</h3>
-           
-            </div>
-            <div>
-				<button class = "ButtonVediForm">Vedi Dettagli</button>
-			</div>
-		</div>
-		
-		<div id="malattiaContainer">
-            <div class="elenco">
-             <h3> Nome Malattia</h3>
-            </div>
-            <div>
-				<button class = "ButtonVediForm">Vedi Dettagli</button>
-			</div>
-		</div>
-		
-		<div id="malattiaContainer">
-            <div class="elenco">
-             <h3> Nome Malattia</h3>
-            </div>
-            <div>
-				<button class = "ButtonVediForm">Vedi Dettagli</button>
-			</div>
-		</div>
-		
-		</div>
+</body>
