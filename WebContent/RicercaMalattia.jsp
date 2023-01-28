@@ -2,8 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*,Beans.MMGBean"%>
 
 <%@ page import = "Beans.MMGBean" %>
-<%@ page import = "DAO.Util" %>
-    
     
 <!DOCTYPE html>
 <html>

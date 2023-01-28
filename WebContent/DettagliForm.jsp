@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="DAO.UtilForm" %>
-<%@ page import="Beans.GestioneFormBean" %>    
-
+<%@ page import="DAO.FormDAO" %>
+<%@ page import="Beans.GestioneFormBean" %>
+<%@ page import="com.mongodb.client.MongoClient" %>
 
 
 <%
 
 	Collection<?> allInterventi = (Collection<?>) request.getAttribute("listaInterventi"); 	
 	String idForm = (String)request.getParameter("id");
-	
-
+	MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
+	FormDAO formDAO = new FormDAO(mongoClient);
 
 %>
 
@@ -30,7 +30,7 @@
 	<jsp:include page="navbar.jsp"/>
 	
 	
-	<% GestioneFormBean form = UtilForm.getFormById(idForm); %>
+	<% GestioneFormBean form = formDAO.getFormById(idForm); %>
 	<div id="Titolo">
 			<h1>Dettagli del Form</h1>
 		</div>

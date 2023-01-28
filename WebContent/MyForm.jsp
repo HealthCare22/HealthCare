@@ -3,8 +3,14 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Beans.GestioneFormBean" %>
-<%@ page import="DAO.UtilForm" %>
+<%@ page import="DAO.FormDAO" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="com.mongodb.client.MongoClient" %>
+
+<%
+	MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
+	FormDAO formDAO = new FormDAO(mongoClient);
+%>
 
 <!DOCTYPE html>
 <html>
@@ -30,9 +36,10 @@
 				
 				<!-- get the user's email from the HttpSession -->
 				<% String email = (String)session.getAttribute("email");
-				
+
+
 				//call the GetFormByStatus to obtain all the user's forms
-				List<List<GestioneFormBean>> listaForm = UtilForm.getFormByStatus(email);
+				List<List<GestioneFormBean>> listaForm = formDAO.getFormByStatus(email);
 				
 				//list of open forms
 				List<GestioneFormBean>listaFormAperti = listaForm.get(0);

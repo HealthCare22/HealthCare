@@ -2,8 +2,13 @@
     pageEncoding="ISO-8859-1"%>
     
 <%@ page import = "Beans.MMGBean" %>
-<%@ page import = "DAO.Util" %>
-    
+<%@ page import = "DAO.UserDAO" %>
+<%@ page import="com.mongodb.client.MongoClient" %>
+
+<%
+    MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
+    UserDAO userDAO = new UserDAO(mongoClient);
+%>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +29,7 @@
 			{
 				response.sendRedirect("login.jsp");
 			} else {email = (String)session.getAttribute("email");}
-		MMGBean mmg = Util.recuperaUser(email);
+		MMGBean mmg = userDAO.recuperaUser(email);
 	%>
 
 
