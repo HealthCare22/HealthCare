@@ -9,13 +9,12 @@ import javax.servlet.annotation.*;
 public class EnvironmentListener implements ServletContextListener, HttpSessionListener, HttpSessionAttributeListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+        // FIXME: Investigate why it does not load the .env
         Dotenv dotenv = Dotenv
                 .configure()
-                .ignoreIfMalformed()
                 .ignoreIfMissing()
+                .ignoreIfMalformed()
                 .load();
-
-        System.out.println(dotenv.entries());
 
         sce.getServletContext().setAttribute("DOTENV", dotenv);
     }
