@@ -1,7 +1,9 @@
 package servlet;
 import java.io.IOException; 
-import DAO.Util;
+import DAO.UserDAO;
 import Beans.MMGBean;
+import com.mongodb.client.MongoClient;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,12 +39,14 @@ public class LoginServlet extends HttpServlet {
         	HttpSession currentSession= req.getSession();
         	currentSession.setAttribute("email",param1);
         	currentSession.setMaxInactiveInterval(5*60);
-        	MMGBean mmg = Util.recuperaUser(param1);
-        
+
+            MongoClient mongoClient = (MongoClient) req.getServletContext().getAttribute("MONGO_CLIENT");
+            UserDAO userDAO = new UserDAO(mongoClient);
+        	MMGBean mmg = userDAO.recuperaUser(param1);
         	
         	req.setAttribute("datiMedico", mmg);
 
-            boolean isUserFound = Util.searchUserInDb(param1, param2);
+            boolean isUserFound = userDAO.searchUserInDb(param1, param2);
              if(isUserFound) {               
                  req.getRequestDispatcher("/MyForm.jsp").forward(req, resp);
              } else {

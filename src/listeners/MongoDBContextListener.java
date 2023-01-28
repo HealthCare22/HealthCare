@@ -19,8 +19,6 @@ public class MongoDBContextListener implements ServletContextListener {
 
         try {
             String connectionURI = dotenv.get("MONGODB_CONNECTION_STRING");
-            System.out.println(connectionURI);
-            System.out.println(dotenv.entries());
             MongoClient mongo = MongoClients.create(connectionURI);
 
             ctx.setAttribute("MONGO_CLIENT", mongo);
