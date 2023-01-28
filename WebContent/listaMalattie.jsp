@@ -18,19 +18,23 @@
 	<div id="Titolo">
 			<h1>Elenco delle malattie rare</h1>
 	</div>
-
-		<%List<GestioneMalattieBean>listaMalattie = UtilRicerca.getMalattie(); %>
+		<%List<GestioneMalattieBean>listaMalattie = (List<GestioneMalattieBean>)request.getAttribute("listaMalattie"); %>
 
 		<div id = "elencoMalattie">
-		<%for(GestioneMalattieBean m : listaMalattie){ %>
 		<div id="malattiaContainer">
             <div class="elenco">
-             <h3> <%= m.getNome().toUpperCase() %></h3>
+             <table>
+             	<tr>
+             		<th>Nome Malattia</th>
+             	</tr>
+             		<%for(GestioneMalattieBean m : listaMalattie){ 
+             		String nomeMalattia = m.getNome();%>
+             		<tr>
+             			<td><a id="linkMalattia" href="RicercaPerNomeServlet?nomeMalattia=<%=nomeMalattia%>"><%=nomeMalattia %></a></td>
+             		</tr>
+             		<%} %>
+             </table>
             </div>
-            <div>
-            	<form action="RicercaPerNomeServlet" method="get">
-					<button class = "ButtonVediForm" name="nomeMalattia" value=<%=m.getNome() %>>Vedi Dettagli</button>
-				</form>
-			</div>
-		</div> <%}%>
+		</div> 
 		</div>
+</body>

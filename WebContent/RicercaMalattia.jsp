@@ -51,13 +51,15 @@
             <h1>Ricerca Malattia Rara</h1>
             <hr>
             <div id="nomeSintomoContainer">
-                <input type="text" class="nomeSintomo" id="Sintomo1" placeholder="Nome Sintomo">
+                <input type="text" class="nomeSintomo" id="Sintomo1" name="Sintomo1" placeholder="Nome Sintomo">
             </div>
+            <form method="post" action="RicercaPerSintomiServlet">
                 <div class="buttons">
                     <button id="rimuoviSintomoButton" onclick="removeSintomo()">Annulla</button>
                     <button id="aggiungiSintomoButton" onclick="addSintomo()">Aggiungi Sintomo</button>
-                    <button id="cercaPerSintomiButton">Cerca</button>
+                    <button type = "submit" id="cercaPerSintomiButton">Cerca</button>
                 </div>
+             </form>   
         </div>
         
     </div>
