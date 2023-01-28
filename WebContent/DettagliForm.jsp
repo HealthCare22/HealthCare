@@ -3,6 +3,20 @@
 <%@ page import="DAO.UtilForm" %>
 <%@ page import="Beans.GestioneFormBean" %>    
 
+
+
+<%
+
+	Collection<?> allInterventi = (Collection<?>) request.getAttribute("listaInterventi"); 	
+	String idForm = (String)request.getParameter("id");
+	
+
+
+%>
+
+	
+
+<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,Beans.GestioneInterventiBean"%>
 <!DOCTYPE html>
 <html>
 
@@ -15,12 +29,13 @@
 <body>
 	<jsp:include page="navbar.jsp"/>
 	
+	
+	<% GestioneFormBean form = UtilForm.getFormById(idForm); %>
 	<div id="Titolo">
 			<h1>Dettagli del Form</h1>
 		</div>
 		
-		<%String idForm = (String)request.getParameter("id"); 
-		GestioneFormBean form = UtilForm.getFormById(idForm);%>
+		
 		<div id="Dettaglio">
 		
 		<div id="Dettaglio1ariga">
@@ -58,23 +73,68 @@
 		</div>
 		</div>
 		
+ <% 
+  if(allInterventi != null && allInterventi.size() != 0){
+		Iterator<?> it = allInterventi.iterator();
+		while (it.hasNext()) {
+			GestioneInterventiBean bean = (GestioneInterventiBean) it.next();
+
+%>
+		<div>
+			<table>
+				<tr><%=bean.getEmail_medico() %></tr>
+				<tr><%=bean.getDescrizione()%></tr>
+				
+			</table>
+		
+		
+		</div>
+		
+		
+<%
+		}
+  }
+	 else {
+%>
+
+	<p>No interventi available</p>
+
+<%
+	}
+	
+%>
+
+
+		<%
+			HttpSession sessione = request.getSession();
+			sessione.setAttribute("id_form", idForm);
+		%>
+
+	<form method="GET" action="InserimentoInterventoServlet">
 		<div class="interventi-container">
 			<div class="intervento-MMG">
 				<div class="img">
 		                <img id="profilo"src="./images/sample.jpg" alt="Foto Profilo">
 		        </div>
 				<div class="InfoProfilo1">
-					<h3></h3>
+					<h1>Autore: <%=form.getAutore() %></h1>
 				</div>
 			</div>
+			<%
+
+				String q = "InserimentoInterventoServlet?id="+idForm;
+
+				System.out.println(q);
+
+%>
 			
 			<div class="text-intervento">
 				<textarea id="descrizione" name="descrizione" rows="10" cols="50" placeholder="Descrizione" maxlength="800"></textarea>
 			</div>
 			<div class="intervento-button"> 
-				<button class="Button">Pubblica</button>
+				<button type="submit" class="Button">Pubblica</button>
 			</div>
 		</div>
-		
+		</form>
 </body>
 </html>
