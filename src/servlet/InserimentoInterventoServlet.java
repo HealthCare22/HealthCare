@@ -11,8 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Beans.GestioneInterventiBean;
-import DAO.InterventoUtil;
-import DAO.UtilForm;
+import DAO.InterventoDAO;
 
 /**
  * Servlet implementation class InserimentoInterventoServlet
@@ -53,11 +52,11 @@ public class InserimentoInterventoServlet extends HttpServlet {
             
 		}else {
 			
-			boolean addIntervento = InterventoUtil.addIntervento(email, descrizione, id_form);
+			boolean addIntervento = InterventoDAO.addIntervento(email, descrizione, id_form);
 			
 			if(addIntervento) {   
 				
-				List<GestioneInterventiBean> listaInterventi = InterventoUtil.recuperaInterventi(id_form, email);
+				List<GestioneInterventiBean> listaInterventi = InterventoDAO.recuperaInterventi(id_form, email);
 				request.setAttribute("ListaInterventi", listaInterventi);
 				
 	            request.getRequestDispatcher("/DettagliForm.jsp").forward(request, response);
