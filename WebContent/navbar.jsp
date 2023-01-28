@@ -2,7 +2,6 @@
     pageEncoding="ISO-8859-1"%>
     
 <%@ page import = "Beans.MMGBean" %>
-<%@ page import = "DAO.Util" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>

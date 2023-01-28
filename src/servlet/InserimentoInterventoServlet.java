@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Beans.GestioneInterventiBean;
-import DAO.InterventoUtil;
-import DAO.UtilForm;
+import DAO.InterventoDAO;
+import com.mongodb.client.MongoClient;
 
 /**
  * Servlet implementation class InserimentoInterventoServlet
@@ -36,8 +36,6 @@ public class InserimentoInterventoServlet extends HttpServlet {
 		
 		String descrizione = request.getParameter("descrizione");
 
-		
-		
 		HttpSession http = request.getSession();
 		String email = (String) http.getAttribute("email");
 		String id_form = (String) http.getAttribute("id_form");
@@ -52,12 +50,13 @@ public class InserimentoInterventoServlet extends HttpServlet {
 			request.getRequestDispatcher("/MyForm.jsp").forward(request, response);
             
 		}else {
-			
-			boolean addIntervento = InterventoUtil.addIntervento(email, descrizione, id_form);
+			MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
+			InterventoDAO interventoDAO = new InterventoDAO(mongoClient);
+			boolean addIntervento = interventoDAO.addIntervento(email, descrizione, id_form);
 			
 			if(addIntervento) {   
 				
-				List<GestioneInterventiBean> listaInterventi = InterventoUtil.recuperaInterventi(id_form, email);
+				List<GestioneInterventiBean> listaInterventi = interventoDAO.recuperaInterventi(id_form, email);
 				request.setAttribute("ListaInterventi", listaInterventi);
 				
 	            request.getRequestDispatcher("/DettagliForm.jsp").forward(request, response);

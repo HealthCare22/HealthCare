@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="Beans.GestioneMalattieBean" %>
-<%@ page import="DAO.UtilRicerca" %>
 <!DOCTYPE html>
 <html>
 
