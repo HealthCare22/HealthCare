@@ -7,8 +7,16 @@
 
 <%
 
-	Collection<?> allInterventi = (Collection<?>) request.getAttribute("listaInterventi"); 	
-	String idForm = (String)request.getParameter("id");
+	
+	
+	Collection<?> allInterventi = (Collection<?>)request.getAttribute("listaInterventi");
+
+	HttpSession sessione = request.getSession();
+	String idForm = (String) sessione.getAttribute("idform");
+
+	GestioneFormBean form = (GestioneFormBean)request.getAttribute("formById");
+	
+	
 	MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
 	FormDAO formDAO = new FormDAO(mongoClient);
 
@@ -30,7 +38,7 @@
 	<jsp:include page="navbar.jsp"/>
 	
 	
-	<% GestioneFormBean form = formDAO.getFormById(idForm); %>
+
 	<div id="Titolo">
 			<h1>Dettagli del Form</h1>
 		</div>
@@ -66,14 +74,19 @@
 				</div>
 		</div>
 		<div id="Buttons">
-			<h1>Stato:Aperto</h1>
+			<% if(form.getStatus()){ %>
+				<h1>Stato: Aperto</h1>
+			
+		<%} else{ %>
+				<h1>Stato: Chiuso</h1>
+		
+			<% } %>
 			<button class="Button">Modifica</button>
 			<button class="Button">Elimina</button>
 			<button class="Button">Chiudi Form</button>
 		</div>
 		</div>
-		
- <% 
+<% 
   if(allInterventi != null && allInterventi.size() != 0){
 		Iterator<?> it = allInterventi.iterator();
 		while (it.hasNext()) {
@@ -105,10 +118,7 @@
 %>
 
 
-		<%
-			HttpSession sessione = request.getSession();
-			sessione.setAttribute("id_form", idForm);
-		%>
+	
 
 	<form method="GET" action="InserimentoInterventoServlet">
 		<div class="interventi-container">

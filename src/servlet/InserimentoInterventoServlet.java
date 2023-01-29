@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Beans.GestioneFormBean;
 import Beans.GestioneInterventiBean;
+import DAO.FormDAO;
 import DAO.InterventoDAO;
 import com.mongodb.client.MongoClient;
 
@@ -35,11 +37,9 @@ public class InserimentoInterventoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String descrizione = request.getParameter("descrizione");
-
 		HttpSession http = request.getSession();
 		String email = (String) http.getAttribute("email");
-		String id_form = (String) http.getAttribute("id_form");
-		
+		String id_form = (String) http.getAttribute("idform");
 		
 		System.out.println(descrizione + id_form + email);
 		
@@ -52,20 +52,19 @@ public class InserimentoInterventoServlet extends HttpServlet {
 		}else {
 			MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
 			InterventoDAO interventoDAO = new InterventoDAO(mongoClient);
-			boolean addIntervento = interventoDAO.addIntervento(email, descrizione, id_form);
+			List<GestioneInterventiBean> addIntervento = interventoDAO.addIntervento(email, descrizione, id_form);
+			request.setAttribute("listaInterventi", addIntervento);
 			
-			if(addIntervento) {   
-				
-				List<GestioneInterventiBean> listaInterventi = interventoDAO.recuperaInterventi(id_form, email);
-				request.setAttribute("ListaInterventi", listaInterventi);
-				
+			FormDAO formDAO = new FormDAO(mongoClient);
+			GestioneFormBean form = formDAO.getFormById(id_form);
+			request.setAttribute("formById", form);
+			
+				if(addIntervento!=null) {
 	            request.getRequestDispatcher("/DettagliForm.jsp").forward(request, response);
-	         } else {
-	             request.setAttribute("error_message", "Aggiunta dell'intervento fallita");
-	             request.getRequestDispatcher("/MyForm.jsp").forward(request, response);
-	         }   
+				}
 		}
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
