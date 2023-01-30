@@ -14,11 +14,13 @@
 	HttpSession sessione = request.getSession();
 	String idForm = (String) sessione.getAttribute("idform");
 
-	GestioneFormBean form = (GestioneFormBean)request.getAttribute("formById");
+	GestioneFormBean form = (GestioneFormBean) request.getAttribute("formById");
 	
 	
 	MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
 	FormDAO formDAO = new FormDAO(mongoClient);
+
+	sessione.setAttribute("status", form.getStatus());
 
 %>
 
@@ -83,7 +85,17 @@
 			<% } %>
 			<button class="Button">Modifica</button>
 			<button class="Button">Elimina</button>
-			<button class="Button">Chiudi Form</button>
+			
+		<% if(form.getStatus()){ %>
+			<form method="GET" action="ApriChiudiFormServlet">
+				<button type="submit" class="Button">Chiudi Form</button>
+			</form>
+			<%}else{ %>
+				<form method="GET" action="ApriChiudiFormServlet">
+				<button type="submit" class="Button">Apri Form</button>
+				</form>
+		<% }%>
+			
 		</div>
 		</div>
 <% 
@@ -107,19 +119,10 @@
 <%
 		}
   }
-	 else {
-%>
-
-	<p>No interventi available</p>
-
-<%
-	}
-	
-%>
-
+	 %>
 
 	
-
+<% if(form.getStatus()){ %>
 	<form method="GET" action="InserimentoInterventoServlet">
 		<div class="interventi-container">
 			<div class="intervento-MMG">
@@ -130,13 +133,7 @@
 					<h1>Autore: <%=form.getAutore() %></h1>
 				</div>
 			</div>
-			<%
 
-				String q = "InserimentoInterventoServlet?id="+idForm;
-
-				System.out.println(q);
-
-%>
 			
 			<div class="text-intervento">
 				<textarea id="descrizione" name="descrizione" rows="10" cols="50" placeholder="Descrizione" maxlength="800"></textarea>
@@ -146,5 +143,7 @@
 			</div>
 		</div>
 		</form>
+		
+	<%} %>
 </body>
 </html>

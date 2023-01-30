@@ -10,10 +10,10 @@ public class GestioneFormBean {
 	private Date dataChiusura;
 	private Boolean Status;
 	private String Topic;
-	private String idIntervento;
+
 	
 	public GestioneFormBean(String idform, String autore, String titolo, String descrizione, Date dataApertura,
-			Date dataChiusura, Boolean status, String topic, String idIntervento) {
+			Date dataChiusura, Boolean status, String topic) {
 		super();
 		this.idform = idform;
 		this.autore = autore;
@@ -23,7 +23,7 @@ public class GestioneFormBean {
 		this.dataChiusura = dataChiusura;
 		Status = status;
 		Topic = topic;
-		this.idIntervento = idIntervento;
+		
 	}
 	
 	
@@ -82,12 +82,6 @@ public class GestioneFormBean {
 	}
 	public void setTopic(String topic) {
 		Topic = topic;
-	}
-	public String getIdIntervento() {
-		return idIntervento;
-	}
-	public void setIdIntervento(String idIntervento) {
-		this.idIntervento = idIntervento;
 	}
 	
 	

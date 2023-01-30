@@ -19,6 +19,7 @@
 	</div>
 	<div class="login">
 		<h1 id="labelaccount">Accedi ad Health Care</h1>
+
 	<form method="post" action="LoginServlet">
 		<div class="LoginInformation">
 			<div>

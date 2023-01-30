@@ -28,8 +28,9 @@
 		if(session.getAttribute("email") == null)
 			{
 				response.sendRedirect("login.jsp");
-			} else {email = (String)session.getAttribute("email");}
-		MMGBean mmg = userDAO.recuperaUser(email);
+			} else {
+				email = (String)session.getAttribute("email");}
+				MMGBean mmg = userDAO.recuperaUser(email);
 	%>
 
 

@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.mongodb.client.*;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 import com.mongodb.client.model.Filters;
@@ -58,7 +59,7 @@ public class FormDAO {
             Boolean status = d.getBoolean("status");
 
 
-            GestioneFormBean bean = new GestioneFormBean(id, autoreForm, titolo, descrizione, dataApertura, dataChiusura, status, topic, "0");
+            GestioneFormBean bean = new GestioneFormBean(id, autoreForm, titolo, descrizione, dataApertura, dataChiusura, status, topic);
             listaForm.add(bean);
         }
 
@@ -90,7 +91,7 @@ public class FormDAO {
             Boolean status = d.getBoolean("status");
 
 
-            GestioneFormBean bean = new GestioneFormBean(id, autoreForm, titolo, descrizione, dataApertura, dataChiusura, status, topic, "0");
+            GestioneFormBean bean = new GestioneFormBean(id, autoreForm, titolo, descrizione, dataApertura, dataChiusura, status, topic);
 
             //add the bean to the appropriate list
             if (status) {
@@ -103,10 +104,28 @@ public class FormDAO {
         listaForm.add(listaFormChiusi);
         return listaForm;
     }
+    
+    
+    public void setStatusFalse(String id) {
+
+    	 
+    	 Document query = new Document("_id", new ObjectId(id));
+    	 Document update = new Document("$set", new Document("status", false));
+                 
+         this.collection.updateOne(query, update);
+
+    }
+    
+    public void setStatusTrue(String id) {
+    	 Document query = new Document("_id", new ObjectId(id));
+    	 Document update = new Document("$set", new Document("status", true));
+                 
+         this.collection.updateOne(query, update);
+
+    }
 
     public GestioneFormBean getFormById(String id) {
-        //Query to filter the results, the output is a Finterable<Document> containing
-        //the form
+       
         FindIterable<Document> cursor = this.collection.find(Filters.eq("_id", new ObjectId(id)));
         GestioneFormBean bean = null;
         for (Document d : cursor) {
@@ -121,7 +140,7 @@ public class FormDAO {
             Boolean status = d.getBoolean("status");
 
 
-            bean = new GestioneFormBean(id, autoreForm, titolo, descrizione, dataApertura, dataChiusura, status, topic, "0");
+            bean = new GestioneFormBean(id, autoreForm, titolo, descrizione, dataApertura, dataChiusura, status, topic);
         }
         return bean;
     }
