@@ -1,3 +1,12 @@
+$.ajax({
+  type: "GET",
+  url: "your-server-side-code.jsp",
+  success: function(data) {
+    // Display data on the page
+    $("#display").html(data);
+  }
+});
+
 function goToContatti(){
      info1=document.getElementsByClassName("info"); //non si deve vedere
      info2=document.getElementsByClassName("info2"); //si deve vedere
@@ -63,7 +72,6 @@ function edit(){
     indirizzo=document.getElementById("indirizzo");
 
 
-    data.readOnly= false;
     email.readOnly= false;
     password.readOnly= false;
     telefono.readOnly= false;

@@ -19,30 +19,42 @@ public class EditProfile extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String nome = request.getParameter("name");
-        String cognome = request.getParameter("surname");
-        String sesso = request.getParameter("gender");
-        String eta = request.getParameter("eta");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        String provincia = request.getParameter("provincia");
-        String comune = request.getParameter("comune");
-        String indirizzo = request.getParameter("indirizzo");
-        String numero_telefono = request.getParameter("numero_telefono");
+        String nome = request.getParameter("name").trim();
+        String cognome = request.getParameter("surname").trim();
+        String sesso = request.getParameter("gender").trim();
+        String eta = request.getParameter("eta").trim();
+        String password = request.getParameter("password").trim();
+        String email = request.getParameter("email").trim();
+        String oldmail = (String) request.getSession().getAttribute("email");
+        String provincia = request.getParameter("provincia").trim();
+        String comune = request.getParameter("comune").trim();
+        String indirizzo = request.getParameter("indirizzo").trim();
+        String numero_telefono = request.getParameter("numero_telefono").trim();
 
-        MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
-        UserDAO userDAO = new UserDAO(mongoClient);
-
-        boolean isUserFound = userDAO.editUserInDb(nome, cognome, sesso, eta, password, email,
-                provincia, comune, indirizzo, numero_telefono);
-
-        if (isUserFound) {
+        if (nome == null || cognome == null || sesso == null || eta == null || password == null ||
+                email == null || provincia == null || comune == null || indirizzo == null ||
+                numero_telefono == null || "".equals(nome) || "".equals(cognome)
+                || "".equals(sesso) || "".equals(eta) || "".equals(password) || "".equals(email)
+                || "".equals(provincia) || "".equals(comune) || "".equals(indirizzo) || "".equals(numero_telefono)) {
+            System.out.println("Esito errato per campi dati vuoti");
+            System.out.print(nome + "," + cognome + "," + sesso + "," + eta + "," + password + "," + email + "," 
+            + "," +provincia + "," + comune + "," + indirizzo + "," + numero_telefono);
             request.getRequestDispatcher("/profile.jsp").forward(request, response);
-            System.out.println("Modifica avvenuta");
         } else {
-            System.out.println("Esito errato per Utente non iserito (UserFound)");
-            request.setAttribute("error_message", "You are not an authorised user. Please check with administrator.");
-            request.getRequestDispatcher("/profile.jsp").forward(request, response);
+            MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
+            UserDAO userDAO = new UserDAO(mongoClient);
+            boolean isUserFound = userDAO.editUserInDb(password, email,
+                    provincia, comune, indirizzo, numero_telefono,oldmail);
+            
+            request.getSession().setAttribute("email", email);
+            if (isUserFound) {
+                request.getRequestDispatcher("/profile.jsp").forward(request, response);
+                System.out.println("Modifica avvenuta");
+            } else {
+                System.out.println("Esito errato per Utente non iserito (UserFound)");
+                request.setAttribute("error_message", "You are not an authorised user. Please check with administrator.");
+                request.getRequestDispatcher("/profile.jsp").forward(request, response);
+            }
         }
     }
 }
