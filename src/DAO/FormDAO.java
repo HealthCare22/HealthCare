@@ -144,4 +144,11 @@ public class FormDAO {
         }
         return bean;
     }
+    
+    public void deleteForm(String id) {
+    
+    	
+    	this.collection.deleteOne(Filters.eq("_id", new ObjectId(id)));
+
+    }
 }

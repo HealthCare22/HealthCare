@@ -61,4 +61,11 @@ public  List<GestioneInterventiBean> recuperaInterventi(String id ) {
 
  }
 
+	public void deleteInterventi(String id) {
+		
+		this.collection.deleteMany(Filters.eq("id_form", id));
+		
+		
+	}
+
 }

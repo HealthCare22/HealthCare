@@ -84,7 +84,10 @@
 		
 			<% } %>
 			<button class="Button">Modifica</button>
-			<button class="Button">Elimina</button>
+			
+			<form method="GET" action="EliminaFormServlet">
+				<button class="Button">Elimina</button>
+			</form>
 			
 		<% if(form.getStatus()){ %>
 			<form method="GET" action="ApriChiudiFormServlet">
@@ -92,7 +95,7 @@
 			</form>
 			<%}else{ %>
 				<form method="GET" action="ApriChiudiFormServlet">
-				<button type="submit" class="Button">Apri Form</button>
+				<button type="submit" class="Button">Riapri Form</button>
 				</form>
 		<% }%>
 			
