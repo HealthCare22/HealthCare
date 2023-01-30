@@ -67,5 +67,12 @@ public  List<GestioneInterventiBean> recuperaInterventi(String id ) {
 		
 		
 	}
+	
+	public void updateEmailInterventi(String oldEmail, String email) {
+		Document query = new Document("email",oldEmail);
+        Document update = new Document("$set",new Document().append("email", email));
+
+        this.collection.updateMany(query, update);
+	}
 
 }

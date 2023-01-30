@@ -13,6 +13,7 @@ import org.bson.types.ObjectId;
 import com.mongodb.client.model.Filters;
 
 import Beans.GestioneFormBean;
+import Beans.GestioneInterventiBean;
 
 public class FormDAO {
     private final MongoCollection<Document> collection;
@@ -34,7 +35,6 @@ public class FormDAO {
                 .append("status", true)
                 .append("DataApertura", todaysDate)
                 .append("DataChiusura", null)
-                .append("idIntervento", 0)
                 .append("autore", email);
 
         this.collection.insertOne(document);
@@ -168,4 +168,19 @@ public class FormDAO {
     	
        
     }
+    
+    
+    public void updateEmail(String oldEmail, String email) {
+   	 
+    	Document query = new Document("autore",oldEmail);
+        Document update = new Document("$set",new Document().append("autore", email));
+
+        this.collection.updateMany(query, update);
+			 
+        }
+    	
+    	
+    	
+    	
+    
 }

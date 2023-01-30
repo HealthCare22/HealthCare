@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.FormDAO;
+import DAO.InterventoDAO;
 import DAO.UserDAO;
 import com.mongodb.client.MongoClient;
 
@@ -45,6 +47,14 @@ public class EditProfile extends HttpServlet {
             UserDAO userDAO = new UserDAO(mongoClient);
             boolean isUserFound = userDAO.editUserInDb(password, email,
                     provincia, comune, indirizzo, numero_telefono,oldmail);
+            
+            
+            FormDAO formDAO = new FormDAO(mongoClient);
+            formDAO.updateEmail(oldmail,email);
+            
+            
+            InterventoDAO interventoDAO = new InterventoDAO(mongoClient);
+            interventoDAO.updateEmailInterventi(oldmail, email);
             
             request.getSession().setAttribute("email", email);
             if (isUserFound) {
