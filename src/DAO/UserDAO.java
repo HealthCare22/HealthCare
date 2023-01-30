@@ -85,10 +85,10 @@ public class UserDAO {
         return mmg;
     }
 
-    public boolean editUserInDb(String nome, String cognome, String sesso, String eta, String password, String email,
-                                String provincia, String comune, String indirizzo, String numero_telefono) {
+    public boolean editUserInDb(String password, String email,
+            String provincia, String comune, String indirizzo, String numero_telefono, String oldmail) {
 
-        boolean user_found = false;
+        /*boolean user_found = false;*/
 
         // Create a query to find the document you want to update
 			/*BasicDBObject query = new BasicDBObject("email", email);
@@ -96,21 +96,19 @@ public class UserDAO {
 			// Create the update object with the new values
 			BasicDBObject updateDocument = new BasicDBObject();
 			updateDocument.append("$set", new BasicDBObject().append("fieldName", "newFieldValue"));*/
-        Document query = new Document("email", email);
+        Document query = new Document("email", oldmail);
         Document update = new Document("$set", new Document("email", email)
-                .append("cognome", cognome)
-                .append("nome_medico", nome)
                 .append("indirizzo", indirizzo)
-                .append("sesso", sesso)
-                .append("eta", eta)
                 .append("provincia", provincia)
                 .append("comune", comune)
                 .append("telefono", numero_telefono)
                 .append("password", password));
 
         this.collection.updateOne(query, update);
-        System.out.println(indirizzo + eta + provincia + comune + numero_telefono + password);
-        return user_found;
+        System.out.println(email + "," + indirizzo + "," + provincia + "," + comune + "," + numero_telefono + "," + password + "," + oldmail );
+       /* return user_found;*/
+        
+        return true;
 
     }
 }
