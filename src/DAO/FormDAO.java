@@ -151,4 +151,21 @@ public class FormDAO {
     	this.collection.deleteOne(Filters.eq("_id", new ObjectId(id)));
 
     }
+    
+    
+    public void updateForm(String id,String topic, String titolo, String descrizione) {
+    	
+
+    	
+    	Document query = new Document("_id", new ObjectId(id));
+         Document update = new Document("$set", new Document()
+                 .append("topic", topic)
+                 .append("titolo", titolo)
+                 .append("descrizione", descrizione));
+
+         this.collection.updateOne(query, update);
+    	
+    	
+       
+    }
 }

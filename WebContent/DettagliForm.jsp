@@ -15,7 +15,7 @@
 	String idForm = (String) sessione.getAttribute("idform");
 
 	GestioneFormBean form = (GestioneFormBean) request.getAttribute("formById");
-	
+	request.setAttribute("formById", form);
 	
 	MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
 	FormDAO formDAO = new FormDAO(mongoClient);
@@ -83,10 +83,12 @@
 				<h1>Stato: Chiuso</h1>
 		
 			<% } %>
-			<button class="Button">Modifica</button>
+			<form method="GET" action="ModificaForm.jsp">
+				<button type="submit" class="Button">Modifica</button>
+			</form>
 			
 			<form method="GET" action="EliminaFormServlet">
-				<button class="Button">Elimina</button>
+				<button type="submit" class="Button">Elimina</button>
 			</form>
 			
 		<% if(form.getStatus()){ %>
