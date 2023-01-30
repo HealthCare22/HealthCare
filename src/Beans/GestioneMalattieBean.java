@@ -1,5 +1,6 @@
 package Beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GestioneMalattieBean {
@@ -7,9 +8,9 @@ public class GestioneMalattieBean {
 	private int idMalattia;
 	private String nome;
 	private String descrizione;
-	private List<String> listaSintomi;
+	private List<Integer> listaSintomi;
 	
-	public GestioneMalattieBean(int idMalattia, String nome, String descrizione, List<String> listaSintomi) {
+	public GestioneMalattieBean(int idMalattia, String nome, String descrizione, List<Integer> listaSintomi) {
 		super();
 		this.idMalattia = idMalattia;
 		this.nome = nome;
@@ -23,6 +24,7 @@ public class GestioneMalattieBean {
 		this.idMalattia = idMalattia;
 		this.nome = nome;
 		this.descrizione = descrizione;
+		this.listaSintomi = new ArrayList<>();
 	}
 
 
@@ -44,10 +46,10 @@ public class GestioneMalattieBean {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	public List<String> getListaSintomi() {
+	public List<Integer> getListaSintomi() {
 		return listaSintomi;
 	}
-	public void setListaSintomi(List<String> listaSintomi) {
+	public void setListaSintomi(List<Integer> listaSintomi) {
 		this.listaSintomi = listaSintomi;
 	}
 	

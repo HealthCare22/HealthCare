@@ -1,12 +1,22 @@
 package DAO;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.PriorityQueue;
+import java.util.TreeMap;
 
 import com.mongodb.client.*;
+import com.mongodb.client.model.Filters;
+
 import org.bson.Document;
 
 import Beans.GestioneMalattieBean;
+import Beans.SintomoBean;
 
 public class MalattiaDAO {
     private final MongoCollection<Document> collection;
@@ -46,8 +56,62 @@ public class MalattiaDAO {
             String nome = doc.getString("nome_malattia");
             Integer codice = doc.getInteger("codice");
             String descrizione = doc.getString("descrizione");
-            listaMalattia.add(new GestioneMalattieBean(codice, nome, descrizione));
+            List<Integer> listaSintomi = new ArrayList<>();
+            for(int i=0; i<=5; i++) {
+            	Integer codiceSintomo = doc.getInteger("sintomo"+i);
+            	if(codiceSintomo!=null) {
+            		listaSintomi.add(codiceSintomo);
+            	}
+            }
+            listaMalattia.add(new GestioneMalattieBean(codice, nome, descrizione, listaSintomi));
         }
         return listaMalattia;
     }
+
+    private class Pair{
+    	public GestioneMalattieBean m;
+    	public Integer v;
+    	
+    	public Pair(GestioneMalattieBean m, Integer v) {
+    		this.m = m;
+    		this.v = v;
+    	}
+    	
+    }
+    
+	public List<GestioneMalattieBean> getMalattieBySintomi(List<SintomoBean> listaSintomi) {
+		List<GestioneMalattieBean> listaRisultato = new ArrayList<>();
+		List<GestioneMalattieBean> listaMalattie = getMalattie();
+		PriorityQueue<Pair> malattieOrdinate = new PriorityQueue<>(new Comparator<Pair>() {
+
+			@Override
+			public int compare(Pair o1, Pair o2) {
+				return o2.v - o1.v;
+			
+		}});
+		for(GestioneMalattieBean m : listaMalattie) {
+			Integer counter=0;
+			if((counter = checkSintomo(m,listaSintomi)) > 0) {
+				malattieOrdinate.add(new Pair(m,counter));
+			}
+		}
+
+		for(int i=0; i<malattieOrdinate.size(); i++) {
+			listaRisultato.add(malattieOrdinate.poll().m);
+		}
+		return listaRisultato;
+	}
+
+	private int checkSintomo(GestioneMalattieBean m, List<SintomoBean> listaSintomi) {
+		int count=0;
+		for(SintomoBean s : listaSintomi) {
+			List<Integer> listaSintomiPerMalattia = m.getListaSintomi();
+			for(Integer g : listaSintomiPerMalattia) {
+				if(s.getCodice() == g) {
+					count++;
+				}
+			}
+		}
+		return count;
+	}
 }

@@ -24,6 +24,7 @@ function addSintomo(){
                 input.placeholder = "Nome Sintomo "+s;
                 input.classList.add("nomeSintomo");
                 input.id="Sintomo"+s;
+                input.name="Sintomo"+s;
 
                 listaSintomi.appendChild(input);
               
