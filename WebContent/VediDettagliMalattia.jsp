@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="Beans.GestioneMalattieBean"%>    
+<%@ page import="Beans.GestioneMalattieBean"%>
+<%@ page import="Beans.SintomoBean"%>    
 
 <!DOCTYPE html>
 <html>
@@ -18,7 +19,8 @@
 	<div class="heading">
         <h1>Dettagli Malattia </h1>
     </div>
-	    <%List<GestioneMalattieBean>listaMalattie = (List<GestioneMalattieBean>) request.getAttribute("listaMalattia"); 
+	    <%List<GestioneMalattieBean>listaMalattie = (List<GestioneMalattieBean>) request.getAttribute("listaMalattia");
+	    List<SintomoBean>listaSintomi = (List<SintomoBean>) request.getAttribute("listaSintomi");
 	    %>
 		
 		<%for(GestioneMalattieBean m : listaMalattie){ %>
@@ -31,8 +33,13 @@
 		</div>
 		<div id="Dettaglio1ariga">
 			<div class="Info2">
-			<h3>Sintomi</h3>
-			</div>
+			<h3><b>Sintomi:</b></h3>
+			<ul>
+		<%for(Integer sCod : m.getListaSintomi()){ %>
+				<li>-<%= listaSintomi.get(sCod-10).getNome() %></li>
+	    <%} %>
+	    </ul>
+	    </div>
 	    </div>
 		<div id="Dettaglio1ariga">
 		  <div class="Commento">

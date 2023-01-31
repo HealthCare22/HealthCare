@@ -32,15 +32,21 @@ public class MalattiaDAO {
     public List<GestioneMalattieBean> RicercaPerNome(String nomeMalattia) {
         FindIterable<Document> cursor = this.collection.find();
         List<GestioneMalattieBean> listaMalattia = new ArrayList<>();
-
         //Creazione lista di form
         for (Document doc : cursor) {
             if (nomeMalattia.equals(doc.getString("nome_malattia"))) {
                 String nome = doc.getString("nome_malattia");
                 int codice = doc.getInteger("codice");
                 String descrizione = doc.getString("descrizione");
+                List<Integer>listaSintomi = new ArrayList<>();
+                for(int i=0; i<=5; i++) {
+                	Integer sintomo = doc.getInteger("sintomo"+i);
+                	if(sintomo!=null) { 
+                		listaSintomi.add(sintomo);
+                	}
+                }
 
-                listaMalattia.add(new GestioneMalattieBean(codice, nome, descrizione));
+                listaMalattia.add(new GestioneMalattieBean(codice, nome, descrizione, listaSintomi));
             }
         }
         return listaMalattia;
