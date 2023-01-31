@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.bson.types.ObjectId;
+
 import com.mongodb.client.MongoClient;
 
 import Beans.GestioneFormBean;
@@ -36,10 +38,15 @@ public class DettagliFormServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String idForm = (String) request.getParameter("id");
 		
-		HttpSession sessione = request.getSession();
-		sessione.setAttribute("idform", idForm);
+
+	
+			
+			System.out.print(idForm);
+			HttpSession sessione = request.getSession();
+			sessione.setAttribute("idform", idForm);
 	
 		
 		//request.setAttribute("id", idForm);

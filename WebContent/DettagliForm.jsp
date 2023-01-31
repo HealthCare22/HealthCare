@@ -13,6 +13,7 @@
 
 	HttpSession sessione = request.getSession();
 	String idForm = (String) sessione.getAttribute("idform");
+	String email = (String) sessione.getAttribute("email");
 
 	GestioneFormBean form = (GestioneFormBean) request.getAttribute("formById");
 	request.setAttribute("formById", form);
@@ -83,13 +84,15 @@
 				<h1>Stato: Chiuso</h1>
 		
 			<% } %>
-			<form method="GET" action="ModificaForm.jsp">
-				<button type="submit" class="Button">Modifica</button>
-			</form>
 			
-			<form method="GET" action="EliminaFormServlet">
-				<button type="submit" class="Button">Elimina</button>
-			</form>
+			<%if(form.getAutore().equals(email)){%>
+				<form method="GET" action="ModificaForm.jsp">
+					<button type="submit" class="Button">Modifica</button>
+				</form>
+				
+				<form method="GET" action="EliminaFormServlet">
+					<button type="submit" class="Button">Elimina</button>
+				</form>
 			
 		<% if(form.getStatus()){ %>
 			<form method="GET" action="ApriChiudiFormServlet">
@@ -100,7 +103,7 @@
 				<button type="submit" class="Button">Riapri Form</button>
 				</form>
 		<% }%>
-			
+		<%} %>	
 		</div>
 		</div>
 <% 
