@@ -75,4 +75,16 @@ public  List<GestioneInterventiBean> recuperaInterventi(String id ) {
         this.collection.updateMany(query, update);
 	}
 
+
+	public List<GestioneInterventiBean> getInterventiByEmail(String email) {
+		FindIterable<Document> cursor = this.collection.find(Filters.eq("email",email));
+		List<GestioneInterventiBean> listaInterventi = new ArrayList<>();
+		for(Document d : cursor) {
+			String descrizione = d.getString("descrizione");
+			String idForm = d.getString("id_form");
+			listaInterventi.add(new GestioneInterventiBean(idForm, descrizione, email));
+		}
+		return listaInterventi;
+	}
+
 }

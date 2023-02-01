@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List" %>
+<%@ page import="Beans.GestioneInterventiBean" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,28 +28,28 @@
 		</div>
 		
 	<div id="Interventi">
-		
+		<% List<GestioneInterventiBean>listaInterventi = (List<GestioneInterventiBean>) request.getAttribute("listaInterventi"); %>
+		<%for(GestioneInterventiBean i : listaInterventi){ %>
 		<div id="InterventiInterno1aRiga">
 		    <div class="img">
                 <img id="profilo"src="./images/sample.jpg" alt="Foto Profilo">
             </div>
 			<div id="FirstBox">
-				<button class = "Button">NOME DOTTORE</button>
+				<button class = "Button"><%= i.getEmail_medico()%></button>
 			</div>
-			<div id="FirstBox">
-				<button class = "Button">DD/MM/YYYY</button>
-			</div>
+			<form action = "DettaglioFormServlet">
 			<div id="buttonForm">
-				<button class = "ButtonVediForm">Vedi Form</button>
+				<button class = "ButtonVediForm" name="id" value=<%=i.getId_form() %>>Vedi Form</button>
 			</div>
+			</form>
 		</div>
 		
 			<div id="InterventiInterno2aRiga">
 		        <div class="Commento">
-  					<h3>Intervento di un medico</h3>
+  					<h3><%= i.getDescrizione()%></h3>
 				</div>
 			</div>
-			
+			<%} %>
 		</div>
 	</body>
 </html>
