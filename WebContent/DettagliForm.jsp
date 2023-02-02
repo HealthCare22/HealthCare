@@ -145,7 +145,7 @@
 				<textarea id="descrizione" name="descrizione" rows="10" cols="50" placeholder="Descrizione" minlength="2" maxlength="800"></textarea>
 			</div>
 			<div class="intervento-button"> 
-				<button type="submit" class="Button">Pubblica</button>
+				<button id="pubblica" type="submit" class="Button">Pubblica</button>
 			</div>
 		</div>
 		</form>
