@@ -102,8 +102,8 @@ public class MalattiaDAO {
 			}
 		}
 
-		for(int i=0; i<malattieOrdinate.size(); i++) {
-			listaRisultato.add(malattieOrdinate.poll().m);
+		for(Pair p : malattieOrdinate) {
+			listaRisultato.add(p.m);
 		}
 		return listaRisultato;
 	}
