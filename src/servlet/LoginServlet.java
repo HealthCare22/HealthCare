@@ -26,7 +26,6 @@ public class LoginServlet extends HttpServlet {
         // Reading post parameters from the request
         String param1 = req.getParameter("email"), 
                 param2 = req.getParameter("password");
-        System.out.println(param1 + "," +param2);
  
         // Checking for null and empty values
         if(param1 == null || param2 == null || "".equals(param1) || "".equals(param2)) {

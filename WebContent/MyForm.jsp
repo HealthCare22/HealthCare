@@ -49,7 +49,6 @@
 				if(listaForm != null){
 				for(GestioneFormBean f : listaFormAperti){%>
 					<tr>
-						
 						<td><%= f.getTitolo() %></td>
 						<td><%= f.getDataApertura() %></td>
 						<td><form method = "get" action="DettaglioFormServlet"> 

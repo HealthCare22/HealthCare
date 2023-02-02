@@ -136,7 +136,7 @@
 		                <img id="profilo"src="./images/sample.jpg" alt="Foto Profilo">
 		        </div>
 				<div class="InfoProfilo1">
-					<h1>Autore: <%=form.getAutore() %></h1>
+					<p><b><%=form.getAutore() %></b></p>
 				</div>
 			</div>
 

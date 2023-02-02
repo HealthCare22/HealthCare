@@ -26,7 +26,6 @@
           </ul>
 
           <ul class="list-item-dx">
-            <li id="Notifiche"><a href="./notifiche.jsp">Notifiche</a></li>
             <li><a href="logout.jsp" id="Logout">Logout</a>
             </li>
           </ul>

@@ -38,9 +38,6 @@ public class EditProfile extends HttpServlet {
                 numero_telefono == null || "".equals(nome) || "".equals(cognome)
                 || "".equals(sesso) || "".equals(eta) || "".equals(password) || "".equals(email)
                 || "".equals(provincia) || "".equals(comune) || "".equals(indirizzo) || "".equals(numero_telefono)) {
-            System.out.println("Esito errato per campi dati vuoti");
-            System.out.print(nome + "," + cognome + "," + sesso + "," + eta + "," + password + "," + email + "," 
-            + "," +provincia + "," + comune + "," + indirizzo + "," + numero_telefono);
             request.getRequestDispatcher("/profile.jsp").forward(request, response);
         } else {
             MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
@@ -59,9 +56,7 @@ public class EditProfile extends HttpServlet {
             request.getSession().setAttribute("email", email);
             if (isUserFound) {
                 request.getRequestDispatcher("/profile.jsp").forward(request, response);
-                System.out.println("Modifica avvenuta");
             } else {
-                System.out.println("Esito errato per Utente non iserito (UserFound)");
                 request.setAttribute("error_message", "You are not an authorised user. Please check with administrator.");
                 request.getRequestDispatcher("/profile.jsp").forward(request, response);
             }
