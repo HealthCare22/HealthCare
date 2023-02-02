@@ -53,9 +53,7 @@
 			<div class="Info">
 				<h3>Titolo: <%=form.getTitolo() %></h3>
 			</div>
-			<div class="Info">
-				<h3>Topic: <%=form.getTopic() %></h3>
-			</div>
+			
 			<div class="Info">
 				<h3>Data Apertura: <%=form.getDataApertura() %></h3>
 			</div>

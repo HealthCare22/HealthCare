@@ -26,7 +26,7 @@
 
      <form method="post" action="AperturaFormServlet">
         <div class="information">
-            <input name="topic" type="text" placeholder="Topic">
+            
             <input name="titolo" type="text" placeholder="Titolo">
             <textarea name="descrizione" rows="10" cols="50" placeholder="Descrizione" maxlength="800"></textarea>
 			

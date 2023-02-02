@@ -49,7 +49,7 @@
 				if(listaForm != null){
 				for(GestioneFormBean f : listaFormAperti){%>
 					<tr>
-						<td><%= f.getTopic() %></td>
+						
 						<td><%= f.getTitolo() %></td>
 						<td><%= f.getDataApertura() %></td>
 						<td><form method = "get" action="DettaglioFormServlet"> 
@@ -63,7 +63,7 @@
 				<table>
 					<%for(GestioneFormBean f : listaFormChiusi){%>
 					<tr>
-						<td><%= f.getTopic() %></td>
+				
 						<td><%= f.getTitolo() %></td>
 						<td><%= f.getDataApertura() %></td>
 						<td><form method = "get" action="DettaglioFormServlet">  

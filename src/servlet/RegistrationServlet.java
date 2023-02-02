@@ -23,7 +23,6 @@ public class RegistrationServlet extends HttpServlet {
         String nome = request.getParameter("name");
         String cognome = request.getParameter("surname");
         String sesso = request.getParameter("gender");
-        String eta = request.getParameter("eta");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
         String provincia = request.getParameter("provincia");
@@ -33,19 +32,19 @@ public class RegistrationServlet extends HttpServlet {
 
 
         // Checking for null and empty values
-        if (nome == null || cognome == null || sesso == null || eta == null || password == null ||
+        if (nome == null || cognome == null || sesso == null || password == null ||
                 email == null || provincia == null || comune == null || indirizzo == null ||
                 numero_telefono == null || "".equals(nome) || "".equals(cognome)
-                || "".equals(sesso) || "".equals(eta) || "".equals(password) || "".equals(email)
+                || "".equals(sesso) || "".equals(password) || "".equals(email)
                 || "".equals(provincia) || "".equals(comune) || "".equals(indirizzo) || "".equals(numero_telefono)) {
             System.out.println("Esito errato per campi dati vuoti");
-            System.out.print(nome + cognome + sesso + eta + password + email + provincia + comune + indirizzo + numero_telefono);
+           
             request.setAttribute("error_message", "Please fill the registration form");
             request.getRequestDispatcher("/registration.jsp").forward(request, response);
         } else {
             MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
             UserDAO userDAO = new UserDAO(mongoClient);
-            boolean isUserFound = userDAO.appendUserInDb(nome, cognome, sesso, eta, password, email,
+            boolean isUserFound = userDAO.appendUserInDb(nome, cognome, sesso, password, email,
                     provincia, comune, indirizzo, numero_telefono);
 
             if (isUserFound) {

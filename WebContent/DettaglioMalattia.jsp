@@ -1,6 +1,7 @@
  <%
 	Collection<?> malattia = (Collection<?>) request.getAttribute("listaMalattia");
- 	if(malattia == null) {
+ 	
+ if(malattia == null) {
 		response.sendRedirect("./RicercaPerNomeServlet");
 		return;
 	}

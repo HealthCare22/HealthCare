@@ -27,13 +27,12 @@ public class FormDAO {
     }
 
 
-    public boolean CreateNewForm(String topic, String titolo, String descrizione, String email) {
-        LocalDate todaysDate = LocalDate.now();
-        Document document = new Document("topic", topic)
-                .append("titolo", titolo)
+    public boolean CreateNewForm(String titolo, String descrizione, String email) {
+    	Date data = new Date(System.currentTimeMillis());
+        Document document = new Document("titolo", titolo)
                 .append("descrizione", descrizione)
                 .append("status", true)
-                .append("DataApertura", todaysDate)
+                .append("DataApertura", data)
                 .append("DataChiusura", null)
                 .append("autore", email);
 
@@ -50,7 +49,6 @@ public class FormDAO {
         for (Document d : cursor) {
 
             String id = d.getObjectId("_id").toString();
-            String topic = d.getString("topic");
             String autoreForm = d.getString("autore");
             String titolo = d.getString("titolo");
             String descrizione = d.getString("descrizione");
@@ -59,7 +57,7 @@ public class FormDAO {
             Boolean status = d.getBoolean("status");
 
 
-            GestioneFormBean bean = new GestioneFormBean(id, autoreForm, titolo, descrizione, dataApertura, dataChiusura, status, topic);
+            GestioneFormBean bean = new GestioneFormBean(id, autoreForm, titolo, descrizione, dataApertura, dataChiusura, status);
             listaForm.add(bean);
         }
 
@@ -82,7 +80,6 @@ public class FormDAO {
 
             //Bean construction
             String id = d.getObjectId("_id").toString();
-            String topic = d.getString("topic");
             String autoreForm = d.getString("autore");
             String titolo = d.getString("titolo");
             String descrizione = d.getString("descrizione");
@@ -91,7 +88,7 @@ public class FormDAO {
             Boolean status = d.getBoolean("status");
 
 
-            GestioneFormBean bean = new GestioneFormBean(id, autoreForm, titolo, descrizione, dataApertura, dataChiusura, status, topic);
+            GestioneFormBean bean = new GestioneFormBean(id, autoreForm, titolo, descrizione, dataApertura, dataChiusura, status);
 
             //add the bean to the appropriate list
             if (status) {
@@ -108,9 +105,9 @@ public class FormDAO {
     
     public void setStatusFalse(String id) {
 
-    	 
+    	Date data = new Date(System.currentTimeMillis());
     	 Document query = new Document("_id", new ObjectId(id));
-    	 Document update = new Document("$set", new Document("status", false));
+    	 Document update = new Document("$set", new Document("status", false).append("DataChiusura", data));
                  
          this.collection.updateOne(query, update);
 
@@ -118,7 +115,7 @@ public class FormDAO {
     
     public void setStatusTrue(String id) {
     	 Document query = new Document("_id", new ObjectId(id));
-    	 Document update = new Document("$set", new Document("status", true));
+    	 Document update = new Document("$set", new Document("status", true).append("DataChiusura", null));
                  
          this.collection.updateOne(query, update);
 
@@ -130,8 +127,7 @@ public class FormDAO {
         GestioneFormBean bean = null;
         for (Document d : cursor) {
 
-            //Bean construction
-            String topic = d.getString("topic");
+          
             String autoreForm = d.getString("autore");
             String titolo = d.getString("titolo");
             String descrizione = d.getString("descrizione");
@@ -140,7 +136,7 @@ public class FormDAO {
             Boolean status = d.getBoolean("status");
 
 
-            bean = new GestioneFormBean(id, autoreForm, titolo, descrizione, dataApertura, dataChiusura, status, topic);
+            bean = new GestioneFormBean(id, autoreForm, titolo, descrizione, dataApertura, dataChiusura, status);
         }
         return bean;
     }
@@ -153,13 +149,13 @@ public class FormDAO {
     }
     
     
-    public void updateForm(String id,String topic, String titolo, String descrizione) {
+    public void updateForm(String id, String titolo, String descrizione) {
     	
 
     	
     	Document query = new Document("_id", new ObjectId(id));
          Document update = new Document("$set", new Document()
-                 .append("topic", topic)
+                 
                  .append("titolo", titolo)
                  .append("descrizione", descrizione));
 

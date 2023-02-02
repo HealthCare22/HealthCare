@@ -38,12 +38,12 @@ public class ModificaFormServlet extends HttpServlet {
 		MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
 		FormDAO formDAO = new FormDAO(mongoClient);
 		
-		String topic = request.getParameter("topic");
+
 		String titolo = request.getParameter("titolo");
 		String descrizione = request.getParameter("descrizione");
 		
 		
-		formDAO.updateForm(idForm, topic, titolo, descrizione);
+		formDAO.updateForm(idForm, titolo, descrizione);
 		
 		request.getRequestDispatcher("/MyForm.jsp").forward(request, response);
 		

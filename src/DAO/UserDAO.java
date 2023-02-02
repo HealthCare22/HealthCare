@@ -45,7 +45,7 @@ public class UserDAO {
     }
 
 
-    public boolean appendUserInDb(String nome, String cognome, String sesso, String eta, String password, String email,
+    public boolean appendUserInDb(String nome, String cognome, String sesso, String password, String email,
                                   String provincia, String comune, String indirizzo, String numero_telefono) {
 
         Document document = new Document("nome_medico", nome)
@@ -53,7 +53,6 @@ public class UserDAO {
                 .append("email", email)
                 .append("indirizzo", indirizzo)
                 .append("sesso", sesso)
-                .append("eta", eta)
                 .append("provincia", provincia)
                 .append("comune", comune)
                 .append("telefono", numero_telefono)

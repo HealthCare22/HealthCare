@@ -3,7 +3,15 @@
 <%@ page import="java.util.List" %>
 <%@ page import="Beans.GestioneMalattieBean"%>
 <%@ page import="Beans.SintomoBean"%>    
+<%@ page import="java.util.*" %>
 
+ <%
+	List<GestioneMalattieBean>listaMalattie = (List<GestioneMalattieBean>) request.getAttribute("listaMalattia");
+	 List<SintomoBean>listaSintomi = (List<SintomoBean>) request.getAttribute("listaSintomi");
+	 
+
+	    %>
+		
 <!DOCTYPE html>
 <html>
 
@@ -19,10 +27,7 @@
 	<div class="heading">
         <h1>Dettagli Malattia </h1>
     </div>
-	    <%List<GestioneMalattieBean>listaMalattie = (List<GestioneMalattieBean>) request.getAttribute("listaMalattia");
-	    List<SintomoBean>listaSintomi = (List<SintomoBean>) request.getAttribute("listaSintomi");
-	    %>
-		
+	   
 		<%for(GestioneMalattieBean m : listaMalattie){ %>
 		<div id="Dettaglio">		
 		<div id="Dettaglio1ariga">
