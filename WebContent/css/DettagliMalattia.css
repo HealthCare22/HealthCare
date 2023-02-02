@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+body{
+	  	font-family: 'Arial';
+    font-style: normal;
+    font-size: 18px;
+}
+
 .ButtonVediForm{
 	background: #35908B;
     border: 1px solid #35908B;
@@ -139,14 +145,13 @@
   display: inline-block;
   margin: 10px;
   border: 1px solid green ;
-  color: white;
   background-color: white;
+  padding-left:8px;
+  padding-right:8px;
   width: auto;
   height: auto;
+  }
   
-    
-    
-}
 .InfoProfilo {
 	
 	margin: 10px;
@@ -159,13 +164,6 @@
   height: 40px;
   float:left;
 }
-
-
-
-
-
-
-
 
 .heading{
 	
