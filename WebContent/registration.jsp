@@ -14,7 +14,7 @@
     </div>
     <div class="registration">
         <h1 class="labelaccount">Crea un nuovo account</h1>
-        <form id="registrationForm" method="post"  action="RegistrationServlet">
+        <form id="registrationForm" method="post" onSubmit="event.preventDefault(); validate(this)"  action="RegistrationServlet">
         <div id = "firstForm">
             <div class="registrationInformation">
 

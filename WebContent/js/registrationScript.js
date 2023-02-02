@@ -25,7 +25,7 @@ function changeForm(){
 }    
 
 
-/*
+
 function validate(obj){
 
 	
@@ -46,24 +46,25 @@ function validate(obj){
 			validatePassword(password,confirmPassword)&&
 			validateEmail(email,confirmEmail))
 		{
-			changeForm();//prima parte corretta
 			alert("prima parte corretta");
+			changeForm();//prima parte corretta
+			
 		}
 	if(validateProvincia(provincia)&&
 			validateComune(comune)&&
 			validateIndirizzo(indirizzo)&&
 			validateTelefono(telefono))
 		{
-		return true; //tutto corretto
+			obj.submit(); //tutto corretto
 		
 		}
 
-	event.preventDefault();
+	
 	
 }
 
 function validateName(data){
-	let RGX="^[a-z A-Z àéèìòù]{2,255}$";
+	let RGX=/^[a-z A-Z àéèìòù]{2,255}$/;
 	if(data.value.match(RGX))
 		{
 		
@@ -96,46 +97,49 @@ else
 }
 
 function validatePassword(data,confirmData){
-	let RGX="^(?=([^\s])*[0-9])(?=([^\s])*[a-zA-Z])([^\s]){8,24}$";
+	let RGX=/^(?=([^\s])*[0-9])(?=([^\s])*[a-zA-Z])([^\s]){8,24}$/;
 	if(data.value!=confirmData.value){
 		alert("le password non corrispondono");
 		document.getElementById("password").focus();
 		return false;	
 	}
-	if(data.value.match(RGX))
-	{
-	return true;
+	if(data.value.match(RGX)){
+		return true;
 	}
-	else
-	{
-	alert("password non valida");
-	document.getElementById("password").focus();
-	return false;
+	
+	
+	else{
+		alert("password non valida");
+		document.getElementById("password").focus();
+		return false;
 	}
 
 }
 
 function validateEmail(data,confirmData){
-	let RGX="([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)";
+	let RGX= /^\w+([.]?\w+)*@\w+([.]{1}\w+)*([.]{1}\w{2,3}){1}$/;
+	
+	alert(data.value);
+	
 	if(data.value!=confirmData.value){
 		alert("le email non corrispondono");
 		document.getElementById("email").focus();
 		return false;	
-	}
-	if(data.value.match(RGX))
-	{
-	return true;
-	}
-	else
-	{
-	alert("email non valida");
-	document.getElementById("email").focus();
-	return false;
+		}
+	
+	if(data.value.match(RGX)){
+			return true;
+		}
+	
+	else{
+		alert("email non valida");
+		document.getElementById("email").focus();
+		return false;
 	}
 
 }
 function validateProvincia(data){
-	let RGX="^[a-z A-Z àéèìòù]{2,255}$";
+	let RGX=/^[a-z A-Z àéèìòù]{2,255}$/;
 	if(data.value.match(RGX))
 	{
 	
@@ -149,7 +153,7 @@ else
 	}
 }
 function validateComune(data){
-	let RGX="^[a-z A-Z àéèìòù]{2,255}$";
+	let RGX=/^[a-z A-Z àéèìòù]{2,255}$/;
 	if(data.value.match(RGX))
 	{
 	
@@ -179,11 +183,15 @@ else
 	
 }
 function validateTelefono(data){
-	let RGX= "^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/";
+	
+	let RGX= /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
 	if(data.value.match(RGX))
 	{
+		alert("MOCC A SORT");
 		return true;
-		}
+		
+	}
+	
 	else
 	{
 		alert("Numero di telefono non valido");
@@ -193,7 +201,7 @@ function validateTelefono(data){
 	
 	
 }
-*/
+
 
 
 
