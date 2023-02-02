@@ -1,5 +1,8 @@
 package DAO;
 
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.*;
 
 import org.bson.Document;
@@ -11,6 +14,9 @@ import com.mongodb.client.model.Filters;
 
 import Beans.MMGBean;
 
+
+
+
 public class UserDAO {
     private final MongoCollection<Document> collection;
 
@@ -21,15 +27,31 @@ public class UserDAO {
         MongoDatabase database = client.getDatabase(UserDAO.DB_NAME);
         this.collection = database.getCollection(UserDAO.COLLECTION_NAME);
     }
-
+    
+    
+    public static String encrypt(String password) {
+    	   
+    	   try {
+    		   MessageDigest m = MessageDigest.getInstance("MD5");
+    		      m.update(password.getBytes(),0,password.length());     
+    		      return new BigInteger(1,m.digest()).toString(16); 
+    	        } 
+    	    catch (Exception ex) {
+    	         return null;
+    	    }
+    	   
+    	    
+    	}
+    
+  
     // Method to search a user in the mongodb
-    public boolean searchUserInDb(String loginId, String loginPwd) {
+    public boolean searchUserInDb(String loginId, String param2) {
         boolean user_found = false;
 
         // Get the particular record from the mongodb collection        
         List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
         obj.add(new BasicDBObject("email", loginId));
-        obj.add(new BasicDBObject("password", loginPwd));
+        obj.add(new BasicDBObject("password", param2));
 
         // Form a where query
         BasicDBObject whereQuery = new BasicDBObject();
@@ -87,21 +109,14 @@ public class UserDAO {
     public boolean editUserInDb(String password, String email,
             String provincia, String comune, String indirizzo, String numero_telefono, String oldmail) {
 
-        /*boolean user_found = false;*/
-
-        // Create a query to find the document you want to update
-			/*BasicDBObject query = new BasicDBObject("email", email);
-
-			// Create the update object with the new values
-			BasicDBObject updateDocument = new BasicDBObject();
-			updateDocument.append("$set", new BasicDBObject().append("fieldName", "newFieldValue"));*/
+    
         Document query = new Document("email", oldmail);
         Document update = new Document("$set", new Document("email", email)
                 .append("indirizzo", indirizzo)
                 .append("provincia", provincia)
                 .append("comune", comune)
                 .append("telefono", numero_telefono)
-                .append("password", password));
+                .append("password", encrypt(password)));
 
         this.collection.updateOne(query, update);
         System.out.println(email + "," + indirizzo + "," + provincia + "," + comune + "," + numero_telefono + "," + password + "," + oldmail );

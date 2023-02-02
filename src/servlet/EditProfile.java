@@ -24,7 +24,6 @@ public class EditProfile extends HttpServlet {
         String nome = request.getParameter("name").trim();
         String cognome = request.getParameter("surname").trim();
         String sesso = request.getParameter("gender").trim();
-        String eta = request.getParameter("eta").trim();
         String password = request.getParameter("password").trim();
         String email = request.getParameter("email").trim();
         String oldmail = (String) request.getSession().getAttribute("email");
@@ -33,14 +32,13 @@ public class EditProfile extends HttpServlet {
         String indirizzo = request.getParameter("indirizzo").trim();
         String numero_telefono = request.getParameter("numero_telefono").trim();
 
-        if (nome == null || cognome == null || sesso == null || eta == null || password == null ||
+        if (nome == null || cognome == null || sesso == null || password == null ||
                 email == null || provincia == null || comune == null || indirizzo == null ||
                 numero_telefono == null || "".equals(nome) || "".equals(cognome)
-                || "".equals(sesso) || "".equals(eta) || "".equals(password) || "".equals(email)
+                || "".equals(sesso) || "".equals(password) || "".equals(email)
                 || "".equals(provincia) || "".equals(comune) || "".equals(indirizzo) || "".equals(numero_telefono)) {
             System.out.println("Esito errato per campi dati vuoti");
-            System.out.print(nome + "," + cognome + "," + sesso + "," + eta + "," + password + "," + email + "," 
-            + "," +provincia + "," + comune + "," + indirizzo + "," + numero_telefono);
+           
             request.getRequestDispatcher("/profile.jsp").forward(request, response);
         } else {
             MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");

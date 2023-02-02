@@ -14,7 +14,7 @@
     </div>
     <div class="registration">
         <h1 class="labelaccount">Crea un nuovo account</h1>
-        <form id="registrationForm" method="post" onsubmit="event.preventDefault();validate(this)" action="RegistrationServlet">
+        <form id="registrationForm" method="post"  action="RegistrationServlet">
         <div id = "firstForm">
             <div class="registrationInformation">
 
@@ -45,11 +45,7 @@
                         
                 </div>
                 
-            <div class="eta">
-                <p>Data di nascita</p>
-                <input id="date" type="Date" name="eta" placeholder="16/01/90" min="01/01/90" max="31/12/05" >
-            </div>
-
+           
             <div class="password">
                 <input id="password" type="password" name="password" placeholder="Password" >
                 <input id="confirmPassword" type="password" name="password" placeholder="Conferma password">

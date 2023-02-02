@@ -1,5 +1,8 @@
 package servlet;
-import java.io.IOException; 
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import DAO.UserDAO;
 import Beans.MMGBean;
 import com.mongodb.client.MongoClient;
@@ -27,7 +30,7 @@ public class LoginServlet extends HttpServlet {
         String param1 = req.getParameter("email"), 
                 param2 = req.getParameter("password");
         System.out.println(param1 + "," +param2);
- 
+               
         // Checking for null and empty values
         if(param1 == null || param2 == null || "".equals(param1) || "".equals(param2)) {
             req.setAttribute("error_message", "Please enter login id and password");
@@ -46,7 +49,7 @@ public class LoginServlet extends HttpServlet {
         	
         	req.setAttribute("datiMedico", mmg);
 
-            boolean isUserFound = userDAO.searchUserInDb(param1, param2);
+            boolean isUserFound = userDAO.searchUserInDb(param1, UserDAO.encrypt(param2));
              if(isUserFound) {               
                  req.getRequestDispatcher("/MyForm.jsp").forward(req, resp);
              } else {

@@ -61,8 +61,7 @@
                 <h2>Sesso</h2>
                 <input type="text" id="sesso" name="gender" value=<%=mmg.getSesso() %> readonly>
             
-                <h2>Data di nascita</h2>
-                <input type="Date" id="data"  name="eta" value=<%=mmg.getData() %> readonly>
+               
         
             <h1>Credenziali</h1>
             
@@ -70,7 +69,7 @@
                 <input type="email" id="email" name="email" value=<%=email %> readonly>
             
                 <h2>Password</h2>
-                <input type="password" id="password" name="password" value=<%=mmg.getPassword() %> readonly>
+                <input type="password" id="password" name="password" value=<%=mmg.getPassword()%> readonly>
         	
     </div>   
     <div class="info2">

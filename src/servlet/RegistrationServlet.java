@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,6 +32,8 @@ public class RegistrationServlet extends HttpServlet {
         String indirizzo = request.getParameter("indirizzo");
         String numero_telefono = request.getParameter("numero_telefono");
 
+    	
+		
 
         // Checking for null and empty values
         if (nome == null || cognome == null || sesso == null || password == null ||
@@ -44,7 +48,7 @@ public class RegistrationServlet extends HttpServlet {
         } else {
             MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
             UserDAO userDAO = new UserDAO(mongoClient);
-            boolean isUserFound = userDAO.appendUserInDb(nome, cognome, sesso, password, email,
+            boolean isUserFound = userDAO.appendUserInDb(nome, cognome, sesso, UserDAO.encrypt(password), email,
                     provincia, comune, indirizzo, numero_telefono);
 
             if (isUserFound) {

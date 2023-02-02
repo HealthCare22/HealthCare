@@ -25,8 +25,10 @@ function changeForm(){
 }    
 
 
-function validate(){
+/*
+function validate(obj){
 
+	
 	let name=document.getElementById("name");
 	let surname=document.getElementById("surname");
 	let password=document.getElementById("password");
@@ -53,7 +55,9 @@ function validate(){
 			validateTelefono(telefono))
 		{
 		return true; //tutto corretto
+		
 		}
+
 	event.preventDefault();
 	
 }
@@ -70,6 +74,7 @@ function validateName(data){
 		{
 		
 		return true;
+		
 		}
 	else
 		{
@@ -180,21 +185,21 @@ else
 	
 }
 function validateTelefono(data){
-	let RGX="^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$";
+	let RGX= "^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/";
 	if(data.value.match(RGX))
 	{
-	return true;
-	}
-else
+		return true;
+		}
+	else
 	{
-	alert("Numero di telefono non valido");
-	document.getElementById("telefono").focus();
-	return false;
+		alert("Numero di telefono non valido");
+		document.getElementById("telefono").focus();
+		return false;
 	}
 	
 	
 }
-
+*/
 
 
 
