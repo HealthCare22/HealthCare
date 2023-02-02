@@ -5,19 +5,20 @@
 
 body{
 
-    position: relative;
-    width: 1280px;
-    height: 832px;
+    width: 0 auto;
     background: #E7FDFE;
+}
+
+.logo-container{
+	display:flex;
+	justify-content:center;
+	margin-top:10px;
 }
 
 
 .logo{
-    position: absolute;
     width: 180px;
     height: 180px;
-    left: 560px;
-    top: 10px;
     border-radius: 100%;
 }
 
@@ -30,12 +31,15 @@ body{
 
 
 
+.logout-container{
+	display:flex;
+	justify-content:center;
+	margin-top:10px;
+}
+
 .logout{
-    position: absolute;
     width: 500px;
     height: 300px;
-    left: 400px;
-    top: 216px;
     background: #B7DDDB;
     border-radius: 45px;
 

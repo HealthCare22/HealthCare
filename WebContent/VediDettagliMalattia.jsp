@@ -16,6 +16,9 @@
 	<jsp:include page="navbar.jsp"/>
 	
 	<div class="heading">
+		<div class="indietroButton">
+			<button  id="indietro" onclick="history.back()">Indietro</button>
+		</div>
         <h1>Dettagli Malattia </h1>
     </div>
 	    <%List<GestioneMalattieBean>listaMalattie = (List<GestioneMalattieBean>) request.getAttribute("listaMalattia"); 
