@@ -215,3 +215,23 @@ body{
     border: none;
 	cursor:pointer;
 }
+
+.indietroButton{
+	position:absolute;
+	left:10%;
+}
+
+#indietro{
+	background: #35908B;
+    border: 1px solid #35908B;
+    border-radius: 45px;
+    color:white;
+    box-sizing: border-box;
+    width: 126px;
+    height: 28px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 300;
+}
+

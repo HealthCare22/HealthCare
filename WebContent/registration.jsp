@@ -14,7 +14,7 @@
     </div>
     <div class="registration">
         <h1 class="labelaccount">Crea un nuovo account</h1>
-        <form method="post" action="RegistrationServlet">
+        <form id="registrationForm" method="post" onsubmit="event.preventDefault();validate(this)" action="RegistrationServlet">
         <div id = "firstForm">
             <div class="registrationInformation">
 
@@ -25,8 +25,8 @@
                 </div>
 
                 <div class="NomeCognome">
-                    <input type="text" name="name" placeholder="Nome"  >
-                    <input type="text" name="surname" placeholder="Cognome" >
+                    <input id="name"  type="text" name="name" placeholder="Nome"  pattern="^[a-z A-Z àéèìòù]{2,255}$" >
+                    <input id="surname" type="text" name="surname" placeholder="Cognome" >
                 </div>
 
 
@@ -47,21 +47,21 @@
                 
             <div class="eta">
                 <p>Data di nascita</p>
-                <input type="Date" name="eta" placeholder="16/01/90" >
+                <input id="date" type="Date" name="eta" placeholder="16/01/90" min="01/01/90" max="31/12/05" >
             </div>
 
             <div class="password">
-                <input type="password" name="password" placeholder="Password" >
-                <input type="password" name="password" placeholder="Conferma password">
+                <input id="password" type="password" name="password" placeholder="Password" >
+                <input id="confirmPassword" type="password" name="password" placeholder="Conferma password">
             </div>  
 
     
             <div class="email">
-                <input type="email" name="email" placeholder="Email">
-            </div>
+                <input id="email" type="email" name="email" placeholder="Email">
+            </div> 
 
             <div class="email">
-                <input type="email" name="email" placeholder="Conferma email">
+                <input id="confirmEmail" type="email" name="email" placeholder="Conferma email">
             </div>
 
         </div>
@@ -74,22 +74,22 @@
         </div>
         <h1 class = "labelaccount">Domicilio:</h1>
         <div class="domicilio" >
-            <input type="text" name="provincia" placeholder="Provincia" >
-            <input type="text" name="comune" placeholder="Comune" >
-            <input type="text" name= "indirizzo" placeholder="Indirizzo" >
+            <input id="provincia" type="text" name="provincia" placeholder="Provincia" >
+            <input id="comune" type="text" name="comune" placeholder="Comune" >
+            <input id="indirizzo" type="text" name= "indirizzo" placeholder="Indirizzo" >
         </div>
         <div class="telefono">
-            <input type="text" name="numero_telefono" placeholder="Numero di telefono" >
+            <input id="telefono" type="text" name="numero_telefono" placeholder="Numero di telefono" >
         </div>
     </div>   
     	<div class="pulsantiConfermaAnnulla">
-    	<button type = "submit" id = "secondFormButton" onclick="validate()">Conferma</button>
+    	<button type = "submit" id = "secondFormButton">Conferma</button>
     	</div>
     	</form>
     	 
         <div class="pulsantiConfermaAnnulla">
-            <button id="annulla" onclick = changeForm()>Annulla</button>
-            <button onclick=changeForm()   id = "firstFormButton">Avanti</button>
+            <button id="annulla" onclick = "changeForm()" >Annulla</button>
+            <button  id = "firstFormButton" onclick="changeForm()"  >Avanti</button>
         </div>
     </div>
 </body>
