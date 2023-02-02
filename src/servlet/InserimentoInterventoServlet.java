@@ -41,7 +41,6 @@ public class InserimentoInterventoServlet extends HttpServlet {
 		String email = (String) http.getAttribute("email");
 		String id_form = (String) http.getAttribute("idform");
 		
-		System.out.println(descrizione + id_form + email);
 		
 		if(descrizione == null || "".equals(descrizione) || id_form == null || "".equals(id_form) ||
 				email == null || "".equals(email)) {

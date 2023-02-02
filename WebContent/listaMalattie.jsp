@@ -23,10 +23,13 @@
 		<div id="malattiaContainer">
             <div class="elenco">
              <table>
+             <%if(listaMalattie.size()>0){ %>
              	<tr>
              		<th>Nome Malattia</th>
              	</tr>
-             		<%for(GestioneMalattieBean m : listaMalattie){ 
+             		<%
+             		
+             		for(GestioneMalattieBean m : listaMalattie){ 
              		String nomeMalattia = m.getNome();%>
              		<tr>
              			<td><a id="linkMalattia" href="RicercaPerNomeServlet?nomeMalattia=<%=nomeMalattia%>"><%=nomeMalattia %></a></td>
@@ -36,4 +39,9 @@
             </div>
 		</div> 
 		</div>
+		<%}else{ %><p>Non ci sono malattie che corrispondono ai sintomi</p>
+			<div class="indietroButton">
+			<button  id="indietro" onclick="history.back()">Indietro</button>
+		</div>
+		<%} %>
 </body>

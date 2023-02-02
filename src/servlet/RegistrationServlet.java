@@ -41,7 +41,6 @@ public class RegistrationServlet extends HttpServlet {
                 numero_telefono == null || "".equals(nome) || "".equals(cognome)
                 || "".equals(sesso) || "".equals(password) || "".equals(email)
                 || "".equals(provincia) || "".equals(comune) || "".equals(indirizzo) || "".equals(numero_telefono)) {
-            System.out.println("Esito errato per campi dati vuoti");
            
             request.setAttribute("error_message", "Please fill the registration form");
             request.getRequestDispatcher("/registration.jsp").forward(request, response);
@@ -53,9 +52,7 @@ public class RegistrationServlet extends HttpServlet {
 
             if (isUserFound) {
                 request.getRequestDispatcher("/profile.jsp").forward(request, response);
-                System.out.println("Modifica avvenuta");
             } else {
-                System.out.println("Esito errato per Utente non iserito (UserFound)");
                 request.setAttribute("error_message", "You are not an authorised user. Please check with administrator.");
                 request.getRequestDispatcher("/profile.jsp").forward(request, response);
             }

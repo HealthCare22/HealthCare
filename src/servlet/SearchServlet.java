@@ -40,7 +40,6 @@ public class SearchServlet extends HttpServlet {
         FormDAO formDAO = new FormDAO(mongoClient);
 
         listaForm = formDAO.recuperaForm();
-        System.out.print(listaForm);
         request.setAttribute("allForm", listaForm);
         RequestDispatcher dispatcher = null;
 

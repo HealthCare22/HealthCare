@@ -58,9 +58,8 @@ public class RicercaPerSintomiServlet extends HttpServlet {
 		MalattiaDAO malattiaDao= new MalattiaDAO(mongoClient);
 		List<SintomoBean> listaSintomi = sintomoDao.getSintomiByNome(listaNomiSintomi);
 		List<GestioneMalattieBean> listaMalattie = malattiaDao.getMalattieBySintomi(listaSintomi);
-		request.setAttribute("listaMalattia", listaMalattie);
-		request.setAttribute("listaSintomi", listaSintomi);
-		request.getRequestDispatcher("VediDettagliMalattia.jsp").forward(request,response);
+		request.setAttribute("listaMalattie", listaMalattie);
+		request.getRequestDispatcher("listaMalattie.jsp").forward(request,response);
 	}
 
 }

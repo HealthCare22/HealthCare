@@ -5,12 +5,10 @@
 <%@ page import="Beans.SintomoBean"%>    
 <%@ page import="java.util.*" %>
 
- <%
-	List<GestioneMalattieBean>listaMalattie = (List<GestioneMalattieBean>) request.getAttribute("listaMalattia");
-	 List<SintomoBean>listaSintomi = (List<SintomoBean>) request.getAttribute("listaSintomi");
-	 
-
-	    %>
+ 
+ <%List<GestioneMalattieBean>listaMalattie = (List<GestioneMalattieBean>) request.getAttribute("listaMalattie");
+	List<SintomoBean>listaSintomi = (List<SintomoBean>) request.getAttribute("listaSintomi");%>
+	    
 		
 <!DOCTYPE html>
 <html>
@@ -31,7 +29,8 @@
         <h1>Dettagli Malattia </h1>
     </div>
 	   
-		<%for(GestioneMalattieBean m : listaMalattie){ %>
+		<%if(listaMalattie.size()>0){
+		for(GestioneMalattieBean m : listaMalattie){ %>
 		<div id="Dettaglio">		
 		<div id="Dettaglio1ariga">
 			
@@ -55,6 +54,10 @@
 				</div>
 		</div>
 		</div>
+		<%}}else{ %>
+				<div id = "nessunaMalattia">
+					<p> <b>Non ci sono malattie che corrispondono ai parametri</b></p>
+				</div>
 		<%} %>
 </body>
 </html>

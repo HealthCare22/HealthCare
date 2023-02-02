@@ -62,12 +62,6 @@ function validate(obj){
 	
 }
 
-
-
-
-
-
-
 function validateName(data){
 	let RGX="^[a-z A-Z àéèìòù]{2,255}$";
 	if(data.value.match(RGX))
