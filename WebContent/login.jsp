@@ -35,7 +35,7 @@
 		</div>
 
 		<div class="pulsanteAccedi">
-			<button id="login-button" type="submit">Accedi</button>
+			<button type="submit">Accedi</button>
 		</div>
 		</form>
 
