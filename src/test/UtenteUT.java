@@ -1,4 +1,4 @@
-/*package test;
+package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
@@ -21,6 +21,7 @@ import Beans.GestioneFormBean;
 import Beans.MMGBean;
 import DAO.FormDAO;
 import DAO.UserDAO;
+import validazione.ValidateFields;
 
 
 
@@ -29,44 +30,49 @@ import DAO.UserDAO;
 	UserDAO userMock;
 	FormDAO formMock;
 	
-	String nome;
-	String cognome;
-	String email;
-	String indirizzo;
-	String provincia;
-	String comune;
-	String sesso;
-	String telefono;
-	String password;
-	
-	
 	@InjectMocks
-	private registrationScript registration;
+	ValidateFields validate;
+	
+	@Mock
+	UserDAO user;
+	
+	
+	boolean nome;
+	boolean cognome;
+	boolean email;
+	boolean indirizzo;
+	boolean provincia;
+	boolean comune;
+	String sesso;
+	boolean telefono;
+	boolean password;
+	
+
 	//Verifica che il campo nome non sia null
 	@Test
-	public void testRegistration() {
+	public void validaNomeNull() {
 		
-		userMock = (UserDAO) Mockito.mock(UserDAO.class);
-		nome = null;
-		cognome = "Califano";
-		email = "pasqualecalifano@gmail.com";
-		indirizzo = "Via Dottor Pietro Fimiani";
-		provincia = "SA";
-		comune = "Castel San Giorgio";
+		boolean verify = true;
+		nome = validate.validateName(null);
+		cognome = validate.validateSurname("Califano");
+		email = validate.validateEmail("pasqualecalifano@gmail.com");
+		indirizzo = validate.validateIndirizzo("Via Dottor Pietro Fimiani");
+		provincia = validate.validateProvincia("SA");
+		comune = validate.validateComune("Castel San Giorgio");
 		sesso = "M";
-		telefono = "3333454562";
-		password = "pippo";
+		telefono = validate.validateNumeroTelefono("3492490930");
+		password = validate.validatePassword("pippo");
+		
 
-		when(userMock.appendUserInDb(nome, cognome, sesso, password, email, provincia, comune, indirizzo, telefono)).thenReturn(true);
 		
-		final String message = "Il campo Nome deve contenere almeno 2 caratteri";
+	
 		
-		
+	
 		
 	}
 	
 
 	
 }
-*/
+
 
