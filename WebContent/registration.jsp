@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<%
+	String error_message = (String) request.getAttribute("error_message");
+%>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,12 +13,17 @@
     <script src = "./js/registrationScript.js"></script>
 </head>
 <body>
+		
 	<div class="logo-container">
     <img class="logo" src="images/logo.png" alt="logoHealthCare">
     </div>
+    	<div>
+        	<p><%=error_message %></p>
+        </div>
     <div class="registration">
         <h1 class="labelaccount">Crea un nuovo account</h1>
-        <form id="registrationForm" method="post" onSubmit="event.preventDefault(); validate(this)"  action="RegistrationServlet">
+        
+        <form id="registrationForm" method="post"  action="RegistrationServlet">
         <div id = "firstForm">
             <div class="registrationInformation">
 
@@ -25,7 +34,7 @@
                 </div>
 
                 <div class="NomeCognome">
-                    <input id="name"  type="text" name="name" placeholder="Nome"  pattern="^[a-z A-Z àéèìòù]{2,255}$" >
+                    <input id="name"  type="text" name="name" placeholder="Nome"  >
                     <input id="surname" type="text" name="surname" placeholder="Cognome" >
                 </div>
 
@@ -48,16 +57,16 @@
            
             <div class="password">
                 <input id="password" type="password" name="password" placeholder="Password" >
-                <input id="confirmPassword" type="password" name="password" placeholder="Conferma password">
+                <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Conferma password">
             </div>  
 
     
             <div class="email">
-                <input id="email" type="email" name="email" placeholder="Email">
+                <input id="email" type="text" name="email" placeholder="Email">
             </div> 
 
             <div class="email">
-                <input id="confirmEmail" type="email" name="email" placeholder="Conferma email">
+                <input id="confirmEmail" type="email" name="confirmEmail" placeholder="Conferma email">
             </div>
 
         </div>
@@ -85,8 +94,9 @@
     	 
         <div class="pulsantiConfermaAnnulla">
             <button id="annulla" onclick = "changeForm()" >Annulla</button>
-            <button  id = "firstFormButton" onclick="changeForm()"  >Avanti</button>
+            <button  id = "firstFormButton" onclick="changeForm()" >Avanti</button>
         </div>
     </div>
 </body>
 </html>
+

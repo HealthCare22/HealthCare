@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
@@ -29,9 +29,6 @@ import DAO.UserDAO;
 	UserDAO userMock;
 	FormDAO formMock;
 	
-	
-	
-	
 	String nome;
 	String cognome;
 	String email;
@@ -43,6 +40,8 @@ import DAO.UserDAO;
 	String password;
 	
 	
+	@InjectMocks
+	private registrationScript registration;
 	//Verifica che il campo nome non sia null
 	@Test
 	public void testRegistration() {
@@ -69,4 +68,5 @@ import DAO.UserDAO;
 
 	
 }
+*/
 

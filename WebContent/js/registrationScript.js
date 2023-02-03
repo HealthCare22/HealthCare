@@ -22,9 +22,13 @@ function changeForm(){
         annulla.style.display = "block";
         
     }
-}    
+    
+    
+    
+}
 
 
+/*
 
 function validate(obj){
 
@@ -203,6 +207,6 @@ function validateTelefono(data){
 }
 
 
-
+*/
 
 

@@ -84,6 +84,18 @@ public class UserDAO {
 
         return true;
     }
+    
+    public boolean existEmail(String email) {
+    	
+    	// FindIterable<Document> cursor = this.collection.find(Filters.eq("email", email));
+    	 Document doc = this.collection.find(Filters.eq("email", email)).first();
+    	 
+    	 if(doc != null) {
+    		 return true;
+    	 }
+    	 
+    	 return false;
+    }
 
     public MMGBean recuperaUser(String email) {
         FindIterable<Document> cursor = this.collection.find(Filters.eq("email", email));
