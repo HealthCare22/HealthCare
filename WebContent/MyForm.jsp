@@ -10,6 +10,8 @@
 <%
 	MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
 	FormDAO formDAO = new FormDAO(mongoClient);
+	
+	String error_message = (String) request.getAttribute("error");
 %>
 
 <!DOCTYPE html>
@@ -22,7 +24,9 @@
 	</head>
 	<body onload="attivaMyForm()">
 		<jsp:include page="navbar.jsp"/>
-		
+			<div>
+				<p><%=error_message %></p>
+			</div>
 			<div id ="FormNavbar">
 				<jsp:include page="FormNavbar.jsp"/>
 			</div>
