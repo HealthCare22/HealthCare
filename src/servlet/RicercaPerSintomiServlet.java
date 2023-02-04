@@ -52,6 +52,8 @@ public class RicercaPerSintomiServlet extends HttpServlet {
 			}else {
 				listaNomiSintomi.add(i-1,"null");
 			}
+			
+		
 		}
 		MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
 		SintomoDAO sintomoDao = new SintomoDAO(mongoClient);

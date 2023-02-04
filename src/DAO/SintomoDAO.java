@@ -24,6 +24,9 @@ public class SintomoDAO {
         MongoDatabase database = client.getDatabase(SintomoDAO.DB_NAME);
         this.collection = database.getCollection(SintomoDAO.COLLECTION_NAME);
     }
+    
+  
+
 
 	public List<SintomoBean> getSintomiByNome(List<String> listaNomiSintomi) {
 		List<SintomoBean> listaSintomi = new ArrayList<>();
