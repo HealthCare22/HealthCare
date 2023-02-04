@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.MalattiaDAO;
 import DAO.SintomoDAO;
+import validazione.ValidateFieldsRicercaMalattiaRaraNome;
 import Beans.GestioneMalattieBean;
 import Beans.SintomoBean;
 
@@ -37,14 +38,35 @@ public class RicercaPerNomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String nomeMalattia = request.getParameter("nomeMalattia");
-
+        MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
+        MalattiaDAO malattiaDAO = new MalattiaDAO(mongoClient);
+        ValidateFieldsRicercaMalattiaRaraNome validate = new ValidateFieldsRicercaMalattiaRaraNome();
+        
+        if(nomeMalattia.length() < 2) {
+        	request.setAttribute("error_message", "Il campo malattia deve essere compilato o deve avere minimo 2 caratteri alfabetici");
+            request.getRequestDispatcher("/RicercaMalattia.jsp").forward(request, response);
+        }
+        
+        if(nomeMalattia.length() > 40) {
+        	request.setAttribute("error_message", "Il campo malattia deve contenere al massimo 40 caratteri");
+            request.getRequestDispatcher("/RicercaMalattia.jsp").forward(request, response);
+        }
+        if(malattiaDAO.existMalattia(nomeMalattia)) {
+          	request.setAttribute("error_message", "La malattia ricercata non è stata trovata");
+            request.getRequestDispatcher("/RicercaMalattia.jsp").forward(request, response);
+        }
+        
+        if(!validate.validateName(nomeMalattia)) {
+        	request.setAttribute("error_message", "Il campo malattia non rispetta il formato stabilito");
+            request.getRequestDispatcher("/RicercaMalattia.jsp").forward(request, response);
+        }
         if (nomeMalattia == null || "".equals(nomeMalattia)) {
 
             request.setAttribute("error_message", "Ricerca della malattia per nome fallita! Riprova...");
+            request.getRequestDispatcher("/RicercaMalattia.jsp").forward(request, response);
 
         } else {
-            MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
-            MalattiaDAO malattiaDAO = new MalattiaDAO(mongoClient);
+      
             SintomoDAO sintomoDAO = new SintomoDAO(mongoClient);
             List<GestioneMalattieBean> listaMalattia = malattiaDAO.RicercaPerNome(nomeMalattia);
             List<SintomoBean> listaSintomi = sintomoDAO.getSintomi();

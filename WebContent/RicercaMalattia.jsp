@@ -3,6 +3,9 @@
 
 <%@ page import = "Beans.MMGBean" %>
     
+    
+    <% String error_message = (String) request.getAttribute("error_message"); %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +36,9 @@
          
             <h1>Ricerca Malattia Rara</h1>
             <hr>
+            <div>
+            	<p><%=error_message %></p>
+            </div>
             <form method="GET" action="RicercaPerNomeServlet">
             <div class="ricercaNome">
                 <input type="text" name="nomeMalattia"id="nomeMalattia" placeholder="Nome Malattia">

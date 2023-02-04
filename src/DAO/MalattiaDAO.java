@@ -28,6 +28,18 @@ public class MalattiaDAO {
         MongoDatabase database = client.getDatabase(MalattiaDAO.DB_NAME);
         this.collection = database.getCollection(MalattiaDAO.COLLECTION_NAME);
     }
+    
+ public boolean existMalattia(String malattia) {
+    	
+    	 Document doc = this.collection.find(Filters.eq("nome_malattia", malattia)).first();
+    	 
+    	 if(doc != null) {
+    		 return true;
+    	 }
+    	 
+    	 return false;
+    }
+
 
     public List<GestioneMalattieBean> RicercaPerNome(String nomeMalattia) {
         FindIterable<Document> cursor = this.collection.find();
