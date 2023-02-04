@@ -19,7 +19,6 @@
 <body>
 	<jsp:include page="navbar.jsp"/>
 	
-	
     <div class="heading">
         <h1>Tipo di ricerca: </h1>
     </div>
@@ -27,18 +26,17 @@
         <button id="perNome" onclick="goToNome()">per nome</button>
         <button id="perSintomi" onclick="goToSintomi()">per sintomi</button>
     </div>
-    
-
-    <div class="containers">
-    
-		
+   
+   <%if(error_message != null){ %>
+            <div class="errorMessage">
+            	<p><%=error_message %></p>
+            </div><%} %>
+   
+    <div class="containers">	
         <div class="containerNome">
          
             <h1>Ricerca Malattia Rara</h1>
             <hr>
-            <div>
-            	<p><%=error_message %></p>
-            </div>
             <form method="GET" action="RicercaPerNomeServlet">
             <div class="ricercaNome">
                 <input type="text" name="nomeMalattia"id="nomeMalattia" placeholder="Nome Malattia">

@@ -17,6 +17,7 @@ import Beans.GestioneMalattieBean;
 import Beans.SintomoBean;
 import DAO.MalattiaDAO;
 import DAO.SintomoDAO;
+import validazione.ValidateFieldsInserimentoSintomi;
 
 /**
  * Servlet implementation class RicercaPerSintomiServlet
@@ -45,15 +46,17 @@ public class RicercaPerSintomiServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<String> listaNomiSintomi = new ArrayList<>();
+		ValidateFieldsInserimentoSintomi validate = new ValidateFieldsInserimentoSintomi();
 		for(int i=1; i<=5; i++) {
 			String sintomo = (String) request.getParameter("Sintomo"+i);
 			if(sintomo!=null) {
-				listaNomiSintomi.add(i-1,sintomo);
-			}else {
-				listaNomiSintomi.add(i-1,"null");
+				if(!validate.validateSintomo(sintomo)) {
+					request.setAttribute("error_message", "ogni sintomo deve avere lunghezza compresa tra 2 e 50 caratteri");
+					request.getRequestDispatcher("RicercaMalattia.jsp").forward(request, response);
+				}else {
+					listaNomiSintomi.add(sintomo.toLowerCase());
+				}
 			}
-			
-		
 		}
 		MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
 		SintomoDAO sintomoDao = new SintomoDAO(mongoClient);

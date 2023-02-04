@@ -24,9 +24,10 @@
 	</head>
 	<body onload="attivaMyForm()">
 		<jsp:include page="navbar.jsp"/>
+		<%if(error_message!=null){ %>
 			<div>
 				<p><%=error_message %></p>
-			</div>
+			</div><%} %>
 			<div id ="FormNavbar">
 				<jsp:include page="FormNavbar.jsp"/>
 			</div>

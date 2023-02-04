@@ -37,7 +37,7 @@ public class RicercaPerNomeServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String nomeMalattia = request.getParameter("nomeMalattia");
+        String nomeMalattia = request.getParameter("nomeMalattia").toLowerCase();
         MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
         MalattiaDAO malattiaDAO = new MalattiaDAO(mongoClient);
         ValidateFieldsRicercaMalattiaRaraNome validate = new ValidateFieldsRicercaMalattiaRaraNome();
@@ -51,7 +51,7 @@ public class RicercaPerNomeServlet extends HttpServlet {
         	request.setAttribute("error_message", "Il campo malattia deve contenere al massimo 40 caratteri");
             request.getRequestDispatcher("/RicercaMalattia.jsp").forward(request, response);
         }
-        if(malattiaDAO.existMalattia(nomeMalattia)) {
+        if(!malattiaDAO.existMalattia(nomeMalattia)) {
           	request.setAttribute("error_message", "La malattia ricercata non è stata trovata");
             request.getRequestDispatcher("/RicercaMalattia.jsp").forward(request, response);
         }

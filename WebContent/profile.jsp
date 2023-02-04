@@ -26,10 +26,12 @@
 <body>
 	<jsp:include page="navbar.jsp"/>
 
+<%if(error_message!=null){ %>
+
 <div>
 	<p><%=error_message %></p>
 </div>
-	<%
+	<%}
 		String email = null;
 		if(session.getAttribute("email") == null)
 			{
