@@ -8,6 +8,8 @@
 <%
     MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
     UserDAO userDAO = new UserDAO(mongoClient);
+    
+    String error_message = (String) request.getAttribute("error");
 %>
     
 <!DOCTYPE html>
@@ -24,6 +26,9 @@
 <body>
 	<jsp:include page="navbar.jsp"/>
 
+<div>
+	<p><%=error_message %></p>
+</div>
 	<%
 		String email = null;
 		if(session.getAttribute("email") == null)
