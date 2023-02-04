@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ValidateFields {
+public class ValidateFieldsRegistration {
 
 	
 	
 	private ArrayList<Pattern> pattern =  new ArrayList<>();
 	private Matcher matcher;
 	
-	private static final String EMAIL_REGEX = "^\\w+([.]?\\w+)*@\\w+([.]{1}\\w+)*([.]{1}\\w{2,3}){1}$";
+	private static final String EMAIL_REGEX = "^(?!.{256,})[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+$";
 	private static final String NOME_REGEX = "^[a-z A-Z àéèìòù]{2,255}$";
 	private static final String SURNAME_REGEX ="^[a-z A-Z àéèìòù]{2,255}$";
 	private static final String PASSWORD_REGEX = "^(?=([^\\s])*[0-9])(?=([^\\s])*[a-zA-Z])([^\\s]){8,24}$";
@@ -20,7 +20,7 @@ public class ValidateFields {
 	private static final String INDIRIZZO_REGEX = "^[a-z A-Z 0-9 àéèìòù',.-]{2,255}$";
 	private static final String NUMEROTELEFONO_REGEX = "^(\\+\\d{1,2}\\s?)?1?\\-?\\.?\\s?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$";
 	
-	public ValidateFields() {
+	public ValidateFieldsRegistration() {
 		pattern.add(Pattern.compile(EMAIL_REGEX));
 		pattern.add( Pattern.compile(NOME_REGEX));
 		pattern.add(Pattern.compile(SURNAME_REGEX));

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.UserDAO;
-import validazione.ValidateFields;
+import validazione.ValidateFieldsRegistration;
 
 import com.mongodb.client.MongoClient;
 
@@ -38,7 +38,7 @@ public class RegistrationServlet extends HttpServlet {
 
         MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
         UserDAO userDAO = new UserDAO(mongoClient);
-        ValidateFields validate = new ValidateFields();
+        ValidateFieldsRegistration validate = new ValidateFieldsRegistration();
         
         
         // EMAIL VALIDATION

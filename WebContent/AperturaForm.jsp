@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    
+    
+    <%
+    String error_message = (String) request.getAttribute("error_message");
+    
+    %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,6 +31,9 @@
 	</div>
     <h2 id="Apertura-text">Apertura nuovo form</h2>
 
+	<div>
+		<p><%=error_message %></p>
+	</div>
      <form method="post" action="AperturaFormServlet">
         <div class="information">
             
