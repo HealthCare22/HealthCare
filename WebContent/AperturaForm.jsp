@@ -31,9 +31,11 @@
 	</div>
     <h2 id="Apertura-text">Apertura nuovo form</h2>
 
-	<div>
+
+	<%if(error_message!=null){ %>
+	<div class = "errorMessage">
 		<p><%=error_message %></p>
-	</div>
+	</div><%} %>
      <form method="post" action="AperturaFormServlet">
         <div class="information">
             

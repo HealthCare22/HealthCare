@@ -52,7 +52,7 @@ public class RicercaPerNomeServlet extends HttpServlet {
             request.getRequestDispatcher("/RicercaMalattia.jsp").forward(request, response);
         }
         if(!malattiaDAO.existMalattia(nomeMalattia)) {
-          	request.setAttribute("error_message", "La malattia ricercata non Ã¨ stata trovata");
+          	request.setAttribute("error_message", "La malattia ricercata non è stata trovata");
             request.getRequestDispatcher("/RicercaMalattia.jsp").forward(request, response);
         }
         

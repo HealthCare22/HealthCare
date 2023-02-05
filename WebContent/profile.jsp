@@ -28,7 +28,7 @@
 
 <%if(error_message!=null){ %>
 
-<div>
+<div class = errorMessage>
 	<p><%=error_message %></p>
 </div>
 	<%}
@@ -97,14 +97,13 @@
             <h2>Indirizzo</h2>
             <input type="text" id="indirizzo" name="indirizzo" value='<%=mmg.getIndirizzo()%>' readonly>
 
-            <button type="submit" id="save">Salva</button> 
+             
     </div>
-    </form>
-    	
-    <div class="buttondiv">
-        <button id="annulla" onclick=reload()>Annulla modifiche</button>
-    </div>
-
+	    <div class="buttondiv">
+	    	<button type="submit" id="save">Salva</button>
+	        <button id="annulla" onclick=reload()>Annulla modifiche</button>
+	    </div>
+	</form>
        
        
 </body>

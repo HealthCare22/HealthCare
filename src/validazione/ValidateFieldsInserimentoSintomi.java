@@ -8,7 +8,7 @@ public class ValidateFieldsInserimentoSintomi {
 	private Pattern pattern;
 	private Matcher matcher;
 	
-	private static final String SINTOMO_REGEX ="^[\\p{L}\\s]{2,50}$";
+	private static final String SINTOMO_REGEX ="^[\\p{L}\\s]{3,50}$";
 
 
 	

@@ -40,8 +40,8 @@ public class EditProfile extends HttpServlet {
         
         
         // EMAIL VALIDATION
-        if(userDAO.existEmail(email)) {
-        	request.setAttribute("error", "l'email inserita Ã¨ gia presente nel database");
+        if(userDAO.existEmail(email) && (!oldmail.equals(email))) {
+        	request.setAttribute("error", "l'email inserita è gia presente nel database");
 			request.getRequestDispatcher("/profile.jsp").forward(request, response);
         }
 		if(email.length()>255) {
@@ -68,7 +68,7 @@ public class EditProfile extends HttpServlet {
 			request.setAttribute("error", "Il campo Password deve contenere almeno 8 caratteri, almeno una lettera, almeno un numero e nessuno spazio");
 			request.getRequestDispatcher("/profile.jsp").forward(request, response);
 		}
-		if(password.length()>24) {
+		if(password.length()>32) {
 			request.setAttribute("error", "Il campo Password deve contenere al massimo 24 caratteri,almeno una lettera, almeno un numero e nessuno spazio");
 			request.getRequestDispatcher("/profile.jsp").forward(request, response);
 		}

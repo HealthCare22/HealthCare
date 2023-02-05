@@ -152,7 +152,7 @@ body{
 }
 .buttondiv{
 	display: flex;
-	margin-top: 60px;
+	margin: 0.5% 0.2% 0 0.2%;
 	justify-content: space-around;
 	width: 50%;
 	position: absolute;
@@ -196,3 +196,10 @@ body{
 	text-align: center;
 }
 
+.errorMessage{
+	text-align:center;
+	margin-top: 1%;
+	font-weight:bold;
+	font-size: 20px;
+	color:red;
+}

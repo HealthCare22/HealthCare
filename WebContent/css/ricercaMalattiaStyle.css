@@ -206,4 +206,12 @@ body{
 
 }
 
+.errorMessage{
+	text-align:center;
+	margin-top: 1%;
+	font-weight:bold;
+	font-size: 20px;
+	color:red;
+}
+
 

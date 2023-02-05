@@ -17,9 +17,10 @@
 	<div class="logo-container">
     <img class="logo" src="images/logo.png" alt="logoHealthCare">
     </div>
-    	<div>
+    <%if(error_message!=null){ %>
+    	<div class = "errorMessage">
         	<p><%=error_message %></p>
-        </div>
+        </div><%} %>
     <div class="registration">
         <h1 class="labelaccount">Crea un nuovo account</h1>
         
