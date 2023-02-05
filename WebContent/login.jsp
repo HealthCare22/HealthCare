@@ -1,5 +1,5 @@
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*,Beans.MMGBean"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*,medico.MMGBean"%>
 
 
 <!DOCTYPE html>

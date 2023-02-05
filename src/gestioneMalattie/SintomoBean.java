@@ -1,4 +1,4 @@
-package Beans;
+package gestioneMalattie;
 
 public class SintomoBean {
 

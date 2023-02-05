@@ -1,4 +1,4 @@
-package DAO;
+package utenza;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -12,7 +12,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.client.*;
 import com.mongodb.client.model.Filters;
 
-import Beans.MMGBean;
+import medico.MMGBean;
 
 
 

@@ -1,4 +1,4 @@
-package servlet;
+package gestioneMalattie;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,20 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mongodb.client.MongoClient;
 
-import Beans.GestioneInterventiBean;
-import DAO.InterventoDAO;
-
 /**
- * Servlet implementation class VisualizzaInterventiPersonaliServlet
+ * Servlet implementation class ListaMalattieServlet
  */
-@WebServlet("/VisualizzaInterventiPersonaliServlet")
-public class VisualizzaInterventiPersonaliServlet extends HttpServlet {
+@WebServlet("/ListaMalattieServlet")
+public class ListaMalattieServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VisualizzaInterventiPersonaliServlet() {
+    public ListaMalattieServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,12 +30,13 @@ public class VisualizzaInterventiPersonaliServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = (String)request.getSession().getAttribute("email");
 		MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
-		InterventoDAO interventoDao = new InterventoDAO(mongoClient);
-		List<GestioneInterventiBean> listaInterventi = interventoDao.getInterventiByEmail(email);
-		request.setAttribute("listaInterventi", listaInterventi);
-		request.getRequestDispatcher("interventi.jsp").forward(request, response);
+		MalattieFacade malattiaFacade = new MalattieFacade(mongoClient);
+		List<GestioneMalattieBean>listaMalattie = malattiaFacade.getAllMalattie();
+
+		request.setAttribute("listaMalattie", listaMalattie);
+		request.setAttribute("pagina", 1);
+		request.getRequestDispatcher("/listaMalattie.jsp").forward(request, response);
 	}
 
 	/**

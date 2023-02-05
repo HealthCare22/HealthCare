@@ -1,29 +1,27 @@
-package servlet;
+package gestioneForm;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.mongodb.client.MongoClient;
 
-import DAO.FormDAO;
-import DAO.InterventoDAO;
-
 /**
- * Servlet implementation class EliminaFormServlet
+ * Servlet implementation class VisualizzaInterventiPersonaliServlet
  */
-@WebServlet("/EliminaFormServlet")
-public class EliminaFormServlet extends HttpServlet {
+@WebServlet("/VisualizzaInterventiPersonaliServlet")
+public class VisualizzaInterventiPersonaliServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EliminaFormServlet() {
+    public VisualizzaInterventiPersonaliServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,16 +30,12 @@ public class EliminaFormServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession sessione = request.getSession();
-		String idForm = (String) sessione.getAttribute("idform");
+		String email = (String)request.getSession().getAttribute("email");
 		MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
-		FormDAO formDAO = new FormDAO(mongoClient);
-		InterventoDAO interventiDAO = new InterventoDAO(mongoClient);
-		
-		formDAO.deleteForm(idForm);
-		interventiDAO.deleteInterventi(idForm);
-		request.getRequestDispatcher("/MyForm.jsp").forward(request, response);
+		FormFacade formFacade = new FormFacade(mongoClient);
+		List<GestioneInterventiBean> listaInterventi = formFacade.getInterventiByEmail(email);
+		request.setAttribute("listaInterventi", listaInterventi);
+		request.getRequestDispatcher("interventi.jsp").forward(request, response);
 	}
 
 	/**

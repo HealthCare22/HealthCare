@@ -1,21 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="DAO.FormDAO" %>
-<%@ page import="Beans.GestioneFormBean" %>
+    <%@ page import="gestioneForm.FormDAO" %>
+<%@ page import="gestioneForm.GestioneFormBean" %>
 <%@ page import="com.mongodb.client.MongoClient" %>
-    <%
 
-	
-	
-	
-
+<%    
 	GestioneFormBean form = (GestioneFormBean) request.getAttribute("formById");
 	
-	
 	MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
-	
-
-	
 
 %>
 

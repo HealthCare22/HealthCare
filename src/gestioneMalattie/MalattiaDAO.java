@@ -1,4 +1,4 @@
-package DAO;
+package gestioneMalattie;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,9 +14,6 @@ import com.mongodb.client.*;
 import com.mongodb.client.model.Filters;
 
 import org.bson.Document;
-
-import Beans.GestioneMalattieBean;
-import Beans.SintomoBean;
 
 public class MalattiaDAO {
     private final MongoCollection<Document> collection;

@@ -2,15 +2,12 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
-<%@ page import="Beans.GestioneFormBean" %>
-<%@ page import="DAO.FormDAO" %>
+<%@ page import="gestioneForm.FormFacade" %>
+<%@ page import="gestioneForm.GestioneFormBean" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="com.mongodb.client.MongoClient" %>
 
 <%
-	MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
-	FormDAO formDAO = new FormDAO(mongoClient);
-	
 	String error_message = (String) request.getAttribute("error");
 %>
 
@@ -41,17 +38,13 @@
 				
 				<!-- get the user's email from the HttpSession -->
 				<% String email = (String)session.getAttribute("email");
-
-
-				//call the GetFormByStatus to obtain all the user's forms
-				List<List<GestioneFormBean>> listaForm = formDAO.getFormByStatus(email);
 				
 				//list of open forms
-				List<GestioneFormBean>listaFormAperti = listaForm.get(0);
+				List<GestioneFormBean>listaFormAperti = (List<GestioneFormBean>) request.getAttribute("listaFormAperti");
 				
 				//list of closed forms
-				List<GestioneFormBean>listaFormChiusi = listaForm.get(1);
-				if(listaForm != null){
+				List<GestioneFormBean> listaFormChiusi = (List<GestioneFormBean>) request.getAttribute("listaFormChiusi");
+				if(listaFormAperti != null){
 				for(GestioneFormBean f : listaFormAperti){%>
 					<tr>
 						<td><%= f.getTitolo() %></td>
@@ -62,7 +55,8 @@
 					</tr>
 				<%} %>
 				</table>
-			</div>
+			</div><%} %>
+			<%if(listaFormChiusi!=null){ %>
 			<div id="ClosedForms">
 				<table>
 					<%for(GestioneFormBean f : listaFormChiusi){%>

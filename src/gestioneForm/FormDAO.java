@@ -1,4 +1,4 @@
-package DAO;
+package gestioneForm;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,9 +11,6 @@ import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 import com.mongodb.client.model.Filters;
-
-import Beans.GestioneFormBean;
-import Beans.GestioneInterventiBean;
 
 public class FormDAO {
     private final MongoCollection<Document> collection;

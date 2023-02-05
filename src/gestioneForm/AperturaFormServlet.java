@@ -1,6 +1,5 @@
-package servlet;
+package gestioneForm;
 
-import DAO.FormDAO;
 import validazione.ValidateFieldsAperturaForm;
 import validazione.ValidateFieldsRegistration;
 
@@ -94,11 +93,11 @@ public class AperturaFormServlet extends HttpServlet {
             HttpSession session = request.getSession();
 
             String email = (String) session.getAttribute("email");
-            FormDAO formDAO = new FormDAO(mongoClient);
-            boolean isUserFound = formDAO.CreateNewForm(titolo, descrizione, email);
+            FormFacade formFacade = new FormFacade(mongoClient);
+            boolean isUserFound = formFacade.apriForm(titolo, descrizione, email);
 
             if (isUserFound) {
-                request.getRequestDispatcher("/MyForm.jsp").forward(request, response);
+                request.getRequestDispatcher("/MyFormServlet").forward(request, response);
             } else {
                 request.setAttribute("error_message", "Creazione del form non avvenuta con successo");
                 request.getRequestDispatcher("/AperturaForm.jsp").forward(request, response);

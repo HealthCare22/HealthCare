@@ -1,10 +1,10 @@
-package servlet;
+package utenza;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import DAO.UserDAO;
-import Beans.MMGBean;
+import medico.MMGBean;
+
 import com.mongodb.client.MongoClient;
 
 import javax.servlet.ServletException;
@@ -43,14 +43,14 @@ public class LoginServlet extends HttpServlet {
         	currentSession.setMaxInactiveInterval(5*60);
 
             MongoClient mongoClient = (MongoClient) req.getServletContext().getAttribute("MONGO_CLIENT");
-            UserDAO userDAO = new UserDAO(mongoClient);
-        	MMGBean mmg = userDAO.recuperaUser(param1);
+            UserFacade userFacade = new UserFacade(mongoClient);
+        	MMGBean mmg = userFacade.getUserByEmail(param1);
 
         	req.setAttribute("datiMedico", mmg);
 
-            boolean isUserFound = userDAO.searchUserInDb(param1, UserDAO.encrypt(param2));
+            boolean isUserFound = userFacade.checkCredentials(param1, UserDAO.encrypt(param2));
              if(isUserFound) {
-                 req.getRequestDispatcher("/MyForm.jsp").forward(req, resp);
+                 req.getRequestDispatcher("/MyFormServlet").forward(req, resp);
              } else {
                  req.setAttribute("error_message", "You are not an authorised user. Please check with administrator.");
                  req.getRequestDispatcher("/login.jsp").forward(req, resp);

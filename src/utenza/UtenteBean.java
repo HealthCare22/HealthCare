@@ -1,4 +1,4 @@
-package Beans;
+package utenza;
 
 public class UtenteBean {
 

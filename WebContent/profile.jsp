@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%@ page import = "Beans.MMGBean" %>
-<%@ page import = "DAO.UserDAO" %>
+<%@ page import = "medico.MMGBean" %>
+<%@ page import = "utenza.UserDAO" %>
 <%@ page import="com.mongodb.client.MongoClient" %>
 
 <%

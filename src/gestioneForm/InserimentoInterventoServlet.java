@@ -1,4 +1,4 @@
-package servlet;
+package gestioneForm;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Beans.GestioneFormBean;
-import Beans.GestioneInterventiBean;
-import DAO.FormDAO;
-import DAO.InterventoDAO;
 import validazione.ValidateFieldsinserimentoInUnForm;
 
 import com.mongodb.client.MongoClient;
@@ -46,33 +42,32 @@ public class InserimentoInterventoServlet extends HttpServlet {
 		
 		if(descrizione.length()<2) {
 			request.setAttribute("error", "Il campo descrizione deve contenere almeno 2 caratteri");
-			request.getRequestDispatcher("/MyForm.jsp").forward(request, response);
+			request.getRequestDispatcher("/MyFormServlet").forward(request, response);
 		}
 		
 		if(descrizione.length()> 800) {
 			request.setAttribute("error", "Il campo descrizione deve contenere al massimo 800 caratteri");
-			request.getRequestDispatcher("/MyForm.jsp").forward(request, response);
+			request.getRequestDispatcher("/MyFormServlet").forward(request, response);
 		}
 		
 		if(!validate.validateDescrizione(descrizione)) {
 			request.setAttribute("error", "Il campo descrizione non presenta il formato stabilito");
-			request.getRequestDispatcher("/MyForm.jsp").forward(request, response);
+			request.getRequestDispatcher("/MyFormServlet").forward(request, response);
 		}
 	
 		if(descrizione == null || "".equals(descrizione) || id_form == null || "".equals(id_form) ||
 				email == null || "".equals(email)) {
 			
 			request.setAttribute("error", "Aggiunta dell'intervento fallita");
-			request.getRequestDispatcher("/MyForm.jsp").forward(request, response);
+			request.getRequestDispatcher("/MyFormServlet").forward(request, response);
             
 		}else {
 			MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
-			InterventoDAO interventoDAO = new InterventoDAO(mongoClient);
-			List<GestioneInterventiBean> addIntervento = interventoDAO.addIntervento(email, descrizione, id_form);
+			FormFacade formFacade = new FormFacade(mongoClient);
+			List<GestioneInterventiBean> addIntervento = formFacade.addIntervento(email, descrizione, id_form);
 			request.setAttribute("listaInterventi", addIntervento);
 			
-			FormDAO formDAO = new FormDAO(mongoClient);
-			GestioneFormBean form = formDAO.getFormById(id_form);
+			GestioneFormBean form = formFacade.getFormById(id_form);
 			request.setAttribute("formById", form);
 			
 				if(addIntervento!=null) {

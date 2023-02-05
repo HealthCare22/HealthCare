@@ -9,7 +9,7 @@
  	System.out.println(allForm);
 
 %>
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,Beans.GestioneFormBean"%>
+<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,gestioneForm.GestioneFormBean"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>

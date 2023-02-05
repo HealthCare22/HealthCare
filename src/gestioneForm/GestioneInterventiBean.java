@@ -1,4 +1,4 @@
-package Beans;
+package gestioneForm;
 
 public class GestioneInterventiBean {
 

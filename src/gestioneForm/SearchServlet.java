@@ -1,4 +1,4 @@
-package servlet;
+package gestioneForm;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import Beans.GestioneFormBean;
-import DAO.FormDAO;
 import com.mongodb.client.MongoClient;
 
 
@@ -37,9 +34,9 @@ public class SearchServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
-        FormDAO formDAO = new FormDAO(mongoClient);
+        FormFacade formFacade = new FormFacade(mongoClient);
 
-        listaForm = formDAO.recuperaForm();
+        listaForm = formFacade.recuperaTuttiIForm();
         request.setAttribute("allForm", listaForm);
         RequestDispatcher dispatcher = null;
 

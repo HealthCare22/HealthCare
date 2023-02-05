@@ -1,4 +1,4 @@
-package servlet;
+package utenza;
 
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.UserDAO;
 import validazione.ValidateFieldsRegistration;
 
 import com.mongodb.client.MongoClient;
@@ -37,12 +36,12 @@ public class RegistrationServlet extends HttpServlet {
         String numero_telefono = request.getParameter("numero_telefono");
 
         MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
-        UserDAO userDAO = new UserDAO(mongoClient);
+        UserFacade userFacade = new UserFacade(mongoClient);
         ValidateFieldsRegistration validate = new ValidateFieldsRegistration();
         
         
         // EMAIL VALIDATION
-        if(userDAO.existEmail(email)) {
+        if(userFacade.existEmail(email)) {
         	request.setAttribute("error_message", "l'email inserita è gia presente nel database");
 			request.getRequestDispatcher("/registration.jsp").forward(request, response);
         }
@@ -197,7 +196,7 @@ public class RegistrationServlet extends HttpServlet {
             request.getRequestDispatcher("/registration.jsp").forward(request, response);
         } else {
             
-            boolean isUserFound = userDAO.appendUserInDb(nome, cognome, sesso, UserDAO.encrypt(password), email,
+            boolean isUserFound = userFacade.registerUser(nome, cognome, sesso, UserDAO.encrypt(password), email,
                     provincia, comune, indirizzo, numero_telefono);
 
             if (isUserFound) {

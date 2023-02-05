@@ -1,4 +1,4 @@
-package Beans;
+package medico;
 
 public class MMGBean {
 	

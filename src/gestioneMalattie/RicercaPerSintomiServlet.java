@@ -1,4 +1,4 @@
-package servlet;
+package gestioneMalattie;
  
 import java.io.IOException; 
 import java.util.ArrayList;
@@ -13,10 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mongodb.client.MongoClient;
 
-import Beans.GestioneMalattieBean;
-import Beans.SintomoBean;
-import DAO.MalattiaDAO;
-import DAO.SintomoDAO;
 import validazione.ValidateFieldsInserimentoSintomi;
 
 /**
@@ -59,10 +55,9 @@ public class RicercaPerSintomiServlet extends HttpServlet {
 			}
 		}
 		MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
-		SintomoDAO sintomoDao = new SintomoDAO(mongoClient);
-		MalattiaDAO malattiaDao= new MalattiaDAO(mongoClient);
-		List<SintomoBean> listaSintomi = sintomoDao.getSintomiByNome(listaNomiSintomi);
-		List<GestioneMalattieBean> listaMalattie = malattiaDao.getMalattieBySintomi(listaSintomi);
+		MalattieFacade malattieFacade = new MalattieFacade(mongoClient);
+		List<SintomoBean> listaSintomi = malattieFacade.getSintomiByNome(listaNomiSintomi);
+		List<GestioneMalattieBean> listaMalattie = malattieFacade.getMalattieBySintomi(listaSintomi);
 		request.setAttribute("listaMalattie", listaMalattie);
 		request.getRequestDispatcher("listaMalattie.jsp").forward(request,response);
 	}

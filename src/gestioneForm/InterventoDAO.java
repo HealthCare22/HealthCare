@@ -1,4 +1,4 @@
-package DAO;
+package gestioneForm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,6 @@ import com.mongodb.client.*;
 import com.mongodb.client.model.Filters;
 
 import org.bson.Document;
-
-import Beans.GestioneInterventiBean;
 
 public class InterventoDAO {
     private final MongoCollection<Document> collection;

@@ -6,7 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import DAO.UserDAO;
+import utenza.UserDAO;
 import validazione.ValidateFieldsModificaDatiAnagrafici;
 
 

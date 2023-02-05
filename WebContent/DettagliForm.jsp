@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="DAO.FormDAO" %>
-<%@ page import="Beans.GestioneFormBean" %>
+<%@ page import="gestioneForm.FormDAO" %>
+<%@ page import="gestioneForm.GestioneFormBean" %>
 <%@ page import="com.mongodb.client.MongoClient" %>
 
 
 <%
-
-	
 	
 	Collection<?> allInterventi = (Collection<?>)request.getAttribute("listaInterventi");
 
@@ -19,7 +17,6 @@
 	request.setAttribute("formById", form);
 	
 	MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
-	FormDAO formDAO = new FormDAO(mongoClient);
 
 	sessione.setAttribute("status", form.getStatus());
 
@@ -27,7 +24,7 @@
 
 	
 
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,Beans.GestioneInterventiBean"%>
+<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,gestioneForm.GestioneInterventiBean"%>
 <!DOCTYPE html>
 <html>
 

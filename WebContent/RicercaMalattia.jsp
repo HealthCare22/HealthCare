@@ -1,7 +1,7 @@
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*,Beans.MMGBean"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*,medico.MMGBean"%>
 
-<%@ page import = "Beans.MMGBean" %>
+<%@ page import = "medico.MMGBean" %>
     
     
     <% String error_message = (String) request.getAttribute("error_message"); %>

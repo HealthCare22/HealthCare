@@ -1,12 +1,12 @@
 package test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals; 
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import DAO.MalattiaDAO;
+import gestioneMalattie.MalattiaDAO;
 import validazione.ValidateFieldsRicercaMalattiaRaraNome;
 
 public class RicercaMalattiaRaraUT extends Mockito{

@@ -1,4 +1,4 @@
-package servlet;
+package medico;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,9 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.FormDAO;
-import DAO.InterventoDAO;
-import DAO.UserDAO;
+import gestioneForm.FormDAO;
+import gestioneForm.InterventoDAO;
+import utenza.UserDAO;
+import utenza.UserFacade;
 import validazione.ValidateFieldsRegistration;
 
 import com.mongodb.client.MongoClient;
@@ -35,12 +36,12 @@ public class EditProfile extends HttpServlet {
         String numero_telefono = request.getParameter("numero_telefono").trim();
 
         MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
-        UserDAO userDAO = new UserDAO(mongoClient);
+        UserFacade userFacade = new UserFacade(mongoClient);
         ValidateFieldsRegistration validate = new ValidateFieldsRegistration();
         
         
         // EMAIL VALIDATION
-        if(userDAO.existEmail(email) && (!oldmail.equals(email))) {
+        if(userFacade.existEmail(email) && (!oldmail.equals(email))) {
         	request.setAttribute("error", "l'email inserita è gia presente nel database");
 			request.getRequestDispatcher("/profile.jsp").forward(request, response);
         }
@@ -148,16 +149,8 @@ public class EditProfile extends HttpServlet {
             request.getRequestDispatcher("/profile.jsp").forward(request, response);
         } else {
             
-            boolean isUserFound = userDAO.editUserInDb(password, email,
+            boolean isUserFound = userFacade.modifyUser(password, email,
                     provincia, comune, indirizzo, numero_telefono,oldmail);
-
-
-            FormDAO formDAO = new FormDAO(mongoClient);
-            formDAO.updateEmail(oldmail,email);
-
-
-            InterventoDAO interventoDAO = new InterventoDAO(mongoClient);
-            interventoDAO.updateEmailInterventi(oldmail, email);
 
             request.getSession().setAttribute("email", email);
             if (isUserFound) {

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%@ page import = "Beans.MMGBean" %>
+<%@ page import = "medico.MMGBean" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +20,7 @@
           </div>
           <ul class="list-item">
             <li><a href="RicercaMalattia.jsp">Ricerca</a></li>
-            <li><a href="MyForm.jsp">Form</a></li>
+            <li><a href="MyFormServlet">Form</a></li>
             <li><a href="ListaMalattieServlet">Malattia</a></li>
             <li><a href="profile.jsp">Profilo</a></li>
           </ul>

@@ -1,4 +1,4 @@
-package servlet;
+package gestioneMalattie;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,11 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.MalattiaDAO;
-import DAO.SintomoDAO;
 import validazione.ValidateFieldsRicercaMalattiaRaraNome;
-import Beans.GestioneMalattieBean;
-import Beans.SintomoBean;
 
 import com.mongodb.client.MongoClient;
 
@@ -39,7 +35,7 @@ public class RicercaPerNomeServlet extends HttpServlet {
 
         String nomeMalattia = request.getParameter("nomeMalattia").toLowerCase();
         MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
-        MalattiaDAO malattiaDAO = new MalattiaDAO(mongoClient);
+        MalattieFacade malattieFacade = new MalattieFacade(mongoClient);
         ValidateFieldsRicercaMalattiaRaraNome validate = new ValidateFieldsRicercaMalattiaRaraNome();
         
         if(nomeMalattia.length() < 2) {
@@ -51,7 +47,7 @@ public class RicercaPerNomeServlet extends HttpServlet {
         	request.setAttribute("error_message", "Il campo malattia deve contenere al massimo 40 caratteri");
             request.getRequestDispatcher("/RicercaMalattia.jsp").forward(request, response);
         }
-        if(!malattiaDAO.existMalattia(nomeMalattia)) {
+        if(!malattieFacade.existMalattia(nomeMalattia)) {
           	request.setAttribute("error_message", "La malattia ricercata non è stata trovata");
             request.getRequestDispatcher("/RicercaMalattia.jsp").forward(request, response);
         }
@@ -67,9 +63,8 @@ public class RicercaPerNomeServlet extends HttpServlet {
 
         } else {
       
-            SintomoDAO sintomoDAO = new SintomoDAO(mongoClient);
-            List<GestioneMalattieBean> listaMalattia = malattiaDAO.RicercaPerNome(nomeMalattia);
-            List<SintomoBean> listaSintomi = sintomoDAO.getSintomi();
+            List<GestioneMalattieBean> listaMalattia = malattieFacade.RicercaPerNome(nomeMalattia);
+            List<SintomoBean> listaSintomi = malattieFacade.getAllSintomi();
             request.setAttribute("listaMalattie", listaMalattia);
             request.setAttribute("listaSintomi", listaSintomi);
             request.getRequestDispatcher("/VediDettagliMalattia.jsp").forward(request, response);
