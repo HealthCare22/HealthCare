@@ -56,8 +56,7 @@ public class RicercaPerSintomiServlet extends HttpServlet {
 		}
 		MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
 		MalattieFacade malattieFacade = new MalattieFacade(mongoClient);
-		List<SintomoBean> listaSintomi = malattieFacade.getSintomiByNome(listaNomiSintomi);
-		List<GestioneMalattieBean> listaMalattie = malattieFacade.getMalattieBySintomi(listaSintomi);
+		List<GestioneMalattieBean> listaMalattie = malattieFacade.ricercaPerSintomi(listaNomiSintomi);
 		request.setAttribute("listaMalattie", listaMalattie);
 		request.getRequestDispatcher("listaMalattie.jsp").forward(request,response);
 	}

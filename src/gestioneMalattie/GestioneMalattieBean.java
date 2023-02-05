@@ -8,9 +8,9 @@ public class GestioneMalattieBean {
 	private int idMalattia;
 	private String nome;
 	private String descrizione;
-	private List<Integer> listaSintomi;
+	private List<SintomoBean> listaSintomi;
 	
-	public GestioneMalattieBean(int idMalattia, String nome, String descrizione, List<Integer> listaSintomi) {
+	public GestioneMalattieBean(int idMalattia, String nome, String descrizione, List<SintomoBean> listaSintomi) {
 		super();
 		this.idMalattia = idMalattia;
 		this.nome = nome;
@@ -46,10 +46,10 @@ public class GestioneMalattieBean {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	public List<Integer> getListaSintomi() {
+	public List<SintomoBean> getListaSintomi() {
 		return listaSintomi;
 	}
-	public void setListaSintomi(List<Integer> listaSintomi) {
+	public void setListaSintomi(List<SintomoBean> listaSintomi) {
 		this.listaSintomi = listaSintomi;
 	}
 	

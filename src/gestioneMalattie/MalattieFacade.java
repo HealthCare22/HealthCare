@@ -14,12 +14,12 @@ public class MalattieFacade {
 
 	public List<GestioneMalattieBean> getAllMalattie() {
 		MalattiaDAO malattiaDao = new MalattiaDAO(mongoClient);
-		return malattiaDao.getMalattie();
+		return malattiaDao.getMalattie(mongoClient);
 	}
 
 	public List<GestioneMalattieBean> RicercaPerNome(String nomeMalattia) {
 		MalattiaDAO malattiaDao = new MalattiaDAO(mongoClient);
-		return malattiaDao.RicercaPerNome(nomeMalattia);
+		return malattiaDao.RicercaPerNome(nomeMalattia, mongoClient);
 	}
 
 	public List<SintomoBean> getAllSintomi() {
@@ -32,9 +32,11 @@ public class MalattieFacade {
 		return sintomoDao.getSintomiByNome(listaNomiSintomi);
 	}
 
-	public List<GestioneMalattieBean> getMalattieBySintomi(List<SintomoBean> listaSintomi) {
+	public List<GestioneMalattieBean> ricercaPerSintomi(List<String> listanomiSintomi) {
 		MalattiaDAO malattiaDao = new MalattiaDAO(mongoClient);
-		return malattiaDao.getMalattieBySintomi(listaSintomi);
+		SintomoDAO sintomoDao = new SintomoDAO(mongoClient);
+		List<SintomoBean> listaSintomi = sintomoDao.getSintomiByNome(listanomiSintomi);
+		return malattiaDao.ricercaPerSintomi(listaSintomi, mongoClient);
 	}
 
 	public boolean existMalattia(String nomeMalattia) {

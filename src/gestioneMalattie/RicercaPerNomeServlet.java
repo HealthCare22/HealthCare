@@ -64,9 +64,7 @@ public class RicercaPerNomeServlet extends HttpServlet {
         } else {
       
             List<GestioneMalattieBean> listaMalattia = malattieFacade.RicercaPerNome(nomeMalattia);
-            List<SintomoBean> listaSintomi = malattieFacade.getAllSintomi();
             request.setAttribute("listaMalattie", listaMalattia);
-            request.setAttribute("listaSintomi", listaSintomi);
             request.getRequestDispatcher("/VediDettagliMalattia.jsp").forward(request, response);
         }
     }

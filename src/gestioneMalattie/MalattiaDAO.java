@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -38,44 +39,33 @@ public class MalattiaDAO {
     }
 
 
-    public List<GestioneMalattieBean> RicercaPerNome(String nomeMalattia) {
-        FindIterable<Document> cursor = this.collection.find();
-        List<GestioneMalattieBean> listaMalattia = new ArrayList<>();
-        //Creazione lista di form
-        for (Document doc : cursor) {
-            if (nomeMalattia.equals(doc.getString("nome_malattia"))) {
-                String nome = doc.getString("nome_malattia");
-                int codice = doc.getInteger("codice");
-                String descrizione = doc.getString("descrizione");
-                List<Integer>listaSintomi = new ArrayList<>();
-                for(int i=0; i<=5; i++) {
-                	Integer sintomo = doc.getInteger("sintomo"+i);
-                	if(sintomo!=null) { 
-                		listaSintomi.add(sintomo);
-                	}
-                }
-
-                listaMalattia.add(new GestioneMalattieBean(codice, nome, descrizione, listaSintomi));
+    public List<GestioneMalattieBean> RicercaPerNome(String nomeMalattia, MongoClient client) {
+        List<GestioneMalattieBean> listaMalattie = getMalattie(client);
+        List<GestioneMalattieBean> listaRisultato = new ArrayList<>();
+        for (GestioneMalattieBean m : listaMalattie) {
+            if (nomeMalattia.equals(m.getNome())) {
+            	listaRisultato.add(m);
             }
         }
-        return listaMalattia;
+        return listaRisultato;
     }
 
-    public List<GestioneMalattieBean> getMalattie() {
+	public List<GestioneMalattieBean> getMalattie(MongoClient client) {
+		Hashtable<Integer,String> sintomiTable = getSintomi(client);
         FindIterable<Document> cursor = this.collection.find();
         List<GestioneMalattieBean> listaMalattia = new ArrayList<>();
 
-        //Creazione lista di form
         for (Document doc : cursor) {
 
             String nome = doc.getString("nome_malattia");
             Integer codice = doc.getInteger("codice");
             String descrizione = doc.getString("descrizione");
-            List<Integer> listaSintomi = new ArrayList<>();
+            List<SintomoBean> listaSintomi = new ArrayList<>();
             for(int i=0; i<=5; i++) {
             	Integer codiceSintomo = doc.getInteger("sintomo"+i);
             	if(codiceSintomo!=null) {
-            		listaSintomi.add(codiceSintomo);
+            		SintomoBean sintomo = new SintomoBean(codiceSintomo,sintomiTable.get(codiceSintomo));
+            		listaSintomi.add(sintomo);
             	}
             }
             listaMalattia.add(new GestioneMalattieBean(codice, nome, descrizione, listaSintomi));
@@ -83,7 +73,24 @@ public class MalattiaDAO {
         return listaMalattia;
     }
 
-    private class Pair{
+    private Hashtable<Integer, String> getSintomi(MongoClient client) {
+		Hashtable<Integer, String> sintomiTable = new Hashtable<>();
+		MongoDatabase database = client.getDatabase(MalattiaDAO.DB_NAME);
+		MongoCollection<Document> SintomoCollection = database.getCollection("Sintomo");
+		FindIterable<Document> cursor = SintomoCollection.find();
+		for(Document d : cursor) {
+			Integer codiceSintomo = d.getInteger("codice");
+			String nomeSintomo = d.getString("nome_sintomo");
+			if(nomeSintomo == null) {
+				nomeSintomo = d.getString("nome sintomo");
+			}
+			sintomiTable.put(codiceSintomo, nomeSintomo);
+			System.out.println(nomeSintomo);
+		}
+		return sintomiTable;
+	}
+
+	private class Pair{
     	public GestioneMalattieBean m;
     	public Integer v;
     	
@@ -94,9 +101,9 @@ public class MalattiaDAO {
     	
     }
     
-	public List<GestioneMalattieBean> getMalattieBySintomi(List<SintomoBean> listaSintomi) {
+	public List<GestioneMalattieBean> ricercaPerSintomi(List<SintomoBean> listaSintomi, MongoClient client) {
 		List<GestioneMalattieBean> listaRisultato = new ArrayList<>();
-		List<GestioneMalattieBean> listaMalattie = getMalattie();
+		List<GestioneMalattieBean> listaMalattie = getMalattie(client);
 		PriorityQueue<Pair> malattieOrdinate = new PriorityQueue<>(new Comparator<Pair>() {
 
 			@Override
@@ -120,9 +127,9 @@ public class MalattiaDAO {
 	private int checkSintomo(GestioneMalattieBean m, List<SintomoBean> listaSintomi) {
 		int count=0;
 		for(SintomoBean s : listaSintomi) {
-			List<Integer> listaSintomiPerMalattia = m.getListaSintomi();
-			for(Integer g : listaSintomiPerMalattia) {
-				if(s.getCodice() == g) {
+			List<SintomoBean> listaSintomiPerMalattia = m.getListaSintomi();
+			for(SintomoBean g : listaSintomiPerMalattia) {
+				if(s.getCodice() == g.getCodice()) {
 					count++;
 				}
 			}
