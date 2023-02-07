@@ -9,6 +9,11 @@ import static org.hamcrest.CoreMatchers.*;
 import org.junit.Assert;
 
 public class SeleniumModificaAnagrafMMG {
+
+	/**
+	 * TCS_4.1
+	 *Il campo mail deve contenere almeno 2 caratteri 
+	 */
 	@Test
 	public void modificaDatiMMG_email_due_caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -26,7 +31,12 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
+
+
+	/**
+	 * TCS_4.2
+	 *Il campo mail deve contenere al max 255 caratteri 
+	 */
 	@Test
 	public void modificaDatiMMG_email_255_caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -47,6 +57,11 @@ public class SeleniumModificaAnagrafMMG {
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
 
+
+	/**
+	 * TCS_4.3
+	 *Il campo mail non rispetta il formato stabilito
+	 */
 	@Test
 	public void modificaDatiMMG_email_formato_errato() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -65,6 +80,11 @@ public class SeleniumModificaAnagrafMMG {
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
 
+
+	/**
+	 * TCS_4.4
+	 *Il campo mail è già presente nel DB
+	 */
 	@Test
 	public void modificaDatiMMG_email_gia_inserita() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -82,8 +102,13 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
-	
+
+
+
+	/**
+	 * TCS_4.5
+	 *Il campo indirizzo deve contenere almeno 2 caratteri
+	 */
 	@Test
 	public void modificaDatiMMG_indirizzo_formato_errato() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -101,7 +126,12 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	} 
-	
+
+
+	/**
+	 * TCS_4.6
+	 *Il campo indirizzo deve contenere al max 255 caratteri
+	 */
 	@Test
 	public void modificaDatiMMG_indirizzo_max_255_caratt() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -120,7 +150,12 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
+
+
+	/**
+	 * TCS_4.7
+	 *Il campo indirizzo deve contenere solo caratteri alfanumerici
+	 */
 	@Test
 	public void modificaDatiMMG_indirizzo_caratteri_Alfanumerici() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -138,8 +173,12 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
 
+
+	/**
+	 * TCS_4.8
+	 *Il campo provincia deve contenere minimo 2 caratteri
+	 */
 	@Test
 	public void modificaDatiMMG_provincia_almeno_2_caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -157,7 +196,12 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
+
+
+	/**
+	 * TCS_4.9
+	 *Il campo provincia deve contenere minimo 2 caratteri
+	 */
 	@Test
 	public void modificaDatiMMG_provincia_almeno_2_caratteri2() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -175,7 +219,12 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
+
+
+	/**
+	 * TCS_4.10
+	 *Il campo provincia deve contenere minimo 2 caratteri e non sono ammissibili caratteri speciali 
+	 */
 	@Test
 	public void modificaDatiMMG_provincia_almeno_2_caratteri_no_speciali() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -193,7 +242,12 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
+
+
+	/**
+	 * TCS_4.11
+	 *Il campo provincia deve contenere al max 255 caratteri 
+	 */
 	@Test
 	public void modificaDatiMMG_provincia_massimo_255() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -213,7 +267,12 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
+
+
+	/**
+	 * TCS_4.12
+	 *Il campo comune deve contenere minimo 2 caratteri e non deve essere vuoto
+	 */
 	@Test
 	public void modificaDatiMMG_comune_almeno_2_caratteri_no_vuoto() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -231,7 +290,12 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
+
+
+	/**
+	 * TCS_4.13
+	 *Il campo comune deve contenere minimo 2 caratteri e non devono essere presenti caratteri speciali
+	 */
 	@Test
 	public void modificaDatiMMG_comune_almeno_2_caratteri_no_speciali() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -249,7 +313,12 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
+
+
+	/**
+	 * TCS_4.14
+	 *Il campo comune deve contenere max 255 caratteri 
+	 */
 	@Test
 	public void modificaDatiMMG_comune_massimo_255_caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -269,7 +338,12 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
+
+
+	/**
+	 * TCS_4.15
+	 *Il campo telefono deve contenere almeno 10 caratteri 
+	 */
 	@Test
 	public void modificaDatiMMG_telefono_almeno_10_caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -287,8 +361,12 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
-	
+
+
+	/**
+	 * TCS_4.16
+	 *Il campo comune deve contenere max 11 caratteri
+	 */
 	@Test
 	public void modificaDatiMMG_telefono_max_11_caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -306,7 +384,11 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
+
+	/**
+	 * TCS_4.17
+	 *Il campo comune deve contenere solo caratteri numerici, al più le prime 3 cifre possono essere separate dal trattino
+	 */
 	@Test
 	public void modificaDatiMMG_telefono_solo_num_e_trattino_() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -324,8 +406,12 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
-	
+
+
+	/**
+	 * TCS_4.18
+	 *Il campo password deve contenere almeno 8 caratteri, almeno 1 lettera, almeno 1 numero, nessuno spazio
+	 */
 	@Test
 	public void modificaDatiMMG_password_min8caratt_min1lettera_min1nummero_nospazio() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -343,8 +429,12 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
-	
+
+
+	/**
+	 * TCS_4.19
+	 *Il campo passsord deve contenere al max 24, almeno 1 lettera, 1 numero, no spazi
+	 */
 
 	@Test
 	public void modificaDatiMMG_password_max24caratt_almeno1lettera_almeno1numero_no_spazio() {
@@ -363,9 +453,14 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
+
+
+	/**
+	 * TCS_4.20
+	 *Il campo passsord deve contenere, almeno 1 lettera, 1 numero, no spazi
+	 */
 	@Test
-	public void modificaDatiMMG_password_max24caratt_almeno1lettera_almeno1numero_no_spazio2() {
+	public void modificaDatiMMG_password_almeno1lettera_almeno1numero_no_spazio() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
 		driver.get("http://localhost:8080/HealthCare/profile.jsp");
@@ -381,10 +476,14 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
-	
+
+
+	/**
+	 * TCS_4.21
+	 *Il campo confermaPasssord non è stato inserito e non corrisponde al campo password
+	 */
 	@Test
-	public void modificaDatiMMG_confermaPassword_max24caratt_almeno1lettera_almeno1numero_no_spazio() {
+	public void modificaDatiMMG_confermaPassword_non_inserito_e_non_corrispondente_a_password() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
 		driver.get("http://localhost:8080/HealthCare/profile.jsp");
@@ -400,10 +499,13 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
-	
+
+	/**
+	 * TCS_4.22
+	 *Il campo confermaPasssord e non corrisponde al campo password
+	 */
 	@Test
-	public void modificaDatiMMG_confermaPassword_non_inserito_e_non_corrispondente_al_campo_password() {
+	public void modificaDatiMMG_confermaPassword_non_corrispondente_al_campo_password() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
 		driver.get("http://localhost:8080/HealthCare/profile.jsp");
@@ -415,7 +517,7 @@ public class SeleniumModificaAnagrafMMG {
 		driver.findElement(By.id("password"));
 		WebElement password=driver.findElement(By.id("password"));
 		password.sendKeys("heysiri");
-		
+
 		WebElement save = driver.findElement(By.id("save"));
 		save.click();
 
@@ -424,6 +526,10 @@ public class SeleniumModificaAnagrafMMG {
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
 
+	/**
+	 * TCS_4.23
+	 *Il campo confermaPasssord non corrisponde al campo password
+	 */
 	@Test
 	public void modificaDatiMMG_confermaPassword_corrispondente_al_campo_password() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -437,7 +543,7 @@ public class SeleniumModificaAnagrafMMG {
 		driver.findElement(By.id("password"));
 		WebElement password=driver.findElement(By.id("password"));
 		password.sendKeys("heygoogle");
-		
+
 		WebElement save = driver.findElement(By.id("save"));
 		save.click();
 
@@ -445,7 +551,11 @@ public class SeleniumModificaAnagrafMMG {
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-	
+
+	/**
+	 * TCS_4.24
+	 *Il campo confermaPasssord non corrisponde al campo password
+	 */
 	@Test
 	public void modificaDatiMMG_confermaPassword_non_inserito_e_non_corrispondente_al_campo_password2() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
@@ -459,7 +569,7 @@ public class SeleniumModificaAnagrafMMG {
 		driver.findElement(By.id("Password"));
 		WebElement Password=driver.findElement(By.id("Password"));
 		Password.sendKeys("sicchebbello");
-		
+
 		WebElement save = driver.findElement(By.id("save"));
 		save.click();
 

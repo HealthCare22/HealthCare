@@ -8,35 +8,39 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 
 public class SeleniumRicercaMalattia {
-	
-	
-	//Il campo Malattia deve essere compilato e deve avere minimo 2 caratteri alfabetici
+
+	/**
+	 * 18.1
+	 * Il campo Malattia deve essere compilato e deve avere minimo 2 caratteri alfabetici 
+	 */
 	@Test
 	public void ricercaMalattiaNull() {
-	System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
-	WebDriver driver = new EdgeDriver();
-	driver.get("http://localhost:8080/HealthCare/RicercaMalattia.jsp");
-	
-	driver.findElement(By.id("nomeMalattia"));
-	WebElement nomeMalattia=driver.findElement(By.id("nomeMalattia"));
-	nomeMalattia.sendKeys("");
-
-	WebElement cercaMalattia = driver.findElement(By.id("cercaPerNomeButton"));
-	cercaMalattia.click();
-
-	String dettaglioMalattia = driver.findElement(By.id("dettaglio")).getTagName(); 
-	String dettaglio= "nessunaMalattia";
-	Assert.assertEquals(dettaglio, dettaglioMalattia);
-
-	}
-	
-	//Il campo Malattia deve contenere al massimo 40 caratteri
-		@Test
-		public void ricercaMalattia40Caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
 		driver.get("http://localhost:8080/HealthCare/RicercaMalattia.jsp");
-		
+
+		driver.findElement(By.id("nomeMalattia"));
+		WebElement nomeMalattia=driver.findElement(By.id("nomeMalattia"));
+		nomeMalattia.sendKeys("");
+
+		WebElement cercaMalattia = driver.findElement(By.id("cercaPerNomeButton"));
+		cercaMalattia.click();
+
+		String dettaglioMalattia = driver.findElement(By.id("dettaglio")).getTagName(); 
+		String dettaglio= "nessunaMalattia";
+		Assert.assertEquals(dettaglio, dettaglioMalattia);
+	}
+
+	/**
+	 * 18.2
+	 * Il campo Malattia deve contenere al massimo 40 caratteri
+	 */
+	@Test
+	public void ricercaMalattia40Caratteri() {
+		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
+		WebDriver driver = new EdgeDriver();
+		driver.get("http://localhost:8080/HealthCare/RicercaMalattia.jsp");
+
 		driver.findElement(By.id("nomeMalattia"));
 		WebElement nomeMalattia=driver.findElement(By.id("nomeMalattia"));
 		nomeMalattia.sendKeys("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -48,17 +52,19 @@ public class SeleniumRicercaMalattia {
 		String dettaglio= "nessunaMalattia";
 		Assert.assertEquals(dettaglio, dettaglioMalattia);
 
-		}
-		
-		
-		
-		//La Malattia ricercata non esiste
-		@Test
-		public void ricercaMalattiaInesistente() {
+	}
+
+
+	/**
+	 * 18.3
+	 * La Malattia ricercata non è stata trovata
+	 */
+	@Test
+	public void ricercaMalattiaInesistente() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
 		driver.get("http://localhost:8080/HealthCare/RicercaMalattia.jsp");
-				
+
 		driver.findElement(By.id("nomeMalattia"));
 		WebElement nomeMalattia=driver.findElement(By.id("nomeMalattia"));
 		nomeMalattia.sendKeys("aaaaaaaa");
@@ -69,9 +75,5 @@ public class SeleniumRicercaMalattia {
 		String dettaglioMalattia = driver.findElement(By.id("dettaglio")).getTagName(); 
 		String dettaglio= "nessunaMalattia";
 		Assert.assertEquals(dettaglio, dettaglioMalattia);
-
-		}
-				
-				
-				
+	}
 }

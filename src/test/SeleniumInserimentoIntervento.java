@@ -8,32 +8,40 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 
 public class SeleniumInserimentoIntervento {
-	
-	//il campo Descrizione deve contenere almeno 2 caratteri
+
+
+	/**
+	 * TCS_8.1
+	 *il campo Descrizione deve contenere almeno 2 caratteri
+	 */
 	@Test
 	public void inserimentoIntervento2Caratteri() {
-	System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
-	WebDriver driver = new EdgeDriver();
-	driver.get("http://localhost:8080/HealthCare/DettaglioFormServlet");
-
-	driver.findElement(By.id("descrizione"));
-	WebElement descrizione=driver.findElement(By.id("descrizione"));
-	descrizione.sendKeys("");
-
-	WebElement pubblica = driver.findElement(By.id("pubblica"));
-	pubblica.click();
-
-	String actualUrl="http://localhost:8080/HealthCare/DettaglioFormServlet";
-	String expectedUrl= driver.getCurrentUrl();
-	Assert.assertEquals(actualUrl, expectedUrl);
-
-	}
-	
-	//il campo Descrizione deve contenere al massimo 800 caratteri
-		public void inserimentoIntervento800Caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/DettaglioFormServlet");
+		driver.get("http://localhost:8080/HealthCare/SearchServlet");
+
+		driver.findElement(By.id("descrizione"));
+		WebElement descrizione=driver.findElement(By.id("descrizione"));
+		descrizione.sendKeys("");
+
+		WebElement pubblica = driver.findElement(By.id("pubblica"));
+		pubblica.click();
+
+		String actualUrl="http://localhost:8080/HealthCare/DettagliForm.jsp";
+		String expectedUrl= driver.getCurrentUrl();
+		Assert.assertEquals(actualUrl, expectedUrl);
+
+	}
+
+	/**
+	 * TCS_8.2
+	 *il campo Descrizione deve contenere al massimo 800 caratteri
+	 */
+	@Test
+	public void inserimentoIntervento800Caratteri() {
+		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
+		WebDriver driver = new EdgeDriver();
+		driver.get("http://localhost:8080/HealthCare/SearchServlet");
 
 		driver.findElement(By.id("descrizione"));
 		WebElement descrizione=driver.findElement(By.id("descrizione"));
@@ -55,9 +63,9 @@ public class SeleniumInserimentoIntervento {
 		WebElement pubblica = driver.findElement(By.id("pubblica"));
 		pubblica.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/DettaglioFormServlet";
+		String actualUrl="http://localhost:8080/HealthCare/DettagliForm.jsp";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 
-		}
+	}
 }

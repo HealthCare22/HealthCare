@@ -12,6 +12,11 @@ import org.openqa.selenium.edge.EdgeDriver;
 public class SeleniumInserimentoSintomi {
 	
 	//Uno o più sintomi risultano incorretti
+
+	/**
+	 * TCS_17.1
+	 * 1 o più sintomi inseriti risultano incorretti
+	 */
 	@Test
 	public void inserimentoSintomi() {
 	System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
