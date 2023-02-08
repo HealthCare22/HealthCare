@@ -41,7 +41,7 @@
 	                <td><%=bean.getTitolo()%></td>
 	                <td><%=bean.getDataApertura()%></td>
 	                <td><form method = "get" action="DettaglioFormServlet"> 
-						<button type="submit" name="id" value =<%=bean.getIdform() %> class = "DettagliButton">
+						<button type="submit" name="id" id="idButton" value =<%=bean.getIdform() %> class = "DettagliButton">
 						Vedi dettagli</button></form></td>
 	            </tr>
 	        </table>

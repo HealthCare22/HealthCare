@@ -20,6 +20,10 @@ public class SeleniumInserimentoIntervento {
 		WebDriver driver = new EdgeDriver();
 		driver.get("http://localhost:8080/HealthCare/SearchServlet");
 
+		driver.findElement(By.id("idButton"));
+		WebElement vediDettagli=driver.findElement(By.id("idButton"));
+		vediDettagli.click();
+		
 		driver.findElement(By.id("descrizione"));
 		WebElement descrizione=driver.findElement(By.id("descrizione"));
 		descrizione.sendKeys("");
@@ -43,6 +47,10 @@ public class SeleniumInserimentoIntervento {
 		WebDriver driver = new EdgeDriver();
 		driver.get("http://localhost:8080/HealthCare/SearchServlet");
 
+		driver.findElement(By.id("idButton"));
+		WebElement vediDettagli=driver.findElement(By.id("idButton"));
+		vediDettagli.click();
+		
 		driver.findElement(By.id("descrizione"));
 		WebElement descrizione=driver.findElement(By.id("descrizione"));
 		descrizione.sendKeys("Inerente alla patologia da lei descrittaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
