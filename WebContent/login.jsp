@@ -23,11 +23,11 @@
 	<form method="post" action="LoginServlet">
 		<div class="LoginInformation">
 			<div>
-				<input name="email" class="email" type="email" placeholder="Email">
+				<input name="email" id="email" class="email" type="email" placeholder="Email">
 			</div>
 
 			<div>
-				<input name="password" class="password" type="password" placeholder="Password">
+				<input name="password" id="password" class="password" type="password" placeholder="Password">
 			</div>
 			<div class="passwordDimenticata">
 				<a href="">Password dimenticata?</a>

@@ -9,6 +9,13 @@ import org.openqa.selenium.edge.EdgeDriver;
 
 public class SeleniumRicercaMalattia {
 
+	    //18.1 minimo 2 caratteri alfabetici
+	
+		//18.2 massimo 40 caratteri
+		
+		//18.3 malattia non trovata
+		
+		//18.4 malattia trovata
 	/**
 	 * 18.1
 	 * Il campo Malattia deve essere compilato e deve avere minimo 2 caratteri alfabetici 
@@ -26,9 +33,9 @@ public class SeleniumRicercaMalattia {
 		WebElement cercaMalattia = driver.findElement(By.id("cercaPerNomeButton"));
 		cercaMalattia.click();
 
-		String dettaglioMalattia = driver.findElement(By.id("dettaglio")).getTagName(); 
-		String dettaglio= "nessunaMalattia";
-		Assert.assertEquals(dettaglio, dettaglioMalattia);
+		String actualUrl="http://localhost:8080/HealthCare/RicercaPerNomeServlet?nomeMalattia=";
+		String expectedUrl= driver.getCurrentUrl();
+		Assert.assertEquals(actualUrl, expectedUrl);
 	}
 
 	/**
@@ -48,9 +55,9 @@ public class SeleniumRicercaMalattia {
 		WebElement cercaMalattia = driver.findElement(By.id("cercaPerNomeButton"));
 		cercaMalattia.click();
 
-		String dettaglioMalattia = driver.findElement(By.id("dettaglio")).getTagName(); 
-		String dettaglio= "nessunaMalattia";
-		Assert.assertEquals(dettaglio, dettaglioMalattia);
+		String actualUrl="http://localhost:8080/HealthCare/RicercaPerNomeServlet?nomeMalattia=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+		String expectedUrl= driver.getCurrentUrl();
+		Assert.assertEquals(actualUrl, expectedUrl);
 
 	}
 
@@ -72,8 +79,27 @@ public class SeleniumRicercaMalattia {
 		WebElement cercaMalattia = driver.findElement(By.id("cercaPerNomeButton"));
 		cercaMalattia.click();
 
-		String dettaglioMalattia = driver.findElement(By.id("dettaglio")).getTagName(); 
-		String dettaglio= "nessunaMalattia";
-		Assert.assertEquals(dettaglio, dettaglioMalattia);
+		String actualUrl="http://localhost:8080/HealthCare/RicercaPerNomeServlet?nomeMalattia=aaaaaaaa";
+		String expectedUrl= driver.getCurrentUrl();
+		Assert.assertEquals(actualUrl, expectedUrl);
+	}
+	
+	//18.4 ricera malattia trovata con successo
+	@Test
+	public void ricercaMalattiaEsistente() {
+		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
+		WebDriver driver = new EdgeDriver();
+		driver.get("http://localhost:8080/HealthCare/RicercaMalattia.jsp");
+
+		driver.findElement(By.id("nomeMalattia"));
+		WebElement nomeMalattia=driver.findElement(By.id("nomeMalattia"));
+		nomeMalattia.sendKeys("Progeria");
+
+		WebElement cercaMalattia = driver.findElement(By.id("cercaPerNomeButton"));
+		cercaMalattia.click();
+
+		String actualUrl="http://localhost:8080/HealthCare/RicercaPerNomeServlet?nomeMalattia=Progeria";
+		String expectedUrl= driver.getCurrentUrl();
+		Assert.assertEquals(actualUrl, expectedUrl);
 	}
 }

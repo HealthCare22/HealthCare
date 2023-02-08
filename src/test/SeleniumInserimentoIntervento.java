@@ -9,7 +9,13 @@ import org.openqa.selenium.edge.EdgeDriver;
 
 public class SeleniumInserimentoIntervento {
 
-
+	//8.1 Il campo Descrizione deve contenere almeno 2 caratteri
+	
+	//8.2 Il campo Descrizione deve contenere massimo 800 caratteri
+	
+	//8.3 Inserimento con successo
+	
+	
 	/**
 	 * TCS_8.1
 	 *il campo Descrizione deve contenere almeno 2 caratteri
@@ -31,7 +37,7 @@ public class SeleniumInserimentoIntervento {
 		WebElement pubblica = driver.findElement(By.id("pubblica"));
 		pubblica.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/DettagliForm.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/InserimentoInterventoServlet?descrizione=";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 
@@ -71,9 +77,33 @@ public class SeleniumInserimentoIntervento {
 		WebElement pubblica = driver.findElement(By.id("pubblica"));
 		pubblica.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/DettagliForm.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/InserimentoInterventoServlet?descrizione=Inerente+alla+patologia+da+lei+descrittaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 
 	}
+	
+	@Test
+	public void inserimentoInterventoCorretto() {
+		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
+		WebDriver driver = new EdgeDriver();
+		driver.get("http://localhost:8080/HealthCare/SearchServlet");
+
+		driver.findElement(By.id("idButton"));
+		WebElement vediDettagli=driver.findElement(By.id("idButton"));
+		vediDettagli.click();
+		
+		driver.findElement(By.id("descrizione"));
+		WebElement descrizione=driver.findElement(By.id("descrizione"));
+		descrizione.sendKeys("ciao");
+
+		WebElement pubblica = driver.findElement(By.id("pubblica"));
+		pubblica.click();
+
+		String actualUrl="http://localhost:8080/HealthCare/InserimentoInterventoServlet?descrizione=ciao";
+		String expectedUrl= driver.getCurrentUrl();
+		Assert.assertEquals(actualUrl, expectedUrl);
+
+	}
+
 }

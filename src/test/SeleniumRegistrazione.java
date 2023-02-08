@@ -16,20 +16,21 @@ public class SeleniumRegistrazione {
 	 * Il campo Nome deve contenere almeno 2 caratteri
 	 */
 	@Test
-	public void registrazioneMMGNome2Caratteri() {
+	public void registrazioneNome2Caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
-		driver.findElement(By.id("nome"));
-		WebElement nome=driver.findElement(By.id("nome"));
+		driver.findElement(By.id("name"));
+		WebElement nome=driver.findElement(By.id("name"));
 		nome.sendKeys("");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		continueRegistration.click();
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 
@@ -40,23 +41,25 @@ public class SeleniumRegistrazione {
 	 *Il campo Nome deve contenere al massimo 255 caratteri
 	 */
 	@Test
-	public void registrazioneMMGNome256Caratteri() {
+	public void registrazioneNome256Caratteri() {
+		
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
-		driver.findElement(By.id("nome"));
-		WebElement nome=driver.findElement(By.id("nome"));
+		driver.findElement(By.id("name"));
+		WebElement nome=driver.findElement(By.id("name"));
 		nome.sendKeys("Pasqualeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" +
-				"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" +
-				"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" +
-				"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+				 "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" +
+				 "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" +
+				 "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		continueRegistration.click();
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 
@@ -67,20 +70,21 @@ public class SeleniumRegistrazione {
 	 * Il campo Nome deve contenere solo caratteri alfabetici o spazi
 	 */
 	@Test
-	public void registrazioneMMGNomeAS() {
+	public void registrazioneNomeCaratteriSpeciali() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
-		driver.findElement(By.id("nome"));
-		WebElement nome=driver.findElement(By.id("nome"));
+		driver.findElement(By.id("name"));
+		WebElement nome=driver.findElement(By.id("name"));
 		nome.sendKeys("Pasquale95");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		continueRegistration.click();
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 
@@ -92,20 +96,21 @@ public class SeleniumRegistrazione {
 	 */
 	
 	@Test
-	public void registrazioneMMGCognome2Caratteri() {
+	public void registrazioneCognome2Caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
-		driver.findElement(By.id("cognome"));
-		WebElement cognome=driver.findElement(By.id("cognome"));
+		driver.findElement(By.id("surname"));
+		WebElement cognome=driver.findElement(By.id("surname"));
 		cognome.sendKeys("");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		continueRegistration.click();
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 
@@ -117,23 +122,28 @@ public class SeleniumRegistrazione {
 	 */
 	
 	@Test
-	public void registrazioneMMGCognome256Caratteri() {
+	public void registrazioneCognome256Caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
-		driver.findElement(By.id("cognome"));
-		WebElement cognome=driver.findElement(By.id("cognome"));
-		cognome.sendKeys("Califanoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" +
-				"ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" +
-				"ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" +
-				"oooooooooooooooooooooooooooooooooooooo");
+		driver.findElement(By.id("surname"));
+		WebElement cognome=driver.findElement(By.id("surname"));
+		cognome.sendKeys("Califanooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		continueRegistration.click();
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 
@@ -145,20 +155,21 @@ public class SeleniumRegistrazione {
 	 * Il campo Cognome deve contenere solo caratteri alfabetici o spazi
 	 */
 	@Test
-	public void registrazioneMMGCognomeAS() {
+	public void registrazioneCognomeCaratteriSpeciali() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
-		driver.findElement(By.id("cognome"));
-		WebElement cognome=driver.findElement(By.id("cognome"));
+		driver.findElement(By.id("surname"));
+		WebElement cognome=driver.findElement(By.id("surname"));
 		cognome.sendKeys("Califano95");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		continueRegistration.click();
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
@@ -169,20 +180,21 @@ public class SeleniumRegistrazione {
 	 * Il campo Mail deve contenere almeno 2 caratteri
 	 */
 	@Test
-	public void registrazioneMMGMail2Caratteri() {
+	public void registrazioneMail2Caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
 		driver.findElement(By.id("email"));
 		WebElement email=driver.findElement(By.id("email"));
 		email.sendKeys("");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		continueRegistration.click();
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
@@ -193,23 +205,26 @@ public class SeleniumRegistrazione {
 	 * Il campo Mail deve contenere al massino 255 caratteri
 	 */
 	@Test
-	public void registrazioneMMGMail255Caratteri() {
+	public void registrazioneMail255Caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
 		driver.findElement(By.id("email"));
 		WebElement email=driver.findElement(By.id("email"));
-		email.sendKeys("Pasqualecalifanoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" +
-				"ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" +
-				"ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" +
-				"oooooooooooooooooooooooooooooooooooooo@gmail.com");
+		email.sendKeys("pasqualecalifanoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo@gmail.com");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		continueRegistration.click();
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
@@ -220,20 +235,21 @@ public class SeleniumRegistrazione {
 	 * Il campo Mail non rispetta il formato stabilito
 	 */
 	@Test
-	public void registrazioneMMGMailFormatoStabilito() {
+	public void registrazioneMailFormatoNonStabilito() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
 		driver.findElement(By.id("email"));
 		WebElement email=driver.findElement(By.id("email"));
-		email.sendKeys("pasquale*califano@gmail.com");
+		email.sendKeys("pasqualecalifano*gmail.com");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		continueRegistration.click();
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
@@ -244,20 +260,21 @@ public class SeleniumRegistrazione {
 	 * L'email inserita è già presente nel DB
 	 */
 	@Test
-	public void registrazioneMMGMail_Gia_presente_nel_DB() {
+	public void registrazioneMailEsistente() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
 		driver.findElement(By.id("email"));
 		WebElement email=driver.findElement(By.id("email"));
 		email.sendKeys("pasqualecalifano@gmail.com");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		continueRegistration.click();
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
@@ -269,20 +286,22 @@ public class SeleniumRegistrazione {
 	 * Il campo indirizzo deve contenere almeno 2 caratteri
 	 */
 	@Test
-	public void registrazioneMMGIndirizzo_almeno2_caratteri() {
+	public void registrazioneIndirizzo2Caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
-		driver.findElement(By.id("indrizzo"));
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		continueRegistration.click();
+		
+		driver.findElement(By.id("indirizzo"));
 		WebElement indirizzo=driver.findElement(By.id("indirizzo"));
 		indirizzo.sendKeys("");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
@@ -293,23 +312,27 @@ public class SeleniumRegistrazione {
 	 * Il campo indirizzo deve contenere al max 255 caratteri
 	 */
 	@Test
-	public void registrazioneMMGIndirizzo_massimo255_caratteri() {
+	public void registrazioneIndirizzo256Caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
-		driver.findElement(By.id("indrizzo"));
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		continueRegistration.click();
+		
+		driver.findElement(By.id("indirizzo"));
 		WebElement indirizzo=driver.findElement(By.id("indirizzo"));
-		indirizzo.sendKeys("Via dottor pietro Finianiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
-				+ "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
-				+ "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
-				+ "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+		indirizzo.sendKeys("Via Dottor Pietro Fimianiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+				+ "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+				+ "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+				+ "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+				+ "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+				+ "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
@@ -320,20 +343,22 @@ public class SeleniumRegistrazione {
 	 * Il campo indirizzo deve contenere solo caratteri alfanumerici
 	 */
 	@Test
-	public void registrazioneMMGIndirizzo_solo_alfanumerici() {
+	public void registrazioneIndirizzoCaratteriSpeciali() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
-		driver.findElement(By.id("indrizzo"));
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		continueRegistration.click();
+		
+		driver.findElement(By.id("indirizzo"));
 		WebElement indirizzo=driver.findElement(By.id("indirizzo"));
 		indirizzo.sendKeys("Via Dottor Pietro##Fimiani");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
@@ -344,20 +369,22 @@ public class SeleniumRegistrazione {
 	 * Il campo provincia deve contenere minimo 2 caratteri
 	 */
 	@Test
-	public void registrazioneMMGProvincia_almeno2_caratteri() {
+	public void registrazioneProvincia2Caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		continueRegistration.click();
+		
 		driver.findElement(By.id("provincia"));
 		WebElement provincia=driver.findElement(By.id("provincia"));
 		provincia.sendKeys("");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
@@ -365,23 +392,25 @@ public class SeleniumRegistrazione {
 
 	/**
 	 * 1.15
-	 * Il campo provincia deve contenere minimo 2 caratteri
+	 * Il campo provincia deve contenere minimo 2 caratteri senza caratteri speciali
 	 */
 	@Test
-	public void registrazioneMMGIndirizzo_almeno2_caratteri2() {
+	public void registrazioneIndirizzo2CaratteriSpeciali() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
-		driver.findElement(By.id("indrizzo"));
-		WebElement indirizzo=driver.findElement(By.id("indirizzo"));
-		indirizzo.sendKeys("S");
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		continueRegistration.click();
+		
+		driver.findElement(By.id("provincia"));
+		WebElement provincia=driver.findElement(By.id("provincia"));
+		provincia.sendKeys("SA#");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
@@ -389,49 +418,55 @@ public class SeleniumRegistrazione {
 
 	/**
 	 * 1.16
-	 * Il campo provincia deve contenere minimo 2 caratteri e non sono ammissibili caratteri speciali
+	 * Il campo provincia deve contenere al max 255 caratteri
 	 */
 	@Test
-	public void registrazioneMMGIndirizzo_almeno2_caratteri_noSpeciali() {
+	public void registrazioneProvincia256Caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
-		driver.findElement(By.id("indrizzo"));
-		WebElement indirizzo=driver.findElement(By.id("indirizzo"));
-		indirizzo.sendKeys("SA#");
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		continueRegistration.click();
+		
+		driver.findElement(By.id("provincia"));
+		WebElement provincia=driver.findElement(By.id("provincia"));
+		provincia.sendKeys("Salernoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
 
 
+
 	/**
 	 * 1.17
-	 * Il campo provincia deve contenere al max 255 caratteri
+	 * Il campo comune deve contenere min 2 caratteri e non deve essere vuoto
 	 */
 	@Test
-	public void registrazioneMMGcomune_massimo255_caratteri() {
+	public void registrazioneComune2CaratteriNonVuoto() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
-		driver.findElement(By.id("indrizzo"));
-		WebElement indirizzo=driver.findElement(By.id("indirizzo"));
-		indirizzo.sendKeys("Salernooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
-				+ "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
-				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		continueRegistration.click();
+		
+		driver.findElement(By.id("comune"));
+		WebElement comune=driver.findElement(By.id("comune"));
+		comune.sendKeys("");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
@@ -440,23 +475,25 @@ public class SeleniumRegistrazione {
 
 	/**
 	 * 1.18
-	 * Il campo comune deve contenere min 2 caratteri e non deve essere vuoto
+	 * Il campo comune deve contenere min 2 caratteri e non deve presentare caratteri speciali
 	 */
 	@Test
-	public void registrazioneMMGComune_almeno2_caratteri_no_vuoto() {
+	public void registrazioneComune2CaratteriSpeciali() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		continueRegistration.click();
+		
 		driver.findElement(By.id("comune"));
 		WebElement comune=driver.findElement(By.id("comune"));
 		comune.sendKeys("");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
@@ -465,75 +502,82 @@ public class SeleniumRegistrazione {
 
 	/**
 	 * 1.19
-	 * Il campo comune deve contenere min 2 caratteri e non deve presentare caratteri speciali
-	 */
-	@Test
-	public void registrazioneMMGcomune_almeno2_caratteri_nospeciali() {
-		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
-		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
-
-		driver.findElement(By.id("indrizzo"));
-		WebElement indirizzo=driver.findElement(By.id("indirizzo"));
-		indirizzo.sendKeys("Castel#@SanGiorgio");
-
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
-
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
-		String expectedUrl= driver.getCurrentUrl();
-		Assert.assertEquals(actualUrl, expectedUrl);
-	}
-
-
-
-	/**
-	 * 1.20
 	 * Il campo comune deve contenere max 255 caratteri 
 	 */
 	@Test
-	public void registrazioneMMGcomune_max_255caratteri() {
+	public void registrazioneComune256Caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
-		driver.findElement(By.id("indrizzo"));
-		WebElement indirizzo=driver.findElement(By.id("indirizzo"));
-		indirizzo.sendKeys("Castel San Giorgiooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
-				+ "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
-				+ "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
-				+ "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		continueRegistration.click();
+		
+		driver.findElement(By.id("comune"));
+		WebElement comune=driver.findElement(By.id("comune"));
+		comune.sendKeys("Castel San Giorgioooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+				+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
 	
 	
 	/**
-	 * 1.21
+	 * 1.20
 	 * Il campo sesso deve essere valorizzato con una sola scelta tra M, F o altro
 	 */
 	@Test
-	public void registrazioneMMGsesso_1Scelta_tra_M_F_altro() {
+	public void registrazioneSesso1Scelta() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
-		driver.findElement(By.id("sesso"));
-		WebElement sesso=driver.findElement(By.id("sesso"));
+		driver.findElement(By.id("femmina"));
+		WebElement sesso=driver.findElement(By.id("femmina"));
 		sesso.sendKeys("");
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		continueRegistration.click();
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
+		String expectedUrl= driver.getCurrentUrl();
+		Assert.assertEquals(actualUrl, expectedUrl);
+	}
+
+	/**
+	 * TCS_1.21
+	 * Il campo telefono deve contenere almeno 10 caratteri
+	 */
+	@Test
+	public void registrazioneTelefono10Caratteri() {
+		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
+		WebDriver driver = new EdgeDriver();
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
+
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		continueRegistration.click();
+		
+		driver.findElement(By.id("telefono"));
+		WebElement telefono=driver.findElement(By.id("telefono"));
+		telefono.sendKeys("");
+
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		finishRegistration.click();
+
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
@@ -541,23 +585,25 @@ public class SeleniumRegistrazione {
 
 	/**
 	 * TCS_1.22
-	 * Il campo telefono deve contenere almeno 10 caratteri
+	 * Il campo telefono deve contenenre al max 11 caratteri
 	 */
 	@Test
-	public void registrazioneMMGtelefono_almeno_10Caratteri() {
+	public void registrazioneTelefono11Caratteri() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		continueRegistration.click();
+		
 		driver.findElement(By.id("telefono"));
 		WebElement telefono=driver.findElement(By.id("telefono"));
-		telefono.sendKeys("");
+		telefono.sendKeys("333-333455321897");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
@@ -565,23 +611,25 @@ public class SeleniumRegistrazione {
 
 	/**
 	 * TCS_1.23
-	 * Il campo telefono deve contenenre al max 11 caratteri
+	 * Il campo telefono deve contenere solo caratteri numerici al più le prime 3 cifre possono essere separate da un trattino
 	 */
 	@Test
-	public void registrazioneMMGTelefono_max11caratt() {
+	public void registrazioneTelefonoCaratteriNonNumerici() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		continueRegistration.click();
+		
 		driver.findElement(By.id("telefono"));
 		WebElement telefono=driver.findElement(By.id("telefono"));
-		telefono.sendKeys("333-333455321897");
+		telefono.sendKeys("333-22BB451");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
@@ -589,208 +637,133 @@ public class SeleniumRegistrazione {
 
 	/**
 	 * TCS_1.24
-	 * Il campo telefono deve contenenre solo caratteri numerici al più le prime 3 cifre possono essere separate da un trattino
-	 */
-	@Test
-	public void registrazioneMMGTelefono_solo_numerici_e_il_trattino_dopo_lePrime3() {
-		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
-		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
-
-		driver.findElement(By.id("telefono"));
-		WebElement telefono=driver.findElement(By.id("telefono"));
-		telefono.sendKeys("333-22BB451");
-
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
-
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
-		String expectedUrl= driver.getCurrentUrl();
-		Assert.assertEquals(actualUrl, expectedUrl);
-	}
-
-
-	/**
-	 * TCS_1.25
 	 * Il campo password deve contenenre almeno 8 caratteri, almeno una lettera, almeno un numero, nessuno spazio
 	 */
 	@Test
-	public void registrazioneMMGpassword_min8caratt_minLettera_minNumeroNospazio() {
+	public void registrazioneNoPassword() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
 		driver.findElement(By.id("password"));
 		WebElement password=driver.findElement(By.id("password"));
 		password.sendKeys("");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		continueRegistration.click();
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
 
 
+
+	/**
+	 * TCS_1.25
+	 * Il campo password deve contenenre al massimo 24 caratteri, almeno una lettera, almeno un numero, nessuno spazio
+	 */
+	@Test
+	public void registrazionePassword24Caratteri() {
+		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
+		WebDriver driver = new EdgeDriver();
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
+
+		driver.findElement(By.id("password"));
+		WebElement password=driver.findElement(By.id("password"));
+		password.sendKeys("***************************************************************");
+
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		continueRegistration.click();
+		finishRegistration.click();
+
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
+		String expectedUrl= driver.getCurrentUrl();
+		Assert.assertEquals(actualUrl, expectedUrl);
+	}
 
 	/**
 	 * TCS_1.26
-	 * Il campo password deve contenenre almeno 24 caratteri, almeno una lettera, almeno un numero, nessuno spazio
+	 * Il campo password deve contenenere almeno una lettera, almeno un numero, nessuno spazio
 	 */
 	@Test
-	public void registrazioneMMGpassword_max24caratt_minLettera_minNumeroNospazio() {
+	public void registrazionePasswordNoSpazi() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
 		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
 
 		driver.findElement(By.id("password"));
 		WebElement password=driver.findElement(By.id("password"));
-		password.sendKeys("soqquadroallasoqquadro2324554lol");
+		password.sendKeys("******* ****");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		continueRegistration.click();
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
+
+
 
 	/**
 	 * TCS_1.27
-	 * Il campo password deve contenenre almeno una lettera, almeno un numero, nessuno spazio
+	 * Il campo confermapassword non è stato inserito e non corrisponde al campo password
 	 */
 	@Test
-	public void registrazioneMMGpassword_minLettera_minNumeroNospazio() {
+	public void registrazioneConfermapasswordErrata() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
 
-		driver.findElement(By.id("password"));
-		WebElement password=driver.findElement(By.id("password"));
-		password.sendKeys("soqquadro alla");
+		driver.findElement(By.id("confirmPassword"));
+		WebElement confirmPassword=driver.findElement(By.id("confirmPassword"));
+		confirmPassword.sendKeys("***");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		continueRegistration.click();
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
-
 
 
 	/**
 	 * TCS_1.28
-	 * Il campo confermapassword non è stato inserito e non corrisponde al campo password
+	 * La registrazione e' avvenuta con successo
 	 */
 	@Test
-	public void registrazioneMMGConfermapassword_no_corrispondeza_e_lasciato_vuoto() {
+	public void registrazioneCorretta() {
 		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
-
-		driver.findElement(By.id("confermaPassword"));
-		WebElement confermaPassword=driver.findElement(By.id("confermaPassword"));
-		confermaPassword.sendKeys("");
-
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
-
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
-		String expectedUrl= driver.getCurrentUrl();
-		Assert.assertEquals(actualUrl, expectedUrl);
-	}
-
-
-	/**
-	 * TCS_1.29
-	 * Il campo confermapassword non corrisponde al campo password
-	 */
-	@Test
-	public void registrazioneMMGConfermapassword_noCorrispondenza() {
-		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
-		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
-
-		driver.findElement(By.id("confermaPassword"));
-		WebElement confermaPassword=driver.findElement(By.id("confermaPassword"));
-		confermaPassword.sendKeys("ciao");
-
+		driver.get("http://localhost:8080/HealthCare/registration.jsp");
+		
 		driver.findElement(By.id("password"));
 		WebElement password=driver.findElement(By.id("password"));
-		password.sendKeys("nonciao");
+		password.sendKeys("pippopippo1!");
+		driver.findElement(By.id("confirmPassword"));
+		WebElement confirmPassword=driver.findElement(By.id("confirmPassword"));
+		confirmPassword.sendKeys("pippopippo1!");
 
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
+		WebElement continueRegistration = driver.findElement(By.id("firstFormButton"));
+		WebElement finishRegistration = driver.findElement(By.id("secondFormButton"));
+		continueRegistration.click();
+		finishRegistration.click();
 
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
+		String actualUrl="http://localhost:8080/HealthCare/RegistrationServlet";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
 	}
 
-	/**
-	 * TCS_1.30
-	 * Il campo confermapassword non corrisponde al campo password
-	 */
-	@Test
-	public void registrazioneMMGConfermapassword_noCorrispondenza2() {
-		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
-		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
-
-		driver.findElement(By.id("confermaPassword"));
-		WebElement confermaPassword=driver.findElement(By.id("confermaPassword"));
-		confermaPassword.sendKeys("ciao");
-
-		driver.findElement(By.id("password"));
-		WebElement password=driver.findElement(By.id("password"));
-		password.sendKeys("non ciao");
-
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
-
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
-		String expectedUrl= driver.getCurrentUrl();
-		Assert.assertEquals(actualUrl, expectedUrl);
-	}
-
-
-	/**
-	 * TCS_1.31
-	 * Il campo confermapassword non corrisponde al campo password
-	 */
-	@Test
-	public void registrazioneMMGConfermapassword_noCorrispondenza3() {
-		System.setProperty("webdriver.edge.driver","C:/edgedriver_win64/msedgedriver.exe");
-		WebDriver driver = new EdgeDriver();
-		driver.get("http://localhost:8080/HealthCare/registration.jsp?");
-
-		driver.findElement(By.id("confermaPassword"));
-		WebElement confermaPassword=driver.findElement(By.id("confermaPassword"));
-		confermaPassword.sendKeys("ciaooooooo");
-
-		driver.findElement(By.id("password"));
-		WebElement password=driver.findElement(By.id("password"));
-		password.sendKeys("nonciao");
-
-		WebElement confirmRegistration = driver.findElement(By.id("firstFormButton"));
-		confirmRegistration.click();
-		confirmRegistration.click();
-
-		String actualUrl="http://localhost:8080/HealthCare/login.jsp";
-		String expectedUrl= driver.getCurrentUrl();
-		Assert.assertEquals(actualUrl, expectedUrl);
-	}
-
-
+	
 
 }
 
