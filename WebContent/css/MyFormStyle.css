@@ -118,3 +118,11 @@ body{
     font-style: normal;
     font-weight: 300;
 }
+
+.errorMessage{
+	text-align:center;
+	margin-top: 1%;
+	font-weight:bold;
+	font-size: 20px;
+	color:red;
+}

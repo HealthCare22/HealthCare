@@ -40,7 +40,7 @@
         <div class="information">
             
             <input name="titolo" id="titolo" type="text" placeholder="Titolo">
-            <textarea name="descrizione" id="descrizione" rows="10" cols="50" placeholder="Descrizione" maxlength="800"></textarea>
+            <textarea name="descrizione" id="descrizione" rows="10" cols="50" placeholder="Descrizione" maxlength="1000"></textarea>
 			
 	        <div class="button-apertura">
 	             <input id="apri-form" type="submit" value="Apri form">

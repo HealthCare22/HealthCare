@@ -21,10 +21,6 @@
 	</head>
 	<body onload="attivaMyForm()">
 		<jsp:include page="navbar.jsp"/>
-		<%if(error_message!=null){ %>
-			<div>
-				<p><%=error_message %></p>
-			</div><%} %>
 			<div id ="FormNavbar">
 				<jsp:include page="FormNavbar.jsp"/>
 			</div>
@@ -32,6 +28,10 @@
 				<button id="OpenedFormButton" onclick="toOpenedForms()">Aperti</button>
 				<button id="ClosedFormButton" onclick="toClosedForms()">Chiusi</button>
 			</div>
+			<%if(error_message!=null){ %>
+			<div class = errorMessage>
+				<p><%=error_message %></p>
+			</div><%} %>
 		<div id="Forms">
 			<div id="OpenedForms">
 				<table>

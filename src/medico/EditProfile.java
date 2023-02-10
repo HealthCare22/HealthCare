@@ -58,7 +58,6 @@ public class EditProfile extends HttpServlet {
 			}
 	        
 			if(!validate.validateEmail(email)) {
-	
 				request.setAttribute("error", "Il campo Email non rispetta il formato stabilito");
 				request.getRequestDispatcher("ProfileServlet").forward(request, response);
 				
