@@ -108,6 +108,6 @@ public class AperturaFormServlet extends HttpServlet {
                 request.setAttribute("error_message", "Creazione del form non avvenuta con successo");
                 request.getRequestDispatcher("/AperturaForm.jsp").forward(request, response);
             }
-        }else {}
+        }
     }
 }

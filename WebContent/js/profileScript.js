@@ -66,6 +66,7 @@ function edit(){
     data=document.getElementById("data");
     email=document.getElementById("email");
     password=document.getElementById("password");
+    confPass = document.getElementById("confermapassword");
     telefono=document.getElementById("telefono");
     provincia=document.getElementById("provincia");
     comune=document.getElementById("comune");
@@ -74,6 +75,7 @@ function edit(){
 
     email.readOnly= false;
     password.readOnly= false;
+    confPass.readOnly = false;
     telefono.readOnly= false;
     provincia.readOnly= false;
     comune.readOnly= false;

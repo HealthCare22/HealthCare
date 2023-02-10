@@ -69,6 +69,9 @@
             
                 <h2>Password</h2>
                 <input type="password" id="password" name="password" value=<%=mmg.getPassword()%> readonly>
+        		
+        		<h2>Conferma Password</h2>
+                <input type="password" id="confermapassword" name="confermapassword" value=<%=mmg.getPassword()%> readonly>
         	
     </div>   
     <div class="info2">
