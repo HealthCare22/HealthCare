@@ -12,11 +12,17 @@
 </head>
 
 <body>
+<%String error_sintomo = (String) request.getAttribute("error_sintomo"); %>
 	<jsp:include page="navbar.jsp"/>
 	
 	<div id="Titolo">
 			<h1>Elenco delle malattie rare</h1>
 	</div>
+	<%if(error_sintomo!=null){ %>
+		<div class = "errorMessage">
+			<p><%=error_sintomo %></p>
+		</div>
+		<%} %>
 		<%List<GestioneMalattieBean>listaMalattie = (List<GestioneMalattieBean>)request.getAttribute("listaMalattie"); %>
 
 		<div id = "elencoMalattie">

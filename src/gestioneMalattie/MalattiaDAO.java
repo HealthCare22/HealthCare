@@ -80,7 +80,6 @@ public class MalattiaDAO {
 				nomeSintomo = d.getString("nome sintomo");
 			}
 			sintomiTable.put(codiceSintomo, nomeSintomo);
-			System.out.println(nomeSintomo);
 		}
 		return sintomiTable;
 	}

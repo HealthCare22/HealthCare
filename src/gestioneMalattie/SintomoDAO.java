@@ -22,10 +22,7 @@ public class SintomoDAO {
         MongoDatabase database = client.getDatabase(SintomoDAO.DB_NAME);
         this.collection = database.getCollection(SintomoDAO.COLLECTION_NAME);
     }
-    
-  
-
-
+ 
 	public List<SintomoBean> getSintomiByNome(List<String> listaNomiSintomi) {
 		List<SintomoBean> listaSintomi = new ArrayList<>();
 		for(String s : listaNomiSintomi) {
@@ -63,4 +60,13 @@ public class SintomoDAO {
 		return listaSintomi;
 	}
     
+	public Boolean existSintomo(String nome) {
+		FindIterable<Document> cursor = this.collection.find(Filters.eq("nome_sintomo",nome));
+		for(Document d : cursor) {
+			if(d.getString("nome_sintomo").equals(nome)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
