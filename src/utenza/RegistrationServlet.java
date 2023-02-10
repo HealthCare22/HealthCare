@@ -200,10 +200,10 @@ public class RegistrationServlet extends HttpServlet {
                     provincia, comune, indirizzo, numero_telefono);
 
             if (isUserFound) {
-                request.getRequestDispatcher("/profile.jsp").forward(request, response);
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
             } else {
                 request.setAttribute("error_message", "You are not an authorised user. Please check with administrator.");
-                request.getRequestDispatcher("/profile.jsp").forward(request, response);
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
             }
         }
     }

@@ -5,11 +5,12 @@
 <%@ page import = "utenza.UserDAO" %>
 <%@ page import="com.mongodb.client.MongoClient" %>
 
-<%
-    MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
-    UserDAO userDAO = new UserDAO(mongoClient);
-    
+<%  
     String error_message = (String) request.getAttribute("error");
+	MMGBean mmg = (MMGBean) request.getAttribute("user");
+	if(mmg == null){
+		request.getRequestDispatcher("ProfileServlet").forward(request,response);
+	}
 %>
     
 <!DOCTYPE html>
@@ -31,16 +32,7 @@
 <div class = errorMessage>
 	<p><%=error_message %></p>
 </div>
-	<%}
-		String email = null;
-		if(session.getAttribute("email") == null)
-			{
-				response.sendRedirect("login.jsp");
-			} else {
-				email = (String)session.getAttribute("email");}
-				MMGBean mmg = userDAO.recuperaUser(email);
-	%>
-	
+	<%}%>
 
 
     <div class="img">
@@ -73,7 +65,7 @@
             <h1>Credenziali</h1>
             
                 <h2>E-mail</h2>
-                <input type="email" id="email" name="email" value=<%=email %> readonly>
+                <input type="email" id="email" name="email" value=<%=mmg.getEmail() %> readonly>
             
                 <h2>Password</h2>
                 <input type="password" id="password" name="password" value=<%=mmg.getPassword()%> readonly>

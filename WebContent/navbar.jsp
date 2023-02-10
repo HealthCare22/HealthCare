@@ -22,7 +22,7 @@
             <li><a href="RicercaMalattia.jsp">Ricerca</a></li>
             <li><a href="MyFormServlet">Form</a></li>
             <li><a href="ListaMalattieServlet">Malattia</a></li>
-            <li><a href="profile.jsp">Profilo</a></li>
+            <li><a href="ProfileServlet">Profilo</a></li>
           </ul>
 
           <ul class="list-item-dx">
