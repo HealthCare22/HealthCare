@@ -44,4 +44,9 @@ public class MalattieFacade {
 		return malattiaDao.existMalattia(nomeMalattia);
 	}
 	
+	public Boolean existSintomo(MongoClient client, String nome) {
+		SintomoDAO sintomoDao = new SintomoDAO(client);
+		return sintomoDao.existSintomo(nome);
+	}
+	
 }
