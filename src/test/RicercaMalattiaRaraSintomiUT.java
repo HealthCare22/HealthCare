@@ -6,6 +6,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import gestioneMalattie.SintomoDAO;
+import utenza.UserDAO;
 import validazione.ValidateFieldsInserimentoSintomi;
 
 public class RicercaMalattiaRaraSintomiUT extends Mockito {
@@ -55,5 +57,16 @@ public class RicercaMalattiaRaraSintomiUT extends Mockito {
 	public void TestSintomiCorretto() {
 		String sintomo ="diarrea";
 		assertEquals(true, validate.validateSintomo(sintomo));
+	}
+	
+	@Test
+	public void TestSintomiUnoCorrettoUnoNonPresenteNelDb() {
+		String sintomo = "diarrea";
+		String sintomo2 = "aaaaaaaaa";
+		
+		SintomoDAO sd = Mockito.mock(SintomoDAO.class);
+		when(sd.existSintomo(sintomo2)).thenReturn(true);
+		assertEquals(true, validate.validateSintomo(sintomo));
+		assertEquals(true, validate.validateSintomo(sintomo2));
 	}
 }
