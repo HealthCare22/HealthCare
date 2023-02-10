@@ -36,9 +36,6 @@
 
 <body>
 	<jsp:include page="navbar.jsp"/>
-	
-	
-
 	<div id="Titolo">
 			<h1>Dettagli del Form</h1>
 		</div>
@@ -106,19 +103,11 @@
 		Iterator<?> it = allInterventi.iterator();
 		while (it.hasNext()) {
 			GestioneInterventiBean bean = (GestioneInterventiBean) it.next();
-
 %>
-		<div>
-			<table>
-				<tr><%=bean.getEmail_medico() %></tr>
-				<tr><%=bean.getDescrizione()%></tr>
-				
-			</table>
-		
-		
+		<div class = "div_interventi">
+				<p><b>AUTORE:</b> <%=bean.getEmail_medico() %></p>
+				<p><%=bean.getDescrizione()%></p>
 		</div>
-		
-		
 <%
 		}
   }
@@ -136,10 +125,8 @@
 					<p><b><%=email%></b></p>
 				</div>
 			</div>
-
-			
 			<div class="text-intervento">
-				<textarea id="descrizione" name="descrizione" rows="10" cols="50" placeholder="Descrizione" minlength="2" maxlength="800"></textarea>
+				<textarea id="descrizione" name="descrizione" rows="10" cols="50" placeholder="Descrizione" minlength="2" maxlength="1000"></textarea>
 			</div>
 			<div class="intervento-button"> 
 				<button id="pubblica" type="submit" class="Button">Pubblica</button>

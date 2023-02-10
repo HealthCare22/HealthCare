@@ -38,21 +38,25 @@ public class InserimentoInterventoServlet extends HttpServlet {
 		HttpSession http = request.getSession();
 		String email = (String) http.getAttribute("email");
 		String id_form = (String) http.getAttribute("idform");
+		boolean checked = true;
 		ValidateFieldsinserimentoInUnForm validate = new ValidateFieldsinserimentoInUnForm();
 		
 		if(descrizione.length()<2) {
 			request.setAttribute("error", "Il campo descrizione deve contenere almeno 2 caratteri");
 			request.getRequestDispatcher("/MyFormServlet").forward(request, response);
+			checked = false;
 		}
 		
 		if(descrizione.length()> 800) {
 			request.setAttribute("error", "Il campo descrizione deve contenere al massimo 800 caratteri");
 			request.getRequestDispatcher("/MyFormServlet").forward(request, response);
+			checked = false;
 		}
 		
 		if(!validate.validateDescrizione(descrizione)) {
 			request.setAttribute("error", "Il campo descrizione non presenta il formato stabilito");
 			request.getRequestDispatcher("/MyFormServlet").forward(request, response);
+			checked = false;
 		}
 	
 		if(descrizione == null || "".equals(descrizione) || id_form == null || "".equals(id_form) ||
@@ -60,8 +64,9 @@ public class InserimentoInterventoServlet extends HttpServlet {
 			
 			request.setAttribute("error", "Aggiunta dell'intervento fallita");
 			request.getRequestDispatcher("/MyFormServlet").forward(request, response);
+			checked = false;
             
-		}else {
+		}else if(checked){
 			MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
 			FormFacade formFacade = new FormFacade(mongoClient);
 			List<GestioneInterventiBean> addIntervento = formFacade.addIntervento(email, descrizione, id_form);
@@ -73,7 +78,7 @@ public class InserimentoInterventoServlet extends HttpServlet {
 				if(addIntervento!=null) {
 	            request.getRequestDispatcher("/DettagliForm.jsp").forward(request, response);
 				}
-		}
+		}else {}
 	}
 
 
