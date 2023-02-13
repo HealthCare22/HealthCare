@@ -12,12 +12,12 @@ public class ValidateFieldsRegistration {
 	private Matcher matcher;
 	
 	private static final String EMAIL_REGEX = "^(?!.{256,})[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+$";
-	private static final String NOME_REGEX = "^[a-z A-Z Ã Ã©Ã¨Ã¬Ã²Ã¹]{2,255}$";
-	private static final String SURNAME_REGEX ="^[a-z A-Z Ã Ã©Ã¨Ã¬Ã²Ã¹]{2,255}$";
+	private static final String NOME_REGEX = "^[a-z A-Z àéèìòù]{2,255}$";
+	private static final String SURNAME_REGEX ="^[a-z A-Z àéèìòù]{2,255}$";
 	private static final String PASSWORD_REGEX = "^(?=([^\\s])*[0-9])(?=([^\\s])*[a-zA-Z])([^\\s]){8,24}$";
-	private static final String PROVINCIA_REGEX = "^[a-z A-Z Ã Ã©Ã¨Ã¬Ã²Ã¹]{2,255}$";
-	private static final String COMUNE_REGEX = "^[a-z A-Z Ã Ã©Ã¨Ã¬Ã²Ã¹]{2,255}$";
-	private static final String INDIRIZZO_REGEX = "^[a-z A-Z 0-9 Ã Ã©Ã¨Ã¬Ã²Ã¹',.-]{2,255}$";
+	private static final String PROVINCIA_REGEX = "^[a-z A-Z àéèìòù]{2,255}$";
+	private static final String COMUNE_REGEX = "^[a-z A-Z Ã \\p{M}]{2,255}$";
+	private static final String INDIRIZZO_REGEX = "^[a-z A-Z 0-9 àéèìòù ',.-]{2,255}$";
 	private static final String NUMEROTELEFONO_REGEX = "^(\\+\\d{1,2}\\s?)?1?\\-?\\.?\\s?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$";
 	
 	public ValidateFieldsRegistration() {

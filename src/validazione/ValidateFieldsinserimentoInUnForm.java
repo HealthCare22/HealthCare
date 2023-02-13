@@ -8,7 +8,7 @@ public class ValidateFieldsinserimentoInUnForm {
 	private Pattern pattern;
 	private Matcher matcher;
 	
-private static final String DESCRIZIONE_REGEX = "^[\\p{L}0-9\\s\\w\\d\\,\\.\\?\\!:-]{2,800}$";
+private static final String DESCRIZIONE_REGEX = "^[\\p{L}0-9\\p{P}\\p{M}\\p{Zs}@]*$";
 
 	
 	public ValidateFieldsinserimentoInUnForm() {

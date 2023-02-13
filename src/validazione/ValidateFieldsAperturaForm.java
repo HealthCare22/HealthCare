@@ -9,8 +9,8 @@ public class ValidateFieldsAperturaForm {
 	private ArrayList<Pattern> pattern =  new ArrayList<>();
 	private Matcher matcher;
 	
-	private static final String TITOLO_REGEX = "^[a-z A-Z àéèìòù]{2,255}$";
-	private static final String DESCRIZIONE_REGEX = "^[a-z A-Z àéèìòù]{2,800}$";
+	private static final String TITOLO_REGEX = "^[a-z A-Z \\p{M}]{2,255}$";
+	private static final String DESCRIZIONE_REGEX = "^[\\p{L}\\p{P}\\p{M}\\p{Zs}]{2,800}$";
 	
 	
 	public ValidateFieldsAperturaForm() {
